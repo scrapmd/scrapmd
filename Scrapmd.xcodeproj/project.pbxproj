@@ -19,6 +19,7 @@
 		8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8544481B2488C6C40010F1F7 /* ActionViewController.swift */; };
 		8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544481D2488C6C40010F1F7 /* MainInterface.storyboard */; };
 		854448232488C6C40010F1F7 /* ActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 854448172488C6C40010F1F7 /* ActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		85948D3F24891BA400763582 /* GetHTML.js in Resources */ = {isa = PBXBuildFile; fileRef = 85948D3E24891BA400763582 /* GetHTML.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		854448202488C6C40010F1F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		854448282488C6CD0010F1F7 /* ActionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActionExtension.entitlements; sourceTree = "<group>"; };
 		854448292488C6D10010F1F7 /* Scrapmd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scrapmd.entitlements; sourceTree = "<group>"; };
+		85948D3E24891BA400763582 /* GetHTML.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetHTML.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		854448182488C6C40010F1F7 /* ActionExtension */ = {
 			isa = PBXGroup;
 			children = (
+				85948D3E24891BA400763582 /* GetHTML.js */,
 				854448282488C6CD0010F1F7 /* ActionExtension.entitlements */,
 				854448192488C6C40010F1F7 /* Media.xcassets */,
 				8544481B2488C6C40010F1F7 /* ActionViewController.swift */,
@@ -343,6 +346,7 @@
 			files = (
 				8544481A2488C6C40010F1F7 /* Media.xcassets in Resources */,
 				8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */,
+				85948D3F24891BA400763582 /* GetHTML.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
