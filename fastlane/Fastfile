@@ -1,0 +1,331 @@
+# vim: set ft=ruby
+
+default_platform :ios
+
+platform :ios do
+  desc 'Set Build Number to GITHUB_RUN_ID'
+  lane :set_build_number do
+    increment_build_number(
+      build_number: ENV.fetch('GITHUB_RUN_ID'),
+      xcodeproj: 'Scrapmd.xcodeproj'
+    )
+  end
+
+  desc 'Run tests'
+  lane :tests do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    run_tests
+  end
+
+  desc 'Build app for beta'
+  lane :beta_build do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    {
+      'Scrapmd' => 'app.scrapmd.Scrapmd',
+      'ActionExtension' => 'app.scrapmd.Scrapmd.ActionExtension',
+    }.each do |target, identifier|
+      update_code_signing_settings(
+        profile_name: "match AdHoc #{identifier}",
+        bundle_identifier: identifier,
+        use_automatic_signing: false,
+        targets: [target],
+        build_configurations: %w(Release),
+        path: 'Scrapmd.xcodeproj'
+      )
+    end
+    build_app(
+      export_method: 'ad-hoc',
+      scheme: 'Scrapmd',
+      output_directory: './build/beta',
+      export_options: {
+        iCloudContainerEnvironment: 'Production'
+      }
+    )
+  end
+
+  desc 'Upload app to Firebase Distribution'
+  lane :beta_upload do
+    sh 'which firebase || brew install firebase-cli'
+    app = `/usr/libexec/PlistBuddy -c "print :GOOGLE_APP_ID" "../Scrapmd/GoogleService-Info.plist"`.strip
+    ipa_path = File.expand_path '../build/beta/Scrapmd.ipa'
+    testers_file = File.expand_path './firebase-testers.txt'
+
+    firebase_app_distribution(
+      app: app,
+      ipa_path: ipa_path,
+      release_notes: `git log -1 --pretty=%b`,
+      testers_file: testers_file,
+      firebase_cli_token: ENV.fetch('FIREBASE_CLI_TOKEN'),
+      firebase_cli_path: '/usr/local/bin/firebase'
+    )
+  end
+
+  desc 'Match Ad-Hoc Provisioning Profiles'
+  lane :beta_match do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    match type: 'adhoc'
+  end
+
+  desc 'Match App Store Provisioning Profiles'
+  lane :release_match do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    match type: 'appstore'
+  end
+
+
+  desc 'Build app for beta'
+  lane :release_build do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    {
+      'Scrapmd' => 'app.scrapmd.Scrapmd',
+      'ActionExtension' => 'app.scrapmd.Scrapmd.ActionExtension',
+    }.each do |target, identifier|
+      update_code_signing_settings(
+        profile_name: "match AppStore #{identifier}",
+        bundle_identifier: identifier,
+        use_automatic_signing: false,
+        targets: [target],
+        build_configurations: %w(Release),
+        path: 'Scrapmd.xcodeproj'
+      )
+    end
+    build_app(
+      export_method: 'app-store',
+      output_directory: './build/release',
+      catalyst_platform: 'ios',
+      scheme: 'Scrapmd'
+    )
+  end
+
+  desc 'Publish app to App Store'
+  lane :release_upload do
+    pilot(
+      skip_waiting_for_build_processing: true,
+      testers_file_path: './fastlane/testers.csv',
+      ipa: './build/release/Scrapmd.ipa'
+    )
+  end
+
+  lane :release_submit do
+    build_number = sh('cat ../build/buildnum.ios.txt').strip
+    deliver(
+      platform: 'ios',
+      skip_binary_upload: true,
+      skip_metadata: false,
+      skip_screenshots: true,
+      submit_for_review: true,
+      automatic_release: true,
+      reject_if_possible: true,
+      build_number: build_number,
+      submission_information: {
+        export_compliance_encryption_updated: false
+      }
+    )
+  end
+
+  desc 'Upload metadata to App Store'
+  lane :release_metadata do
+    deliver skip_screenshots: true
+  end
+
+  desc 'Upload screenshots to App Store'
+  lane :release_screenshots do
+    deliver(
+      skip_metadata: true,
+      run_precheck_before_submit: false,
+      overwrite_screenshots: true
+    )
+  end
+
+  desc 'Take screenshots'
+  lane :screenshots do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    capture_screenshots
+  end
+
+  desc 'Increment minor version'
+  lane :increment_minor_version do
+    increment_version_number bump_type: 'minor'
+  end
+
+  desc 'Increment patch version'
+  lane :increment_patch_version do
+    increment_version_number bump_type: 'patch'
+  end
+
+  desc 'Upload Coverage data to Coveralls'
+  lane :send_coveralls do
+    coveralls(
+      repo_token: ENV.fetch('COVERALLS_REPO_TOKEN'),
+      derived_data_path: 'DerivedData'
+    )
+  end
+end
+
+platform :mac do
+  desc 'Match App Store Provisioning Profiles'
+  lane :develop_match do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    match(
+      type: 'development',
+      app_identifier: %w(app.scrapmd.Scrapmd app.scrapmd.Scrapmd.ActionExtension),
+      skip_provisioning_profiles: true,
+      platform: 'macos'
+    )
+  end
+
+  desc 'Import code sign certificate from Base64 encoded env vars (for now)'
+  lane :beta_match do
+    import_certificate(
+      certificate_path: '/tmp/certs/mac-beta.p12',
+      keychain_name: 'fastlane_tmp_keychain',
+      certificate_password: ENV['MATCH_PASSWORD']
+    )
+  end
+
+  desc 'Match App Store Provisioning Profiles'
+  lane :release_match do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    match(
+      type: 'appstore',
+      app_identifier: %w(app.scrapmd.Scrapmd app.scrapmd.Scrapmd.ActionExtension),
+      additional_cert_types: %w(mac_installer_distribution developer_id_installer),
+      skip_provisioning_profiles: true,
+      platform: 'macos'
+    )
+  end
+
+  desc 'Build app for release'
+  lane :release_build do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    update_code_signing_settings(
+      profile_name: 'manual AppStore app.scrapmd.Scrapmd macos',
+      bundle_identifier: 'app.scrapmd.Scrapmd',
+      use_automatic_signing: false,
+      targets: ['Scrapmd macOS'],
+      build_configurations: %w(Release),
+      path: 'Scrapmd.xcodeproj'
+    )
+    build_app(
+      catalyst_platform: 'macos',
+      scheme: 'Scrapmd macOS',
+      export_method: 'app-store',
+      output_directory: './build/release'
+    )
+  end
+
+  desc 'Build app for preview'
+  lane :beta_build do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    update_code_signing_settings(
+      profile_name: 'manual Developer ID app.scrapmd.Scrapmd macos',
+      bundle_identifier: 'app.scrapmd.Scrapmd',
+      use_automatic_signing: false,
+      targets: ['Scrapmd macOS'],
+      build_configurations: %w(Release),
+      path: 'Scrapmd.xcodeproj',
+      code_sign_identity: 'Developer ID Application: LittleApps Inc. (3Y8APYUG2G)'
+    )
+    build_app(
+      catalyst_platform: 'macos',
+      scheme: 'Scrapmd macOS',
+      export_method: 'developer-id',
+      output_directory: './build/beta',
+      skip_package_pkg: true,
+      export_options: {
+        iCloudContainerEnvironment: 'Production'
+      }
+    )
+    zip(
+      path: './build/beta/Scrapmd.app',
+      output_path: './build/beta/Scrapmd.app.zip'
+    )
+  end
+
+  desc 'Publish app to App Store'
+  lane :release_upload do
+    deliver(
+      platform: 'osx',
+      pkg: './build/release/Scrapmd.pkg',
+      metadata_path: './fastlane/metadata~mac',
+      screenshots_path: './fastlane/screenshots~mac',
+      skip_binary_upload: false,
+      skip_metadata: true,
+      skip_screenshots: true
+    )
+  end
+
+  desc 'upload app to GitHub releases'
+  lane :beta_upload do
+    ref = ENV.fetch('GITHUB_REF')
+    m = ref.match(%r{^refs/tags/(.+)$})
+    if m
+      tag_name = m[1]
+      description = sh("git cat-file -p $(git rev-parse #{tag_name}) | tail -n +6")
+      set_github_release(
+        repository_name: 'ngs/scrapmd',
+        name: tag_name,
+        tag_name: tag_name,
+        description: description,
+        is_prerelease: true,
+        commitish: ENV.fetch('GITHUB_SHA'),
+        upload_assets: [
+          './build/beta/Scrapmd.app.zip',
+          './build/beta/Scrapmd.app.dSYM.zip'
+        ]
+      )
+    else
+      puts 'No tag name, skipping.'
+    end
+  end
+
+  desc 'Upload metadata to App Store'
+  lane :release_metadata do
+    deliver(
+      platform: 'osx',
+      metadata_path: './fastlane/metadata~mac',
+      screenshots_path: './fastlane/screenshots~mac',
+      skip_binary_upload: true,
+      skip_metadata: false,
+      skip_screenshots: true
+    )
+  end
+
+  desc 'Upload screenshots to App Store'
+  lane :release_screenshots do
+    deliver(
+      platform: 'osx',
+      metadata_path: './fastlane/metadata~mac',
+      screenshots_path: './fastlane/screenshots~mac',
+      skip_binary_upload: true,
+      skip_metadata: true,
+      skip_screenshots: false,
+      overwrite_screenshots: true
+    )
+  end
+
+  lane :release_submit do
+    build_number = sh('cat ../build/buildnum.mac.txt').strip
+    begin
+      deliver(
+        platform: 'osx',
+        metadata_path: './fastlane/metadata~mac',
+        screenshots_path: './fastlane/screenshots~mac',
+        skip_binary_upload: true,
+        skip_metadata: false,
+        skip_screenshots: true,
+        submit_for_review: true,
+        automatic_release: true,
+        reject_if_possible: false,
+        build_number: build_number,
+        submission_information: {
+          export_compliance_encryption_updated: false
+        }
+      )
+    rescue NoMethodError => e
+      puts e
+      raise e unless e.message == %q(undefined method `fetch' for nil:NilClass)
+      puts "... Caught error, but omitting"
+    end
+  end
+end

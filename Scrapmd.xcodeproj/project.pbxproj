@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,8 @@
 		8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8544481B2488C6C40010F1F7 /* ActionViewController.swift */; };
 		8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544481D2488C6C40010F1F7 /* MainInterface.storyboard */; };
 		854448232488C6C40010F1F7 /* ActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 854448172488C6C40010F1F7 /* ActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* FileKit */; };
+		857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5E248960BC00AE5BE8 /* FileKit */; };
 		85948D3F24891BA400763582 /* GetHTML.js in Resources */ = {isa = PBXBuildFile; fileRef = 85948D3E24891BA400763582 /* GetHTML.js */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +129,7 @@
 				854448042488C6950010F1F7 /* ScrapmdUITests */,
 				854448182488C6C40010F1F7 /* ActionExtension */,
 				854447E12488C6930010F1F7 /* Products */,
+				857CCA5D248960BC00AE5BE8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +198,13 @@
 			path = ActionExtension;
 			sourceTree = "<group>";
 		};
+		857CCA5D248960BC00AE5BE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,6 +223,9 @@
 				854448222488C6C40010F1F7 /* PBXTargetDependency */,
 			);
 			name = Scrapmd;
+			packageProductDependencies = (
+				857CCA5B248960A300AE5BE8 /* FileKit */,
+			);
 			productName = Scrapmd;
 			productReference = 854447E02488C6930010F1F7 /* Scrapmd.app */;
 			productType = "com.apple.product-type.application";
@@ -264,6 +279,9 @@
 			dependencies = (
 			);
 			name = ActionExtension;
+			packageProductDependencies = (
+				857CCA5E248960BC00AE5BE8 /* FileKit */,
+			);
 			productName = ActionExtension;
 			productReference = 854448172488C6C40010F1F7 /* ActionExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -303,6 +321,9 @@
 				Base,
 			);
 			mainGroup = 854447D72488C6920010F1F7;
+			packageReferences = (
+				857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */,
+			);
 			productRefGroup = 854447E12488C6930010F1F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -762,6 +783,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nvzqz/FileKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		857CCA5B248960A300AE5BE8 /* FileKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;
+			productName = FileKit;
+		};
+		857CCA5E248960BC00AE5BE8 /* FileKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;
+			productName = FileKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 854447D82488C6930010F1F7 /* Project object */;
 }

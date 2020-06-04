@@ -1,0 +1,5 @@
+# vim: set ft=ruby
+
+skip_binary_upload true
+force true
+skip_app_version_update true

@@ -1,0 +1,4 @@
+app_identifier %w[
+  app.scrapmd.Scrapmd
+  app.scrapmd.Scrapmd.ActionExtension
+]
