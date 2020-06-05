@@ -10,7 +10,13 @@ import SwiftUI
 
 struct SaveActionView: View {
     let contentSaver: ContentSaver
-    @State var scrapName: String = ""
+    @State var scrapName: String = "" {
+        didSet {
+            if scrapName.count > scrapDirectoryNameMaxLength {
+                scrapName = oldValue
+            }
+        }
+    }
     @State var saveLocation: String? = nil
 
     var body: some View {
@@ -19,8 +25,8 @@ struct SaveActionView: View {
             List {
                 Section(header: Text("Name")) {
                     TextField("Name", text: $scrapName).onAppear {
-                        self.scrapName = self.contentSaver.result.title
-                    }
+                        self.scrapName = String(self.contentSaver.result.title.prefix(scrapDirectoryNameMaxLength))
+                        }
                 }
                 Section(header: Text("Save Location")) {
                     Button(action: {
