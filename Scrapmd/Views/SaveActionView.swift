@@ -45,7 +45,7 @@ struct SaveActionView: View {
                     Text("Cancel")
                 }),
                 trailing:  Button(action: {}, label: {
-                    Text("Save")
+                    Text("Save").fontWeight(.bold)
                 })
             )
         }.navigationViewStyle(DefaultNavigationViewStyle())

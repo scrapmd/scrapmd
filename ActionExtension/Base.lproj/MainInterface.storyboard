@@ -23,7 +23,7 @@
                                 </constraints>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="PFV-Nx-eUV" firstAttribute="centerX" secondItem="Ype-OL-S4P" secondAttribute="centerX" id="84D-d4-PgT"/>
                             <constraint firstItem="PFV-Nx-eUV" firstAttribute="centerX" secondItem="Ype-OL-S4P" secondAttribute="centerX" id="b3f-bu-mH9"/>
