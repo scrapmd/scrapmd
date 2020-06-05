@@ -9,13 +9,18 @@
 import UIKit
 import MobileCoreServices
 import FileKit
+import SwiftUI
 
-class ActionViewController: UIViewController {
-
-    @IBOutlet weak var imageView: UIImageView!
+ class ActionViewController: UIViewController {
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    var hostingViewController: UIHostingController<SaveActionView>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadItem()
+    }
+
+    func loadItem() {
         guard
             let inputItems = extensionContext?.inputItems as? [NSExtensionItem],
             let provider = inputItems
@@ -32,24 +37,34 @@ class ActionViewController: UIViewController {
                 else { return }
             APIClient.fetch(url: url, prefetchedHTML: html) { (result, _, err) in
                 if let result = result {
-                    let saver = ContentSaver(result: result)
-                    let root = Path.iCloudDocuments ?? Path.userDocuments
-                    
-                    saver.download(to: root + "test", progress: { (info, current, total) in
-                        print("\(info);\(current);\(total)")
-                    }) {err in
-                        print(err ?? "ok")
+                    DispatchQueue.main.async {
+                        self.renderSaveView(result: result)
+                        self.activityIndicatorView.stopAnimating()
                     }
-                    return
                 }
             }
         }
     }
 
-    @IBAction func done() {
-        // Return any edited content to the host app.
-        // This template doesn't do anything, so we just echo the passed in items.
-        self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
+    func renderSaveView(result: APIClient.Result) {
+        let saver = ContentSaver(result: result)
+        let rootView = SaveActionView(contentSaver: saver)
+        let vc = UIHostingController<SaveActionView>(rootView: rootView)
+        addChild(vc)
+        view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        vc.view.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
+        vc.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+        vc.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+        vc.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        hostingViewController = vc
     }
+
+//    @IBAction func done() {
+//        // Return any edited content to the host app.
+//        // This template doesn't do anything, so we just echo the passed in items.
+//        self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
+//    }
 
 }

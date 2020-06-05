@@ -36,7 +36,6 @@ struct APIClient {
         req.httpBody = data
         req.httpMethod = "POST"
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         session.dataTask(with: req) { (data, res, err) in
             guard let res = res as? HTTPURLResponse else { fatalError() }
             if let err = err {
