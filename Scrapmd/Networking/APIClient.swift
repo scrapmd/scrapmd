@@ -25,8 +25,8 @@ struct APIClient {
 
     typealias CompletionHandler = (Result?, HTTPURLResponse?, Error?) -> Void
 
-//    static let endpoint = URL(string: "https://api.scrapmd.app/")!
-    static let endpoint = URL(string: "http://localhost:8000/")!
+    static let endpoint = URL(string: "https://api.scrapmd.app/")!
+    // static let endpoint = URL(string: "http://localhost:8000/")!
 
     static func fetch(url: URL, prefetchedHTML: String? = nil, completionHandler: @escaping CompletionHandler) {
         let session = URLSession.shared
@@ -48,7 +48,6 @@ struct APIClient {
                 return
             }
             do {
-                print(String(data: data, encoding: .utf8))
                 let result = try JSONDecoder().decode(Result.self, from: data)
                 completionHandler(result, res, nil)
             } catch {
