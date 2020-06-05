@@ -12,6 +12,8 @@ import FileKit
 
 extension SaveActionView {
     class ViewModel: ObservableObject {
+        var contentSaver: ContentSaver? = nil
+        @Published var isDownloading = false
         @Published var saveLocation: Path = Path.iCloudDocuments ?? Path.userDocuments
         @Published var title: String = "" {
             didSet {
@@ -28,6 +30,25 @@ extension SaveActionView {
                 }
                 if newValue != title {
                     title = newValue
+                }
+            }
+        }
+
+        var savePath: Path {
+            return saveLocation + "\(title)\(scrapDirectoryNameSuffix)"
+        }
+
+        func download(completionHandler: @escaping () -> Void) {
+            isDownloading = true
+            contentSaver?.download(to: savePath, progress: { (info, current, total) in
+            }) { err in
+                DispatchQueue.main.async {
+                    self.isDownloading = false
+                    if let err = err {
+                        print(err)
+                    } else {
+                        completionHandler()
+                    }
                 }
             }
         }

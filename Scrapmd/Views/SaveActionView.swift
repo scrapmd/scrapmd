@@ -24,7 +24,7 @@ struct SaveActionView: View {
                     TextField("Name", text: $viewModel.title)
                         .onAppear {
                             self.viewModel.title = self.contentSaver.result.title
-                    }
+                    }.disabled(self.viewModel.isDownloading)
                 }
                 Section(header: Text("Save Location")) {
                     Button(action: {
@@ -46,12 +46,16 @@ struct SaveActionView: View {
                     Text("Save").fontWeight(.bold)
                 })
             )
-        }.navigationViewStyle(DefaultNavigationViewStyle())
+        }
+        .navigationViewStyle(DefaultNavigationViewStyle())
+        .onAppear {
+            self.viewModel.contentSaver = self.contentSaver
+        }
 
     }
 
     func save() {
-
+        viewModel.download(completionHandler: doneAction)
     }
 }
 
