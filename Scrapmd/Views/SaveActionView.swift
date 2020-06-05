@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SaveActionView: View {
     let contentSaver: ContentSaver
+    let cancelAction: () -> Void
+    let doneAction: () -> Void
     @State var scrapName: String = "" {
         didSet {
             if scrapName.count > scrapDirectoryNameMaxLength {
@@ -41,14 +43,18 @@ struct SaveActionView: View {
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Save Scrap")
             .navigationBarItems(
-                leading: Button(action: {}, label: {
+                leading: Button(action: cancelAction, label: {
                     Text("Cancel")
                 }),
-                trailing:  Button(action: {}, label: {
+                trailing:  Button(action: save, label: {
                     Text("Save").fontWeight(.bold)
                 })
             )
         }.navigationViewStyle(DefaultNavigationViewStyle())
+
+    }
+
+    func save() {
 
     }
 }
@@ -61,6 +67,6 @@ struct SavePreviewView_Previews: PreviewProvider {
             url: "http://basin.example.org/?attack=bomb&amusement=berry#boat",
             images: [:]
         )
-        return SaveActionView(contentSaver: ContentSaver(result: result))
+        return SaveActionView(contentSaver: ContentSaver(result: result), cancelAction: {}, doneAction:  {})
     }
 }

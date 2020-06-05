@@ -48,7 +48,7 @@ import SwiftUI
 
     func renderSaveView(result: APIClient.Result) {
         let saver = ContentSaver(result: result)
-        let rootView = SaveActionView(contentSaver: saver)
+        let rootView = SaveActionView(contentSaver: saver, cancelAction: done, doneAction: done)
         let vc = UIHostingController<SaveActionView>(rootView: rootView)
         addChild(vc)
         view.addSubview(vc.view)
@@ -61,10 +61,8 @@ import SwiftUI
         hostingViewController = vc
     }
 
-//    @IBAction func done() {
-//        // Return any edited content to the host app.
-//        // This template doesn't do anything, so we just echo the passed in items.
-//        self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
-//    }
+    func done() {
+        self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
+    }
 
 }
