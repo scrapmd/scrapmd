@@ -27,6 +27,8 @@
 		857CCA6824897A1F00AE5BE8 /* ContentSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */; };
 		857CCA6B24897C5600AE5BE8 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */; };
 		857CCA6C24897C5600AE5BE8 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */; };
+		857CCA6E248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */; };
+		857CCA6F248AAC7400AE5BE8 /* SaveActionView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */; };
 		857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */; };
 		857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */; };
 		857F5EAE248A0E7600DC640D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAD248A0E7600DC640D /* Constants.swift */; };
@@ -101,6 +103,7 @@
 		857CCA632489712900AE5BE8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSaver.swift; sourceTree = "<group>"; };
 		857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileKitExtension.swift; sourceTree = "<group>"; };
+		857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionView.ViewModel.swift; sourceTree = "<group>"; };
 		857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowser.swift; sourceTree = "<group>"; };
 		857F5EAD248A0E7600DC640D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85948D3E24891BA400763582 /* GetHTML.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetHTML.js; sourceTree = "<group>"; };
@@ -231,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				8555F3272489F72000D162B5 /* SaveActionView.swift */,
+				857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */,
 				854447E72488C6930010F1F7 /* ContentView.swift */,
 				85D6A880248A050F0086F13F /* ActionViewController.swift */,
 			);
@@ -361,7 +365,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1150;
-				ORGANIZATIONNAME = "Atsushi Nagase";
+				ORGANIZATIONNAME = "LittleApps Inc.";
 				TargetAttributes = {
 					854447DF2488C6930010F1F7 = {
 						CreatedOnToolsVersion = 11.5;
@@ -450,6 +454,7 @@
 				85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */,
 				857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				854447E42488C6930010F1F7 /* AppDelegate.swift in Sources */,
+				857CCA6E248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift in Sources */,
 				857F5EAE248A0E7600DC640D /* Constants.swift in Sources */,
 				854447E62488C6930010F1F7 /* SceneDelegate.swift in Sources */,
 				854447E82488C6930010F1F7 /* ContentView.swift in Sources */,
@@ -481,6 +486,7 @@
 				857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */,
 				85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */,
+				857CCA6F248AAC7400AE5BE8 /* SaveActionView.ViewModel.swift in Sources */,
 				857CCA652489712900AE5BE8 /* APIClient.swift in Sources */,
 				857F5EAF248A0E7600DC640D /* Constants.swift in Sources */,
 				857CCA6C24897C5600AE5BE8 /* FileKitExtension.swift in Sources */,

@@ -1,6 +1,6 @@
-window.ExtensionPreprocessingJS = ((url, html) => ({
+window.ExtensionPreprocessingJS = ((url, title, html) => ({
   run: arguments => {
-    arguments.completionFunction({ html, url });
+    arguments.completionFunction({ html, title, url });
   },
   finalize: () => {}
-}))(document.location.href, document.body.innerHTML);
+}))(document.location.href, document.title, document.body.innerHTML);

@@ -3,7 +3,7 @@
 //  ActionExtension
 //
 //  Created by Atsushi Nagase on 2020/06/05.
-//  Copyright © 2020 Atsushi Nagase. All rights reserved.
+//  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
 import SwiftUI
@@ -12,29 +12,25 @@ struct SaveActionView: View {
     let contentSaver: ContentSaver
     let cancelAction: () -> Void
     let doneAction: () -> Void
-    @State var scrapName: String = "" {
-        didSet {
-            if scrapName.count > scrapDirectoryNameMaxLength {
-                scrapName = oldValue
-            }
-        }
-    }
+    @State var scrapName: String = ""
     @State var saveLocation: String? = nil
+    @ObservedObject var viewModel = ViewModel()
 
     var body: some View {
 
         NavigationView {
             List {
                 Section(header: Text("Name")) {
-                    TextField("Name", text: $scrapName).onAppear {
-                        self.scrapName = String(self.contentSaver.result.title.prefix(scrapDirectoryNameMaxLength))
-                        }
+                    TextField("Name", text: $viewModel.title)
+                        .onAppear {
+                            self.viewModel.title = self.contentSaver.result.title
+                    }
                 }
                 Section(header: Text("Save Location")) {
                     Button(action: {
 
                     }) {
-                        Text("dada")
+                        Text(viewModel.saveLocation.fileName)
                             .multilineTextAlignment(.leading)
                             .lineLimit(1)
                     }
@@ -62,7 +58,7 @@ struct SaveActionView: View {
 struct SavePreviewView_Previews: PreviewProvider {
     static var previews: some View {
         let result = APIClient.Result(
-            title: "寿限無　寿限無　五劫のすりきれ 海砂利水魚の水行末　雲来末　風来末 食う寝るところに住むところ",
+            title: ".//?-\\a.寿限無　寿限無　五劫のすりきれ 海砂利水魚の水行末　雲来末　風来末 食う寝るところに住むところ",
             markdown: "",
             url: "http://basin.example.org/?attack=bomb&amusement=berry#boat",
             images: [:]

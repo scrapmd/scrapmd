@@ -3,7 +3,7 @@
 //  ActionExtension
 //
 //  Created by Atsushi Nagase on 2020/06/04.
-//  Copyright © 2020 Atsushi Nagase. All rights reserved.
+//  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
 import UIKit
@@ -32,10 +32,11 @@ import SwiftUI
                 let results = results as? [String: Any],
                 let jsResults = results[NSExtensionJavaScriptPreprocessingResultsKey] as? [String: Any],
                 let html = jsResults["html"] as? String,
+                let title = jsResults["title"] as? String,
                 let urlString = jsResults["url"] as? String,
                 let url = URL(string: urlString)
                 else { return }
-            APIClient.fetch(url: url, prefetchedHTML: html) { (result, _, err) in
+            APIClient.fetch(url: url, title: title, prefetchedHTML: html) { (result, _, err) in
                 if let result = result {
                     DispatchQueue.main.async {
                         self.renderSaveView(result: result)

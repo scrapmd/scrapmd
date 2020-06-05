@@ -3,7 +3,7 @@
 //  Scrapmd
 //
 //  Created by Atsushi Nagase on 2020/06/05.
-//  Copyright © 2020 Atsushi Nagase. All rights reserved.
+//  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
 import Foundation
@@ -11,6 +11,7 @@ import Foundation
 struct APIClient {
     struct Params: Encodable {
         var html: String?
+        var title: String?
         var url: String
     }
     struct Result: Decodable {
@@ -28,10 +29,10 @@ struct APIClient {
     static let endpoint = URL(string: "https://api.scrapmd.app/")!
     // static let endpoint = URL(string: "http://localhost:8000/")!
 
-    static func fetch(url: URL, prefetchedHTML: String? = nil, completionHandler: @escaping CompletionHandler) {
+    static func fetch(url: URL, title: String? = nil, prefetchedHTML: String? = nil, completionHandler: @escaping CompletionHandler) {
         let session = URLSession.shared
         var req = URLRequest(url: endpoint)
-        let params = Params(html: prefetchedHTML, url: url.absoluteString)
+        let params = Params(html: prefetchedHTML, title: title, url: url.absoluteString)
         let data = try! JSONEncoder().encode(params)
         req.httpBody = data
         req.httpMethod = "POST"
