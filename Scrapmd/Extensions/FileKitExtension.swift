@@ -54,6 +54,10 @@ extension Path {
         JSONFile<ScrapMetadata>(path: self + metadataFilename)
     }
 
+    var markdownFile: TextFile {
+        TextFile(path: self + markdownFilename)
+    }
+
     var metadata: ScrapMetadata? {
         return metadataFile.exists ? try? metadataFile.read() : nil
     }
