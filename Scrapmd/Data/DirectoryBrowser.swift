@@ -7,3 +7,44 @@
 //
 
 import Foundation
+import Combine
+import FileKit
+
+class DirectoryBrowser: ObservableObject {
+    @Published var items: [Path] = []
+    @Published var onlyDirectory: Bool = false
+    @Published var path: Path? = nil {
+        didSet {
+            self.updateMonitor()
+            self.update()
+        }
+    }
+
+    private var monitor: DispatchSourceFileSystemObject?
+
+    deinit {
+        monitor?.cancel()
+    }
+
+    func updateMonitor() {
+        monitor?.cancel()
+        monitor = nil
+        guard let path = path else { return }
+        let descriptor = open(path.rawValue, O_EVTONLY)
+        let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser")
+        let monitor = DispatchSource.makeFileSystemObjectSource(fileDescriptor: descriptor, eventMask: .write, queue: queue)
+        monitor.setEventHandler { [weak self] in
+            self?.update()
+        }
+        monitor.activate()
+        self.monitor = monitor
+    }
+
+    func update() {
+        DispatchQueue.main.async {
+            self.items = (self.path?.children(recursive: false) ?? [])
+                .filter { !$0.fileName.hasPrefix(".") }
+                .filter { !self.onlyDirectory || ($0.isDirectory && !($0 + markdownFilename).exists) }
+        }
+    }
+}

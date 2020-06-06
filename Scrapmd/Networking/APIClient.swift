@@ -19,6 +19,16 @@ struct APIClient {
         var markdown: String
         var url: String
         var images: [String: String]
+        var leadImageURL: String?
+
+        enum CodingKeys: String, CodingKey {
+            case title, markdown, url, images
+            case leadImageURL = "lead_image_url"
+        }
+
+        func createMetadata() -> ScrapMetadata {
+            return ScrapMetadata(title: title, url: url, createdAt: Date(), appVersion: Bundle.main.appVersion)
+        }
     }
     enum APIError: Error {
         case noData

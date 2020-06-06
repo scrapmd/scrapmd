@@ -13,26 +13,36 @@ struct SaveActionView: View {
     let cancelAction: () -> Void
     let doneAction: () -> Void
     @State var scrapName: String = ""
-    @State var saveLocation: String? = nil
+    @State var saveLocation: String?
     @ObservedObject var viewModel = ViewModel()
+    @State var isDirectoryPickerActive = false
 
     var body: some View {
 
         NavigationView {
-            List {
-                Section(header: Text("Name")) {
-                    TextField("Name", text: $viewModel.title)
-                        .onAppear {
-                            self.viewModel.title = self.contentSaver.result.title
-                    }.disabled(self.viewModel.isDownloading)
-                }
-                Section(header: Text("Save Location")) {
-                    Button(action: {
+            VStack {
+                ProgressBar(value: $viewModel.downloadProgress).frame(height: 2)
+                List {
+                    Section(header: Text("Name")) {
+                        TextField("Name", text: $viewModel.title)
+                            .onAppear {
+                                self.viewModel.title = self.contentSaver.result.title
+                        }.disabled(self.viewModel.isDownloading)
+                    }
+                    Section(header: Text("Save Location")) {
+                        NavigationLink(destination: DirectoryPickerView(
+                            path: FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments,
+                            isPresenting: $isDirectoryPickerActive) { (path, _) in
+                                if let path = path {
+                                    self.viewModel.saveLocation = path
+                                }
+                        }, isActive: $isDirectoryPickerActive) {
+                            Text(viewModel.saveLocation.fileName)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(1)
+                                .foregroundColor(.accentColor)
+                        }
 
-                    }) {
-                        Text(viewModel.saveLocation.fileName)
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(1)
                     }
                 }
             }
@@ -42,7 +52,7 @@ struct SaveActionView: View {
                 leading: Button(action: cancelAction, label: {
                     Text("Cancel")
                 }),
-                trailing:  Button(action: save, label: {
+                trailing: Button(action: save, label: {
                     Text("Save").fontWeight(.bold)
                 })
             )
@@ -67,6 +77,6 @@ struct SavePreviewView_Previews: PreviewProvider {
             url: "http://basin.example.org/?attack=bomb&amusement=berry#boat",
             images: [:]
         )
-        return SaveActionView(contentSaver: ContentSaver(result: result), cancelAction: {}, doneAction:  {})
+        return SaveActionView(contentSaver: ContentSaver(result: result), cancelAction: {}, doneAction: {}).preferredColorScheme(.dark)
     }
 }

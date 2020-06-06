@@ -12,9 +12,11 @@ import FileKit
 
 extension SaveActionView {
     class ViewModel: ObservableObject {
-        var contentSaver: ContentSaver? = nil
+        var contentSaver: ContentSaver?
         @Published var isDownloading = false
         @Published var saveLocation: Path = Path.iCloudDocuments ?? Path.userDocuments
+        @Published var downloadProgress: Float = 0
+
         @Published var title: String = "" {
             didSet {
                 var invalidCharacters = CharacterSet(charactersIn: ":/")
@@ -40,14 +42,22 @@ extension SaveActionView {
 
         func download(completionHandler: @escaping () -> Void) {
             isDownloading = true
-            contentSaver?.download(to: savePath, progress: { (info, current, total) in
+            downloadProgress = 0
+            contentSaver?.download(to: savePath, progress: { (_, current, total) in
+                DispatchQueue.main.async {
+                    self.downloadProgress = Float(current) / Float(total)
+                }
             }) { err in
                 DispatchQueue.main.async {
-                    self.isDownloading = false
+                    self.downloadProgress = 1.0
                     if let err = err {
                         print(err)
+                        self.isDownloading = false
                     } else {
-                        completionHandler()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            completionHandler()
+                            self.isDownloading = false
+                        }
                     }
                 }
             }

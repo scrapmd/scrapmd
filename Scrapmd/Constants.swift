@@ -8,5 +8,11 @@
 
 import Foundation
 
-let scrapDirectoryNameSuffix = ".scrapmd"
+let scrapDirectoryNameSuffix = ""
 let scrapDirectoryNameMaxLength = 255 - scrapDirectoryNameSuffix.count
+let markdownFilename = "content.md"
+let metadataFilename = ".metadata.json"
+
+extension JSONEncoder.DateEncodingStrategy {
+    static var `default`: JSONEncoder.DateEncodingStrategy { .iso8601 }
+}

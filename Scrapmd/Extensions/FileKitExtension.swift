@@ -9,6 +9,8 @@
 import Foundation
 import FileKit
 
+typealias FileKitPath = Path
+
 extension Path {
     static var iCloudDocuments: Path? {
         if
@@ -17,5 +19,11 @@ extension Path {
             return path + "Documents"
         }
         return nil
+    }
+}
+
+extension Path: Identifiable {
+    public var id: String {
+        return self.rawValue
     }
 }

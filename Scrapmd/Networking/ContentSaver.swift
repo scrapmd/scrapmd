@@ -17,7 +17,7 @@ struct ContentSaver {
         let destination: ImageFile
 
         func queue(completionHandler: @escaping (ProgressInfo, Error?) -> Void) -> DownloadQueue {
-            let task = URLSession.shared.downloadTask(with: url) { (url, _, err) in
+            let task = URLSession.shared.downloadTask(with: url) { (url, _, _) in
                 do {
                     let img = ImageFile(path: Path(url: url!)!)
                     if self.destination.exists {
@@ -47,18 +47,32 @@ struct ContentSaver {
     typealias CompletionHandler = (Error?) -> Void
 
     func download(to: Path, progress: @escaping ProgressHandler, completionHandler: @escaping CompletionHandler) {
-
+        var dest = to
+        var i = 0
+        while dest.exists {
+            i += 1
+            let suffix = " \(i)"
+            dest = dest.parent + "\(to.fileName.prefix(scrapDirectoryNameMaxLength - suffix.count))\(suffix)"
+        }
         do {
-            try to.createDirectory(withIntermediateDirectories: true)
-            try result.markdown |> TextFile(path: to + "content.md")
+            try dest.createDirectory(withIntermediateDirectories: true)
+            try result.markdown |> TextFile(path: dest + markdownFilename)
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .default
+            let data = try encoder.encode(result.createMetadata())
+            try String(data: data, encoding: .utf8)! |> TextFile(path: dest + metadataFilename)
         } catch {
             completionHandler(error)
             return
         }
         var queues: [DownloadQueue] = []
         var total = 0
-        for (sum, url) in result.images {
-            let queue = ProgressInfo(url: URL(string: url)!, destination: ImageFile(path: to + sum)).queue { (info, err) in
+        var images = result.images
+        if let leadImageURL = result.leadImageURL {
+            images["img/thumbnail.png"] = leadImageURL
+        }
+        for (sum, url) in images {
+            let queue = ProgressInfo(url: URL(string: url)!, destination: ImageFile(path: dest + sum)).queue { (info, err) in
                 if let err = err {
                     completionHandler(err)
                     return

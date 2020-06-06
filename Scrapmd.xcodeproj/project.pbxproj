@@ -33,10 +33,20 @@
 		857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */; };
 		857F5EAE248A0E7600DC640D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAD248A0E7600DC640D /* Constants.swift */; };
 		857F5EAF248A0E7600DC640D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAD248A0E7600DC640D /* Constants.swift */; };
+		857F5EB2248B24AF00DC640D /* DirectoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */; };
+		857F5EB3248B24AF00DC640D /* DirectoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */; };
 		85948D3F24891BA400763582 /* GetHTML.js in Resources */ = {isa = PBXBuildFile; fileRef = 85948D3E24891BA400763582 /* GetHTML.js */; };
 		85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6A880248A050F0086F13F /* ActionViewController.swift */; };
+		85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
+		85F90086248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
+		85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */; };
+		85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */; };
+		85F9008B248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */; };
+		85F9008C248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */; };
+		85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
+		85F9008F248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,8 +116,13 @@
 		857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionView.ViewModel.swift; sourceTree = "<group>"; };
 		857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowser.swift; sourceTree = "<group>"; };
 		857F5EAD248A0E7600DC640D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryPickerView.swift; sourceTree = "<group>"; };
 		85948D3E24891BA400763582 /* GetHTML.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetHTML.js; sourceTree = "<group>"; };
 		85D6A880248A050F0086F13F /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		85F90084248B5004007F5A33 /* CreateFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderView.swift; sourceTree = "<group>"; };
+		85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMeatadata.swift; sourceTree = "<group>"; };
+		85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppInfoExtension.swift; sourceTree = "<group>"; };
+		85F9008D248B66B7007F5A33 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +252,9 @@
 				857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */,
 				854447E72488C6930010F1F7 /* ContentView.swift */,
 				85D6A880248A050F0086F13F /* ActionViewController.swift */,
+				857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */,
+				85F90084248B5004007F5A33 /* CreateFolderView.swift */,
+				85F9008D248B66B7007F5A33 /* ProgressBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */,
+				85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */,
+				85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -451,15 +471,20 @@
 			files = (
 				85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */,
 				857CCA6B24897C5600AE5BE8 /* FileKitExtension.swift in Sources */,
+				85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */,
 				85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */,
 				857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				854447E42488C6930010F1F7 /* AppDelegate.swift in Sources */,
+				85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */,
+				85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				857CCA6E248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift in Sources */,
+				857F5EB2248B24AF00DC640D /* DirectoryPickerView.swift in Sources */,
 				857F5EAE248A0E7600DC640D /* Constants.swift in Sources */,
 				854447E62488C6930010F1F7 /* SceneDelegate.swift in Sources */,
 				854447E82488C6930010F1F7 /* ContentView.swift in Sources */,
 				857CCA6724897A1F00AE5BE8 /* ContentSaver.swift in Sources */,
 				857CCA642489712900AE5BE8 /* APIClient.swift in Sources */,
+				85F9008B248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,14 +508,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */,
 				85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */,
 				857CCA6F248AAC7400AE5BE8 /* SaveActionView.ViewModel.swift in Sources */,
 				857CCA652489712900AE5BE8 /* APIClient.swift in Sources */,
 				857F5EAF248A0E7600DC640D /* Constants.swift in Sources */,
+				857F5EB3248B24AF00DC640D /* DirectoryPickerView.swift in Sources */,
 				857CCA6C24897C5600AE5BE8 /* FileKitExtension.swift in Sources */,
+				85F90086248B5004007F5A33 /* CreateFolderView.swift in Sources */,
+				85F9008F248B66B7007F5A33 /* ProgressBar.swift in Sources */,
 				857CCA6824897A1F00AE5BE8 /* ContentSaver.swift in Sources */,
+				85F9008C248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

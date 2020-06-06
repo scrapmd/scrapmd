@@ -36,7 +36,7 @@ import SwiftUI
                 let urlString = jsResults["url"] as? String,
                 let url = URL(string: urlString)
                 else { return }
-            APIClient.fetch(url: url, title: title, prefetchedHTML: html) { (result, _, err) in
+            APIClient.fetch(url: url, title: title, prefetchedHTML: html) { (result, _, _) in
                 if let result = result {
                     DispatchQueue.main.async {
                         self.renderSaveView(result: result)

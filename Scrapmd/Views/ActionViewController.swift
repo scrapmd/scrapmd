@@ -16,4 +16,6 @@ class ActionViewController: UIViewController {
     func loadItem() {}
 
     func renderSaveView(result: APIClient.Result) {}
+
+    func done() {}
 }
