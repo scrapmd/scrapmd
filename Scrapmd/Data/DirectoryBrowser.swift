@@ -19,13 +19,13 @@ class DirectoryBrowser: ObservableObject {
             self.update()
         }
     }
-
+    
     private var monitor: DispatchSourceFileSystemObject?
-
+    
     deinit {
         monitor?.cancel()
     }
-
+    
     func updateMonitor() {
         monitor?.cancel()
         monitor = nil
@@ -39,12 +39,13 @@ class DirectoryBrowser: ObservableObject {
         monitor.activate()
         self.monitor = monitor
     }
-
+    
     func update() {
+        let items = (self.path?.children(recursive: false) ?? [])
+            .filter { !$0.fileName.hasPrefix(".") }
+            .filter { !self.onlyDirectory || ($0.isDirectory && !($0 + markdownFilename).exists) }
         DispatchQueue.main.async {
-            self.items = (self.path?.children(recursive: false) ?? [])
-                .filter { !$0.fileName.hasPrefix(".") }
-                .filter { !self.onlyDirectory || ($0.isDirectory && !($0 + markdownFilename).exists) }
+            self.items = items
         }
     }
 }

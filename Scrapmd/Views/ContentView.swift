@@ -16,42 +16,11 @@ private let dateFormatter: DateFormatter = {
 }()
 
 struct ContentView: View {
-    @State private var dates = [Date]()
-
     var body: some View {
         NavigationView {
-            MasterView(dates: $dates)
-                .navigationBarTitle(Text("Master"))
-                .navigationBarItems(
-                    leading: EditButton(),
-                    trailing: Button(
-                        action: {
-                            withAnimation { self.dates.insert(Date(), at: 0) }
-                        }
-                    ) {
-                        Image(systemName: "plus")
-                    }
-                )
+            DirectoryBrowserView(path: FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments)
             DetailView()
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
-    }
-}
-
-struct MasterView: View {
-    @Binding var dates: [Date]
-
-    var body: some View {
-        List {
-            ForEach(dates, id: \.self) { date in
-                NavigationLink(
-                    destination: DetailView(selectedDate: date)
-                ) {
-                    Text("\(date, formatter: dateFormatter)")
-                }
-            }.onDelete { indices in
-                indices.forEach { self.dates.remove(at: $0) }
-            }
-        }
     }
 }
 
