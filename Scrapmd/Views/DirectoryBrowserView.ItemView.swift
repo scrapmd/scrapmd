@@ -15,9 +15,9 @@ extension DirectoryBrowserView {
         let thumbnail: UIImage?
 
         var body: some View {
-            NavigationLink(destination: DetailView(selectedDate: metadata.createdAt)) {
+            NavigationLink(destination: ScrapReaderView(path: path)) {
                 HStack {
-                    Image(uiImage: thumbnail ?? UIImage(systemName: "photo")!)
+                    Image(uiImage: thumbnail ?? UIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 60.0, height: 60.0, alignment: .center)

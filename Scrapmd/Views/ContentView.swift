@@ -12,22 +12,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             DirectoryBrowserView(path: FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments)
-            DetailView()
+            DetailPlaceholderView()
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
-    }
-}
-
-struct DetailView: View {
-    var selectedDate: Date?
-
-    var body: some View {
-        Group {
-            if selectedDate != nil {
-                Text("\(selectedDate!, formatter: displayDateFormatter)")
-            } else {
-                Text("Detail view content goes here")
-            }
-        }.navigationBarTitle(Text("Detail"))
     }
 }
 

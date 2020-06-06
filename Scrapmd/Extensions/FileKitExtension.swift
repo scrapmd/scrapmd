@@ -30,8 +30,12 @@ extension Path {
         return nil
     }
 
+    var isHidden: Bool {
+        isDotfile || (isScrap && !metadataFile.exists)
+    }
+
     var isScrap: Bool {
-        metadataFile.exists
+        fileName.hasSuffix(scrapDirectoryNameSuffix)
     }
 
     var isDotfile: Bool {
@@ -39,11 +43,11 @@ extension Path {
     }
 
     var foldersCount: Int {
-        children().filter({ !$0.isDotfile && !$0.isScrap && $0.isDirectory }).count
+        children().filter({ !$0.isHidden && !$0.isScrap && $0.isDirectory }).count
     }
 
     var scrapsCount: Int {
-        children().filter({ !$0.isDotfile && $0.isScrap }).count
+        children().filter({ !$0.isHidden && $0.isScrap }).count
     }
 
     var metadataFile: JSONFile<ScrapMetadata> {

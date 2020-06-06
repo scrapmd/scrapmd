@@ -62,6 +62,7 @@ struct ContentSaver {
             try dest.createDirectory(withIntermediateDirectories: true)
             try result.markdown |> TextFile(path: dest + markdownFilename)
             let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
             encoder.dateEncodingStrategy = .default
             let data = try encoder.encode(result.createMetadata())
             try String(data: data, encoding: .utf8)! |> TextFile(path: dest + metadataFilename)

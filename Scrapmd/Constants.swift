@@ -8,10 +8,10 @@
 
 import Foundation
 
-let scrapDirectoryNameSuffix = ""
+let scrapDirectoryNameSuffix = ".scrapmd"
 let scrapDirectoryNameMaxLength = 255 - scrapDirectoryNameSuffix.count
 let markdownFilename = "content.md"
-let metadataFilename = ".metadata.json"
+let metadataFilename = "metadata.json"
 let thumbnailPath = "img/thumbnail.png"
 
 let displayDateFormatter: DateFormatter = {
