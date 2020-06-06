@@ -73,7 +73,7 @@ struct ContentSaver {
         var total = 0
         var images = result.images
         if let leadImageURL = result.leadImageURL {
-            images["img/thumbnail.png"] = leadImageURL
+            images[thumbnailPath] = leadImageURL
         }
         for (sum, url) in images {
             let queue = ProgressInfo(url: URL(string: url)!, destination: ImageFile(path: dest + sum)).queue { (info, err) in

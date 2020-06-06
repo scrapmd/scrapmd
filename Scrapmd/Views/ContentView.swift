@@ -8,13 +8,6 @@
 
 import SwiftUI
 
-private let dateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .medium
-    dateFormatter.timeStyle = .medium
-    return dateFormatter
-}()
-
 struct ContentView: View {
     var body: some View {
         NavigationView {
@@ -30,7 +23,7 @@ struct DetailView: View {
     var body: some View {
         Group {
             if selectedDate != nil {
-                Text("\(selectedDate!, formatter: dateFormatter)")
+                Text("\(selectedDate!, formatter: displayDateFormatter)")
             } else {
                 Text("Detail view content goes here")
             }

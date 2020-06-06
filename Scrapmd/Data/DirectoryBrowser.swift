@@ -42,8 +42,7 @@ class DirectoryBrowser: ObservableObject {
     
     func update() {
         let items = (self.path?.children(recursive: false) ?? [])
-            .filter { !$0.fileName.hasPrefix(".") }
-            .filter { !self.onlyDirectory || ($0.isDirectory && !($0 + markdownFilename).exists) }
+            .filter { !$0.isDotfile && $0.isDirectory && (!self.onlyDirectory || $0.metadataFile.exists) }
         DispatchQueue.main.async {
             self.items = items
         }

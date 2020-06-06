@@ -9,16 +9,14 @@
 import SwiftUI
 
 struct DirectoryBrowserView: View {
+
+
     let path: FileKitPath
     @ObservedObject var directoryBrowser = DirectoryBrowser()
-
     var body: some View {
         List {
             ForEach(directoryBrowser.items, id: \.self) { (item: FileKitPath) in
-                NavigationLink(
-                    destination: DirectoryBrowserView(path: item),
-                    label: { Text(item.fileName) }
-                ).isDetailLink(false)
+                ItemView(path: item)
             }
         }
         .listStyle(DefaultListStyle())
@@ -34,7 +32,7 @@ struct DirectoryBrowserView: View {
 struct DirectoryBrowserView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DirectoryBrowserView(path: FileKitPath.userDocuments)
+            DirectoryBrowserView(path: FileKitPath("/Users/ngs/Documents/Scrapmd Demo"))
         }
     }
 }
