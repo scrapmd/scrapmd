@@ -17,9 +17,13 @@ struct ContentSaver {
         let destination: ImageFile
 
         func queue(completionHandler: @escaping (ProgressInfo, Error?) -> Void) -> DownloadQueue {
-            let task = URLSession.shared.downloadTask(with: url) { (url, _, _) in
+            let task = URLSession.shared.downloadTask(with: url) { (localURL, _, _) in
+                guard let localURL = localURL else {
+                    completionHandler(self, nil)
+                    return
+                }
                 do {
-                    let img = ImageFile(path: Path(url: url!)!)
+                    let img = ImageFile(path: Path(url: localURL)!)
                     if self.destination.exists {
                         try self.destination.delete()
                     }
