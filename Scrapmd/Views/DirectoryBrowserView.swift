@@ -21,7 +21,6 @@ struct DirectoryBrowserView: View {
         }
         .listStyle(DefaultListStyle())
         .navigationBarTitle(path.fileName)
-        .navigationBarItems(trailing: EditButton())
         .onAppear {
             self.directoryBrowser.path = self.path
             self.directoryBrowser.onlyDirectory = false
