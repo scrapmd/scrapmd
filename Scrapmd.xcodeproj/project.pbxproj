@@ -24,6 +24,10 @@
 		856B802F248C3BD70055F8C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854447EE2488C6940010F1F7 /* LaunchScreen.storyboard */; };
 		856B8031248C3F950055F8C0 /* ScrapReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8030248C3F950055F8C0 /* ScrapReaderView.swift */; };
 		856B8033248C3FBE0055F8C0 /* DetailPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8032248C3FBE0055F8C0 /* DetailPlaceholderView.swift */; };
+		856B8036248C4D030055F8C0 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 856B8035248C4D030055F8C0 /* Ink */; };
+		856B8038248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */; };
+		856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8039248C52E40055F8C0 /* MarkdownView.swift */; };
+		856B803E248C7D630055F8C0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B803D248C7D630055F8C0 /* UIColorExtension.swift */; };
 		857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* FileKit */; };
 		857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5E248960BC00AE5BE8 /* FileKit */; };
 		857CCA642489712900AE5BE8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA632489712900AE5BE8 /* APIClient.swift */; };
@@ -120,6 +124,9 @@
 		856B802C248C3B840055F8C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		856B8030248C3F950055F8C0 /* ScrapReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapReaderView.swift; sourceTree = "<group>"; };
 		856B8032248C3FBE0055F8C0 /* DetailPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlaceholderView.swift; sourceTree = "<group>"; };
+		856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapReaderView.ViewModel.swift; sourceTree = "<group>"; };
+		856B8039248C52E40055F8C0 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
+		856B803D248C7D630055F8C0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		857CCA632489712900AE5BE8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSaver.swift; sourceTree = "<group>"; };
 		857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileKitExtension.swift; sourceTree = "<group>"; };
@@ -142,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */,
+				856B8036248C4D030055F8C0 /* Ink in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,14 +270,16 @@
 				85D6A880248A050F0086F13F /* ActionViewController.swift */,
 				854447E72488C6930010F1F7 /* ContentView.swift */,
 				85F90084248B5004007F5A33 /* CreateFolderView.swift */,
-				85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */,
+				856B8032248C3FBE0055F8C0 /* DetailPlaceholderView.swift */,
 				856B801B248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift */,
+				85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */,
 				857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */,
 				85F9008D248B66B7007F5A33 /* ProgressBar.swift */,
 				8555F3272489F72000D162B5 /* SaveActionView.swift */,
 				857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */,
 				856B8030248C3F950055F8C0 /* ScrapReaderView.swift */,
-				856B8032248C3FBE0055F8C0 /* DetailPlaceholderView.swift */,
+				856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */,
+				856B8039248C52E40055F8C0 /* MarkdownView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,6 +309,7 @@
 			children = (
 				85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */,
 				857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */,
+				856B803D248C7D630055F8C0 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -332,6 +343,7 @@
 			name = Scrapmd;
 			packageProductDependencies = (
 				857CCA5B248960A300AE5BE8 /* FileKit */,
+				856B8035248C4D030055F8C0 /* Ink */,
 			);
 			productName = Scrapmd;
 			productReference = 854447E02488C6930010F1F7 /* Scrapmd.app */;
@@ -430,6 +442,7 @@
 			mainGroup = 854447D72488C6920010F1F7;
 			packageReferences = (
 				857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */,
+				856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */,
 			);
 			productRefGroup = 854447E12488C6930010F1F7 /* Products */;
 			projectDirPath = "";
@@ -487,14 +500,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				856B8038248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift in Sources */,
 				85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */,
 				857CCA6B24897C5600AE5BE8 /* FileKitExtension.swift in Sources */,
 				85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */,
+				856B803E248C7D630055F8C0 /* UIColorExtension.swift in Sources */,
 				856B8033248C3FBE0055F8C0 /* DetailPlaceholderView.swift in Sources */,
 				85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */,
 				857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				854447E42488C6930010F1F7 /* AppDelegate.swift in Sources */,
 				85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */,
+				856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */,
 				85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */,
 				85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				857CCA6E248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift in Sources */,
@@ -931,6 +947,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Ink.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 		857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nvzqz/FileKit.git";
@@ -942,6 +966,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		856B8035248C4D030055F8C0 /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
+		};
 		857CCA5B248960A300AE5BE8 /* FileKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;

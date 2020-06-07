@@ -62,9 +62,12 @@ extension Path {
         return metadataFile.exists ? try? metadataFile.read() : nil
     }
 
+    var thumbnailFile: ImageFile {
+        ImageFile(path: self + thumbnailPath)
+    }
+
     var thumbnail: Image {
-        let file = ImageFile(path: self + thumbnailPath)
-        let img = file.exists ? try? file.read() : nil
+        let img = thumbnailFile.exists ? try? thumbnailFile.read() : nil
         return img ?? Image(systemName: "photo")!
     }
 }

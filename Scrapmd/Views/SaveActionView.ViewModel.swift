@@ -36,14 +36,10 @@ extension SaveActionView {
             }
         }
 
-        var savePath: Path {
-            return saveLocation + "\(title)\(scrapDirectoryNameSuffix)"
-        }
-
         func download(completionHandler: @escaping () -> Void) {
             isDownloading = true
             downloadProgress = 0
-            contentSaver?.download(to: savePath, progress: { (_, current, total) in
+            contentSaver?.download(to: saveLocation, name: title, progress: { (_, current, total) in
                 DispatchQueue.main.async {
                     self.downloadProgress = Float(current) / Float(total)
                 }

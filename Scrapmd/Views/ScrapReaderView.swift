@@ -7,12 +7,11 @@
 //
 
 import SwiftUI
+import Ink
 
 struct ScrapReaderView: View {
     let path: FileKitPath
-    @State var isLoading = true
-    @State var metadata: ScrapMetadata?
-    @State var markdown: String?
+    @ObservedObject var viewModel = ViewModel()
 
     struct ErrorView: View {
         var body: some View {
@@ -22,41 +21,42 @@ struct ScrapReaderView: View {
 
     struct ContentView: View {
         let metadata: ScrapMetadata
-        let content: String
+        let markdown: String
+        let path: FileKitPath
         var body: some View {
-            VStack {
-                Text(metadata.title)
-                Spacer()
-            }
+            MarkdownView(markdown: markdown, path: path)
         }
     }
 
     func buildBody() -> some View {
-        if isLoading {
-            return AnyView(Spacer().onAppear {
-                self.metadata = self.path.metadata
-                self.isLoading = false
-                self.markdown = try? self.path.markdownFile.read()
-            })
+        if self.viewModel.isLoading {
+            return AnyView(Spacer())
         } else if
-            let metadata = metadata,
-            let markdown = markdown
+            let metadata = self.viewModel.metadata,
+            let markdown = self.viewModel.markdown
         {
-            return AnyView(ContentView(metadata: metadata, content: markdown))
+            return AnyView(ContentView(
+                metadata: metadata,
+                markdown: markdown,
+                path: path
+            ))
         }
         return AnyView(ErrorView())
     }
 
     @ViewBuilder
     var body: some View {
-        buildBody()
+        buildBody().onAppear {
+            self.viewModel.path = self.path
+            self.viewModel.load()
+        }.navigationBarTitle("", displayMode: .inline)
     }
 }
 
 struct ScrapReaderView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            ScrapReaderView(path: FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2"))
+        NavigationView {
+            ScrapReaderView(path: FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")).navigationBarTitle("", displayMode: .inline)
         }
     }
 }

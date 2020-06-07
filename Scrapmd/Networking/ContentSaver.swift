@@ -50,13 +50,22 @@ struct ContentSaver {
     typealias ProgressHandler = (ProgressInfo, Int, Int) -> Void
     typealias CompletionHandler = (Error?) -> Void
 
-    func download(to: Path, progress: @escaping ProgressHandler, completionHandler: @escaping CompletionHandler) {
-        var dest = to
+    func finalize(_ dest: Path) {
+        if !dest.thumbnailFile.exists {
+            let found = (dest + "img").children().sorted { (a: Path, b: Path) in
+                (a.fileSize ?? 0) > (b.fileSize ?? 0)
+            }.first
+            try? found?.copyFile(to: dest.thumbnailFile.path)
+        }
+    }
+
+    func download(to: Path, name: String, progress: @escaping ProgressHandler, completionHandler: @escaping CompletionHandler) {
+        var dest = to + "\(name)\(scrapDirectoryNameSuffix)"
         var i = 0
         while dest.exists {
             i += 1
             let suffix = " \(i)"
-            dest = dest.parent + "\(to.fileName.prefix(scrapDirectoryNameMaxLength - suffix.count))\(suffix)"
+            dest = dest.parent + "\(name.prefix(scrapDirectoryNameMaxLength - suffix.count))\(suffix)\(scrapDirectoryNameSuffix)"
         }
         do {
             try dest.createDirectory(withIntermediateDirectories: true)
@@ -83,6 +92,7 @@ struct ContentSaver {
                     return
                 }
                 if queues.isEmpty {
+                    self.finalize(dest)
                     completionHandler(nil)
                     return
                 }
