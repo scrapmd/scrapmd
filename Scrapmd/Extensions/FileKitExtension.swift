@@ -71,14 +71,18 @@ extension Path {
         return img ?? Image(systemName: "photo")!
     }
 
-    var fileURL: URL {
+    func fileURL(scheme: String? = nil) -> URL {
         var urlComponents = URLComponents()
         urlComponents.path = rawValue
-        #if !targetEnvironment(macCatalyst)
-        urlComponents.scheme = "file"
-        #else
-        urlComponents.scheme = "shareddocuments"
-        #endif
+        if let scheme = scheme {
+            urlComponents.scheme = scheme
+        } else {
+            #if !targetEnvironment(macCatalyst)
+            urlComponents.scheme = "file"
+            #else
+            urlComponents.scheme = "shareddocuments"
+            #endif
+        }
         return urlComponents.url!
     }
 }

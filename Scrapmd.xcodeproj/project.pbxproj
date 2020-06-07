@@ -28,6 +28,7 @@
 		856B8038248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */; };
 		856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8039248C52E40055F8C0 /* MarkdownView.swift */; };
 		856B803E248C7D630055F8C0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B803D248C7D630055F8C0 /* UIColorExtension.swift */; };
+		856B8040248C8D820055F8C0 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B803F248C8D820055F8C0 /* ActivityViewController.swift */; };
 		857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* FileKit */; };
 		857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5E248960BC00AE5BE8 /* FileKit */; };
 		857CCA642489712900AE5BE8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA632489712900AE5BE8 /* APIClient.swift */; };
@@ -127,6 +128,7 @@
 		856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapReaderView.ViewModel.swift; sourceTree = "<group>"; };
 		856B8039248C52E40055F8C0 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		856B803D248C7D630055F8C0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		856B803F248C8D820055F8C0 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		857CCA632489712900AE5BE8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSaver.swift; sourceTree = "<group>"; };
 		857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileKitExtension.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				85D6A880248A050F0086F13F /* ActionViewController.swift */,
+				856B803F248C8D820055F8C0 /* ActivityViewController.swift */,
 				854447E72488C6930010F1F7 /* ContentView.swift */,
 				85F90084248B5004007F5A33 /* CreateFolderView.swift */,
 				856B8032248C3FBE0055F8C0 /* DetailPlaceholderView.swift */,
@@ -519,6 +522,7 @@
 				856B801C248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift in Sources */,
 				857F5EAE248A0E7600DC640D /* Constants.swift in Sources */,
 				854447E62488C6930010F1F7 /* SceneDelegate.swift in Sources */,
+				856B8040248C8D820055F8C0 /* ActivityViewController.swift in Sources */,
 				854447E82488C6930010F1F7 /* ContentView.swift in Sources */,
 				857CCA6724897A1F00AE5BE8 /* ContentSaver.swift in Sources */,
 				857CCA642489712900AE5BE8 /* APIClient.swift in Sources */,

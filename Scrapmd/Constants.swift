@@ -21,7 +21,6 @@ let displayDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
-
 extension JSONEncoder.DateEncodingStrategy {
     static var `default`: JSONEncoder.DateEncodingStrategy { .iso8601 }
 }

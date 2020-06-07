@@ -10,25 +10,25 @@ import Foundation
 import UIKit
 import SwiftUI
 
-fileprivate struct ColorComponents {
+private struct ColorComponents {
     let r: CGFloat
     let g: CGFloat
     let b: CGFloat
     let a: CGFloat
 
     var hexString: String {
-        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-        return String(format:"#%06x", rgb)
+        let rgb: Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        return String(format: "#%06x", rgb)
     }
 }
 
 // Borrowed from https://gist.github.com/yannickl/16f0ed38f0698d9a8ae7
 extension UIColor {
     var cssHex: String {
-        var r:CGFloat = 0
-        var g:CGFloat = 0
-        var b:CGFloat = 0
-        var a:CGFloat = 0
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
 
         getRed(&r, green: &g, blue: &b, alpha: &a)
         return ColorComponents(r: r, g: g, b: b, a: a).hexString

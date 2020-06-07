@@ -19,13 +19,13 @@ class DirectoryBrowser: ObservableObject {
             self.update()
         }
     }
-    
+
     private var monitor: DispatchSourceFileSystemObject?
-    
+
     deinit {
         monitor?.cancel()
     }
-    
+
     func updateMonitor() {
         monitor?.cancel()
         monitor = nil
@@ -39,7 +39,7 @@ class DirectoryBrowser: ObservableObject {
         monitor.activate()
         self.monitor = monitor
     }
-    
+
     func update() {
         let items = (self.path?.children(recursive: false) ?? [])
             .filter { !$0.isHidden && $0.isDirectory && (!self.onlyDirectory || $0.metadataFile.exists) }

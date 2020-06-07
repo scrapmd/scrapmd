@@ -20,6 +20,7 @@ struct ScrapReaderView: View {
     }
 
     struct ContentView: View {
+        @State private var isSharePresented: Bool = false
         let metadata: ScrapMetadata
         let markdown: String
         let path: FileKitPath
@@ -28,12 +29,14 @@ struct ScrapReaderView: View {
                 MarkdownView(markdown: markdown, path: path)
                 HStack {
                     Button(action: {
-                        UIApplication.shared.open(self.path.fileURL, options: [:])
+                        UIApplication.shared.open(self.path.fileURL(), options: [:])
                     }) {
                         Image(systemName: "chevron.left.slash.chevron.right")
                     }.padding()
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: {
+                        self.isSharePresented = true
+                    }) {
                         Image(systemName: "square.and.arrow.up")
                     }.padding()
                     Spacer()
@@ -42,7 +45,11 @@ struct ScrapReaderView: View {
                     }) {
                         Image(systemName: "link")
                     }.padding()
-                }
+                }.sheet(isPresented: $isSharePresented, onDismiss: {
+                    print("Dismiss")
+                }, content: {
+                    ActivityViewController(activityItems: [self.path.fileURL(scheme: "file")])
+                })
             }
         }
     }
