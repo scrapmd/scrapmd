@@ -38,7 +38,7 @@ class DirectoryBrowser: ObservableObject {
         let descriptor = open(path.rawValue, O_EVTONLY)
         queueId += 1
         let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
-        let monitor = DispatchSource.makeFileSystemObjectSource(fileDescriptor: descriptor, eventMask: .write, queue: queue)
+        let monitor = DispatchSource.makeFileSystemObjectSource(fileDescriptor: descriptor, eventMask: .all, queue: queue)
         monitor.setEventHandler { [weak self] in
             self?.update()
         }
