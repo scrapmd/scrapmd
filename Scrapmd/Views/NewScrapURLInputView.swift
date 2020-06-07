@@ -39,17 +39,17 @@ struct NewScrapURLInputView: View {
             }
             Spacer().frame(height: 10)
             Button(action: fetchAction) {
-                isFetching ?
+                (isFetching ?
                     AnyView(ActivityIndicator(
                         isAnimating: .constant(true), style: .medium)) :
-                    AnyView(Text("Fetch Web Page"))
+                    AnyView(Text("Fetch Web Page")))
+                    .foregroundColor(.white)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding(.all)
+                    .background(Color.accentColor)
+                    .cornerRadius(11)
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
             .multilineTextAlignment(.center)
-            .padding(.all)
-            .foregroundColor(.white)
-            .background(Color.accentColor)
-            .cornerRadius(11)
             .disabled(!isValid || isFetching)
             Spacer()
         }
