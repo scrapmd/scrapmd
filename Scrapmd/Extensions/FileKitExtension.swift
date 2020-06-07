@@ -90,6 +90,6 @@ extension Path {
 
 extension Path: Identifiable {
     public var id: String {
-        return self.rawValue
+        return "\(self.rawValue)-\(self.scrapsCount)-\(self.foldersCount)"
     }
 }

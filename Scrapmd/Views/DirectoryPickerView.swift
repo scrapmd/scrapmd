@@ -24,12 +24,12 @@ struct DirectoryPickerView: View {
     var body: some View {
         return VStack {
             List {
-                ForEach(directoryBrowser.items, id: \.self) { (item: FileKitPath) in
+                ForEach(directoryBrowser.items, id: \.self) { (item: DirectoryBrowser.Item) in
                     NavigationLink(
-                        destination: DirectoryPickerView(item) { (path, sender) in
+                        destination: DirectoryPickerView(item.path) { (path, sender) in
                             self.choose(path, sender)
                         },
-                        label: { Text(item.fileName) }
+                        label: { Text(item.path.fileName) }
                     ).isDetailLink(false)
                 }
             }

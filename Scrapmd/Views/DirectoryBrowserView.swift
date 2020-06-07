@@ -20,8 +20,8 @@ struct DirectoryBrowserView: View {
 
     var body: some View {
         List {
-            ForEach(directoryBrowser.items, id: \.self) { (item: FileKitPath) in
-                ItemView(path: item)
+            ForEach(directoryBrowser.items, id: \.self) { (item: DirectoryBrowser.Item) in
+                ItemView(item)
             }
             .onDelete(perform: delete)
         }

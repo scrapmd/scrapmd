@@ -11,7 +11,7 @@ import SwiftUI
 extension DirectoryBrowserView {
     struct ScrapItemView: View {
         let path: FileKitPath
-        let metadata: ScrapMetadata
+        @Binding var metadata: ScrapMetadata?
         let thumbnail: UIImage?
 
         var body: some View {
@@ -23,8 +23,8 @@ extension DirectoryBrowserView {
                         .frame(width: 60.0, height: 60.0, alignment: .center)
                         .clipped()
                     VStack(alignment: .leading) {
-                        Text(metadata.title)
-                        Text("\(metadata.createdAt, formatter: displayDateFormatter)")
+                        Text(metadata!.title)
+                        Text("\(metadata!.createdAt, formatter: displayDateFormatter)")
                             .font(.caption)
                             .opacity(0.5)
                             .padding(.top, 5.0)
@@ -63,11 +63,16 @@ extension DirectoryBrowserView {
     }
 
     struct ItemView: View {
-        let path: FileKitPath
+        @ObservedObject var item: DirectoryBrowser.Item
+
+        init(_ item: DirectoryBrowser.Item) {
+            self.item = item
+        }
 
         var body: some View {
-            if let metadata = path.metadata {
-                return AnyView(DirectoryBrowserView.ScrapItemView(path: path, metadata: metadata, thumbnail: path.thumbnail))
+            let path = item.path
+            if item.metadata != nil {
+                return AnyView(DirectoryBrowserView.ScrapItemView(path: path, metadata: $item.metadata, thumbnail: item.thumbnail))
             }
             return AnyView(DirectoryBrowserView.FolderItemView(path: path))
         }
@@ -80,10 +85,12 @@ struct DirectoryBrowserView_ItemView_Previews: PreviewProvider {
             DirectoryBrowserView.FolderItemView(path: FileKitPath("/Users/ngs/Documents"))
             DirectoryBrowserView.ScrapItemView(
                 path: FileKitPath("."),
-                metadata: ScrapMetadata(
+                metadata: .constant(ScrapMetadata(
                     title: "寿限無　寿限無　五劫のすりきれ 海砂利水魚の水行末　雲来末　風来末 食う寝るところに住むところ",
                     url: "https://ja.ngs.io/",
-                    createdAt: Date(timeIntervalSince1970: 1591473224), appVersion: "1.0.0"), thumbnail: #imageLiteral(resourceName: "thumbnail"))
+                    createdAt: Date(timeIntervalSince1970: 1591473224),
+                    appVersion: "1.0.0")),
+                thumbnail: #imageLiteral(resourceName: "thumbnail"))
         }
     }
 }
