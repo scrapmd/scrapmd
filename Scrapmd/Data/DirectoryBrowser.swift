@@ -9,15 +9,23 @@
 import Foundation
 import Combine
 import FileKit
+import Dispatch
+
+fileprivate var queueId = 0
 
 class DirectoryBrowser: ObservableObject {
-    @Published var items: [Path] = []
-    @Published var onlyDirectory: Bool = false
-    @Published var path: Path? = nil {
+    let onlyDirectory: Bool
+    @Published var items: [Path]
+    @Published var path: Path? {
         didSet {
-            self.updateMonitor()
             self.update()
+            self.updateMonitor()
         }
+    }
+
+    init(onlyDirectory: Bool) {
+        self.onlyDirectory = onlyDirectory
+        self.items = []
     }
 
     private var monitor: DispatchSourceFileSystemObject?
@@ -31,7 +39,8 @@ class DirectoryBrowser: ObservableObject {
         monitor = nil
         guard let path = path else { return }
         let descriptor = open(path.rawValue, O_EVTONLY)
-        let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser")
+        queueId += 1
+        let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
         let monitor = DispatchSource.makeFileSystemObjectSource(fileDescriptor: descriptor, eventMask: .write, queue: queue)
         monitor.setEventHandler { [weak self] in
             self?.update()
@@ -41,8 +50,11 @@ class DirectoryBrowser: ObservableObject {
     }
 
     func update() {
-        let items = (self.path?.children(recursive: false) ?? [])
-            .filter { !$0.isHidden && $0.isDirectory && (!self.onlyDirectory || $0.metadataFile.exists) }
+        guard let items = (path?.children(recursive: false))?
+            .filter({ p in
+                !p.isHidden && p.isDirectory &&
+                    ((self.onlyDirectory && !p.isScrap) || !self.onlyDirectory)
+            }) else { return }
         DispatchQueue.main.async {
             self.items = items
         }

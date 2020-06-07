@@ -44,7 +44,7 @@ struct CreateFolderView: View {
                 leading: Button(action: cancel, label: { Text("Cancel") }),
                 trailing: Button(action: create, label: { Text("Create").bold() }).disabled(self.name.isEmpty || self.newPath.exists)
             )
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 
     func cancel() {

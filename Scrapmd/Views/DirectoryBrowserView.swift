@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DirectoryBrowserView: View {
     let path: FileKitPath
-    @ObservedObject var directoryBrowser = DirectoryBrowser()
+    @ObservedObject var directoryBrowser = DirectoryBrowser(onlyDirectory: false)
     @State var isNewModalShown = false
 
     var body: some View {
@@ -27,8 +27,7 @@ struct DirectoryBrowserView: View {
         }) {
             Image(systemName: "plus")
         }).onAppear {
-                self.directoryBrowser.path = self.path
-                self.directoryBrowser.onlyDirectory = false
+            self.directoryBrowser.path = self.path
         }.sheet(isPresented: $isNewModalShown) {
             NewScrapView(isShown: self.$isNewModalShown)
         }

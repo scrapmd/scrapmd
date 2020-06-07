@@ -21,18 +21,16 @@ struct SaveActionView: View {
                 title: $saverViewModel.title,
                 isDownloading: $saverViewModel.isDownloading,
                 saveLocation: $saverViewModel.saveLocation)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .navigationBarTitle("Save Scrap")
-        .navigationBarItems(
-            leading: Button(action: cancelAction, label: {
-                Text("Cancel")
-            }),
-            trailing: Button(action: save, label: {
-                Text("Save").fontWeight(.bold)
-            })
-        ).onAppear {
-            self.saverViewModel.contentSaver = self.contentSaver
+                .navigationViewStyle(StackNavigationViewStyle())
+                .navigationBarTitle("Save Scrap")
+                .navigationBarItems(
+                    leading: Button(action: cancelAction, label: {
+                        Text("Cancel")
+                    }),
+                    trailing: Button(action: save, label: {
+                        Text("Save").fontWeight(.bold)
+                    }))
+                .onAppear { self.saverViewModel.contentSaver = self.contentSaver }
         }
     }
 

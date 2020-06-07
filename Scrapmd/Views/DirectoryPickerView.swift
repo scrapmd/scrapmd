@@ -11,7 +11,7 @@ import SwiftUI
 struct DirectoryPickerView: View {
     typealias ChooseHandler = (_ path: FileKitPath?, _ sender: DirectoryPickerView) -> Void
     let path: FileKitPath
-    @ObservedObject var directoryBrowser = DirectoryBrowser()
+    @ObservedObject var directoryBrowser = DirectoryBrowser(onlyDirectory: true)
     @Binding var isPresenting: Bool
     @State var isNewFolderModalShown = false
     let chooseHandler: ChooseHandler
@@ -43,15 +43,11 @@ struct DirectoryPickerView: View {
                 .padding(.all)
             }
         }
-        .onAppear {
-            self.directoryBrowser.onlyDirectory = true
-            self.directoryBrowser.path = self.path
-        }
         .navigationBarTitle(path.fileName)
-        .navigationBarItems(
-            trailing: Button(action: { self.choose(nil, self) }) { Text("Cancel") }
-        ).sheet(isPresented: $isNewFolderModalShown) {
+        .sheet(isPresented: $isNewFolderModalShown) {
             CreateFolderView(path: self.path, isShown: self.$isNewFolderModalShown)
+        }.onAppear {
+            self.directoryBrowser.path = self.path
         }
     }
 
