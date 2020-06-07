@@ -20,19 +20,21 @@ struct ScrapReaderView: View {
     }
 
     struct ContentView: View {
-        @State private var isSharePresented: Bool = false
+        @State private var isSharePresented = false
+        @State private var showSource = false
         let metadata: ScrapMetadata
         let markdown: String
         let path: FileKitPath
+
         var body: some View {
             VStack {
-                MarkdownView(markdown: markdown, path: path)
+                MarkdownView(markdown: markdown, path: path, showSource: $showSource)
                 HStack {
                     Button(action: {
-                        UIApplication.shared.open(self.path.fileURL(), options: [:])
+                        self.showSource.toggle()
                     }) {
-                        Image(systemName: "chevron.left.slash.chevron.right")
-                    }.padding()
+                        Image(systemName: self.showSource ? "doc.richtext" : "chevron.left.slash.chevron.right")
+                    }.padding().frame(width: 50)
                     Spacer()
                     Button(action: {
                         self.isSharePresented = true

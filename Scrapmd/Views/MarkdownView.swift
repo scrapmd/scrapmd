@@ -12,6 +12,7 @@ import Ink
 struct MarkdownView: UIViewRepresentable {
     let markdown: String
     let path: FileKitPath
+    @Binding var showSource: Bool
 
     func wrapHTML(_ html: String) -> String {
         "<html><head><meta charset=\"utf-8\"><style type=\"text/css\">body { font-family: Helvetica, sans-serif; line-height: 200%; color: \(UIColor.label.cssHex) } a { color: \(Color.accentColor.cssHex) } img { max-width: 100%; max-height: 320px; }</style></head><body>\(html)</body></html>".replacingOccurrences(of: "<img src=\"img/", with: "<img src=\"file://\(path.rawValue)/img/")
@@ -27,6 +28,10 @@ struct MarkdownView: UIViewRepresentable {
     }
 
     func updateUIView(_ textView: UITextView, context: Context) {
+        if showSource {
+            textView.text = markdown
+            return
+        }
         let parser = MarkdownParser()
         let html = wrapHTML(parser.html(from: markdown))
         let data = html.data(using: .utf8)!
@@ -48,7 +53,8 @@ struct MarkdownView_Previews: PreviewProvider {
     static var previews: some View {
         MarkdownView(
             markdown: "# hello\n\nit works.",
-            path: FileKitPath.userHome
+            path: FileKitPath.userHome,
+            showSource: .constant(false)
         )
     }
 }

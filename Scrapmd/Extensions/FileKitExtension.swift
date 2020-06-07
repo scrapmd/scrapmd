@@ -74,6 +74,7 @@ extension Path {
     func fileURL(scheme: String? = nil) -> URL {
         var urlComponents = URLComponents()
         urlComponents.path = rawValue
+        urlComponents.host = ""
         if let scheme = scheme {
             urlComponents.scheme = scheme
         } else {
