@@ -11,6 +11,8 @@ import SwiftUI
 struct DirectoryBrowserView: View {
     let path: FileKitPath
     @ObservedObject var directoryBrowser = DirectoryBrowser()
+    @State var isNewModalShown = false
+
     var body: some View {
         List {
             ForEach(directoryBrowser.items, id: \.self) { (item: FileKitPath) in
@@ -20,9 +22,15 @@ struct DirectoryBrowserView: View {
         }
         .listStyle(DefaultListStyle())
         .navigationBarTitle(path.fileName)
-        .onAppear {
-            self.directoryBrowser.path = self.path
-            self.directoryBrowser.onlyDirectory = false
+        .navigationBarItems(trailing: Button(action: {
+            self.isNewModalShown = true
+        }) {
+            Image(systemName: "plus")
+        }).onAppear {
+                self.directoryBrowser.path = self.path
+                self.directoryBrowser.onlyDirectory = false
+        }.sheet(isPresented: $isNewModalShown) {
+            NewScrapView(isShown: self.$isNewModalShown)
         }
     }
 

@@ -29,6 +29,16 @@
 		856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8039248C52E40055F8C0 /* MarkdownView.swift */; };
 		856B803E248C7D630055F8C0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B803D248C7D630055F8C0 /* UIColorExtension.swift */; };
 		856B8040248C8D820055F8C0 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B803F248C8D820055F8C0 /* ActivityViewController.swift */; };
+		856B8044248CA5BA0055F8C0 /* NewScrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8043248CA5BA0055F8C0 /* NewScrapView.swift */; };
+		856B8046248CBE3A0055F8C0 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8045248CBE3A0055F8C0 /* URLExtension.swift */; };
+		856B8048248CC7090055F8C0 /* NewScrapView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8047248CC7090055F8C0 /* NewScrapView.ViewModel.swift */; };
+		856B804A248CCC110055F8C0 /* NewScrapURLInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8049248CCC110055F8C0 /* NewScrapURLInputView.swift */; };
+		856B804C248CCE090055F8C0 /* SaveActionInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804B248CCE090055F8C0 /* SaveActionInputView.swift */; };
+		856B804D248CD08F0055F8C0 /* SaveActionInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804B248CCE090055F8C0 /* SaveActionInputView.swift */; };
+		856B804F248CD0EE0055F8C0 /* ContentSaverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */; };
+		856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */; };
+		856B8052248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */; };
+		856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */; };
 		857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* FileKit */; };
 		857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5E248960BC00AE5BE8 /* FileKit */; };
 		857CCA642489712900AE5BE8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA632489712900AE5BE8 /* APIClient.swift */; };
@@ -37,8 +47,6 @@
 		857CCA6824897A1F00AE5BE8 /* ContentSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */; };
 		857CCA6B24897C5600AE5BE8 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */; };
 		857CCA6C24897C5600AE5BE8 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */; };
-		857CCA6E248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */; };
-		857CCA6F248AAC7400AE5BE8 /* SaveActionView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */; };
 		857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */; };
 		857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */; };
 		857F5EAE248A0E7600DC640D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAD248A0E7600DC640D /* Constants.swift */; };
@@ -129,10 +137,16 @@
 		856B8039248C52E40055F8C0 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		856B803D248C7D630055F8C0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		856B803F248C8D820055F8C0 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		856B8043248CA5BA0055F8C0 /* NewScrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScrapView.swift; sourceTree = "<group>"; };
+		856B8045248CBE3A0055F8C0 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		856B8047248CC7090055F8C0 /* NewScrapView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScrapView.ViewModel.swift; sourceTree = "<group>"; };
+		856B8049248CCC110055F8C0 /* NewScrapURLInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScrapURLInputView.swift; sourceTree = "<group>"; };
+		856B804B248CCE090055F8C0 /* SaveActionInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionInputView.swift; sourceTree = "<group>"; };
+		856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSaverViewModel.swift; sourceTree = "<group>"; };
+		856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		857CCA632489712900AE5BE8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSaver.swift; sourceTree = "<group>"; };
 		857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileKitExtension.swift; sourceTree = "<group>"; };
-		857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionView.ViewModel.swift; sourceTree = "<group>"; };
 		857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowser.swift; sourceTree = "<group>"; };
 		857F5EAD248A0E7600DC640D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryPickerView.swift; sourceTree = "<group>"; };
@@ -278,11 +292,15 @@
 				85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */,
 				857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */,
 				856B8039248C52E40055F8C0 /* MarkdownView.swift */,
+				856B8049248CCC110055F8C0 /* NewScrapURLInputView.swift */,
+				856B8043248CA5BA0055F8C0 /* NewScrapView.swift */,
+				856B8047248CC7090055F8C0 /* NewScrapView.ViewModel.swift */,
 				85F9008D248B66B7007F5A33 /* ProgressBar.swift */,
+				856B804B248CCE090055F8C0 /* SaveActionInputView.swift */,
 				8555F3272489F72000D162B5 /* SaveActionView.swift */,
-				857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */,
 				856B8030248C3F950055F8C0 /* ScrapReaderView.swift */,
 				856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */,
+				856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +331,7 @@
 				85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */,
 				857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */,
 				856B803D248C7D630055F8C0 /* UIColorExtension.swift */,
+				856B8045248CBE3A0055F8C0 /* URLExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +341,7 @@
 			children = (
 				857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */,
 				85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */,
+				856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -504,6 +524,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				856B8038248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift in Sources */,
+				856B8046248CBE3A0055F8C0 /* URLExtension.swift in Sources */,
+				856B804F248CD0EE0055F8C0 /* ContentSaverViewModel.swift in Sources */,
 				85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */,
 				857CCA6B24897C5600AE5BE8 /* FileKitExtension.swift in Sources */,
 				85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */,
@@ -516,7 +538,9 @@
 				856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */,
 				85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */,
 				85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
-				857CCA6E248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift in Sources */,
+				856B804A248CCC110055F8C0 /* NewScrapURLInputView.swift in Sources */,
+				856B8052248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
+				856B8048248CC7090055F8C0 /* NewScrapView.ViewModel.swift in Sources */,
 				856B8031248C3F950055F8C0 /* ScrapReaderView.swift in Sources */,
 				857F5EB2248B24AF00DC640D /* DirectoryPickerView.swift in Sources */,
 				856B801C248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift in Sources */,
@@ -527,6 +551,8 @@
 				857CCA6724897A1F00AE5BE8 /* ContentSaver.swift in Sources */,
 				857CCA642489712900AE5BE8 /* APIClient.swift in Sources */,
 				85F9008B248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */,
+				856B804C248CCE090055F8C0 /* SaveActionInputView.swift in Sources */,
+				856B8044248CA5BA0055F8C0 /* NewScrapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,10 +577,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
+				856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
 				857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
+				856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */,
+				856B804D248CD08F0055F8C0 /* SaveActionInputView.swift in Sources */,
 				8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */,
 				85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */,
-				857CCA6F248AAC7400AE5BE8 /* SaveActionView.ViewModel.swift in Sources */,
 				857CCA652489712900AE5BE8 /* APIClient.swift in Sources */,
 				857F5EAF248A0E7600DC640D /* Constants.swift in Sources */,
 				857F5EB3248B24AF00DC640D /* DirectoryPickerView.swift in Sources */,

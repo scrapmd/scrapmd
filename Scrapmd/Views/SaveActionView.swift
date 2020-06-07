@@ -12,60 +12,32 @@ struct SaveActionView: View {
     let contentSaver: ContentSaver
     let cancelAction: () -> Void
     let doneAction: () -> Void
-    @State var scrapName: String = ""
-    @State var saveLocation: String?
-    @ObservedObject var viewModel = ViewModel()
-    @State var isDirectoryPickerActive = false
+    @ObservedObject var saverViewModel = ContentSaverViewModel()
 
     var body: some View {
-
         NavigationView {
-            VStack {
-                ProgressBar(value: $viewModel.downloadProgress).frame(height: 2)
-                List {
-                    Section(header: Text("Name")) {
-                        TextField("Name", text: $viewModel.title)
-                            .onAppear {
-                                self.viewModel.title = self.contentSaver.result.title
-                        }.disabled(self.viewModel.isDownloading)
-                    }
-                    Section(header: Text("Save Location")) {
-                        NavigationLink(destination: DirectoryPickerView(
-                            path: FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments,
-                            isPresenting: $isDirectoryPickerActive) { (path, _) in
-                                if let path = path {
-                                    self.viewModel.saveLocation = path
-                                }
-                        }, isActive: $isDirectoryPickerActive) {
-                            Text(viewModel.saveLocation.fileName)
-                                .multilineTextAlignment(.leading)
-                                .lineLimit(1)
-                                .foregroundColor(.accentColor)
-                        }
-
-                    }
-                }
-            }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitle("Save Scrap")
-            .navigationBarItems(
-                leading: Button(action: cancelAction, label: {
-                    Text("Cancel")
-                }),
-                trailing: Button(action: save, label: {
-                    Text("Save").fontWeight(.bold)
-                })
-            )
+            SaveActionInputView(
+                downloadProgress: $saverViewModel.downloadProgress,
+                title: $saverViewModel.title,
+                isDownloading: $saverViewModel.isDownloading,
+                saveLocation: $saverViewModel.saveLocation)
         }
-        .navigationViewStyle(DefaultNavigationViewStyle())
-        .onAppear {
-            self.viewModel.contentSaver = self.contentSaver
+        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarTitle("Save Scrap")
+        .navigationBarItems(
+            leading: Button(action: cancelAction, label: {
+                Text("Cancel")
+            }),
+            trailing: Button(action: save, label: {
+                Text("Save").fontWeight(.bold)
+            })
+        ).onAppear {
+            self.saverViewModel.contentSaver = self.contentSaver
         }
-
     }
 
     func save() {
-        viewModel.download(completionHandler: doneAction)
+        saverViewModel.download(completionHandler: doneAction)
     }
 }
 
