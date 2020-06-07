@@ -11,7 +11,7 @@ import Combine
 import FileKit
 import Dispatch
 
-fileprivate var queueId = 0
+private var queueId = 0
 
 class DirectoryBrowser: ObservableObject {
     let onlyDirectory: Bool
@@ -47,13 +47,12 @@ class DirectoryBrowser: ObservableObject {
     }
 
     func update() {
-        let items = path.children(recursive: false)
-            .filter({ p in
-                !p.isHidden && p.isDirectory &&
-                    ((self.onlyDirectory && !p.isScrap) || !self.onlyDirectory)
-            })
         DispatchQueue.main.async {
-            self.items = items
+            self.items = self.path.children(recursive: false)
+                .filter({ p in
+                    !p.isHidden && p.isDirectory &&
+                        ((self.onlyDirectory && !p.isScrap) || !self.onlyDirectory)
+                })
         }
     }
 

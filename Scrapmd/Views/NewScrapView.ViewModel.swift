@@ -11,7 +11,7 @@ import Combine
 
 extension NewScrapView {
     class ViewModel: ObservableObject {
-        @Published var result: APIClient.Result? = nil
+        @Published var result: APIClient.Result?
         @Published var isFetching = false
         @Published var isValid = false
         @Published var errorMessage = ""
@@ -37,7 +37,7 @@ extension NewScrapView {
         func fetch() {
             guard let url = url, !isFetching else { return }
             isFetching = true
-            APIClient.fetch(url: url) { (result, _, err)  in
+            APIClient.fetch(url: url) { (result, _, _)  in
                 DispatchQueue.main.async {
                     self.isFetching = false
                     guard let result = result, !result.markdown.isEmpty else {

@@ -13,7 +13,7 @@ struct NewScrapURLInputView: View {
     @Binding var errorMessage: String
     @Binding var isValid: Bool
     @Binding var isFetching: Bool
-    let fetchAction: () -> Void;
+    let fetchAction: () -> Void
     var body: some View {
         VStack {
             HStack {
@@ -28,7 +28,7 @@ struct NewScrapURLInputView: View {
                 .disableAutocorrection(true)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding(.all)
-                .background(Color(UIColor.systemBackground))
+                .background(Color(UIColor.secondarySystemFill))
                 .cornerRadius(11)
                 .disabled(isFetching)
             HStack {
@@ -67,6 +67,6 @@ struct NewScrapURLInputView_Previews: PreviewProvider {
             isValid: .constant(true),
             isFetching: .constant(true),
             fetchAction: {}
-        )
+        ).preferredColorScheme(.light)
     }
 }
