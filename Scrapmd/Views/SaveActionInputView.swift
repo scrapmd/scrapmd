@@ -24,18 +24,17 @@ struct SaveActionInputView: View {
                 }
                 Section(header: Text("Save Location")) {
                     NavigationLink(destination: DirectoryPickerView(
-                        path: FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments,
-                        isPresenting: $isDirectoryPickerActive) { (path, _) in
+                        FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments) { (path, _) in
                             if let path = path {
                                 self.saveLocation = path
                             }
+                            self.isDirectoryPickerActive = false
                     }, isActive: $isDirectoryPickerActive) {
                         Text(saveLocation.fileName)
                             .multilineTextAlignment(.leading)
                             .lineLimit(1)
                             .foregroundColor(.accentColor)
                     }
-
                 }
             }
         }

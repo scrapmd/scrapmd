@@ -38,7 +38,7 @@ extension DirectoryBrowserView {
         let path: FileKitPath
 
         var body: some View {
-            NavigationLink(destination: DirectoryBrowserView(path: path)) {
+            NavigationLink(destination: DirectoryBrowserView(path)) {
                 HStack {
                     Image(systemName: "folder")
                         .frame(width: 60.0, height: 60.0, alignment: .center)
@@ -58,7 +58,7 @@ extension DirectoryBrowserView {
                         }
                     }
                 }
-            }.isDetailLink(true)
+            }.isDetailLink(false)
         }
     }
 

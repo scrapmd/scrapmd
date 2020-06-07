@@ -16,16 +16,14 @@ fileprivate var queueId = 0
 class DirectoryBrowser: ObservableObject {
     let onlyDirectory: Bool
     @Published var items: [Path]
-    @Published var path: Path? {
-        didSet {
-            self.update()
-            self.updateMonitor()
-        }
-    }
+    let path: Path
 
-    init(onlyDirectory: Bool) {
+    init(_ path: Path, onlyDirectory: Bool) {
         self.onlyDirectory = onlyDirectory
         self.items = []
+        self.path = path
+        update()
+        updateMonitor()
     }
 
     private var monitor: DispatchSourceFileSystemObject?
@@ -37,7 +35,6 @@ class DirectoryBrowser: ObservableObject {
     func updateMonitor() {
         monitor?.cancel()
         monitor = nil
-        guard let path = path else { return }
         let descriptor = open(path.rawValue, O_EVTONLY)
         queueId += 1
         let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
@@ -50,11 +47,11 @@ class DirectoryBrowser: ObservableObject {
     }
 
     func update() {
-        guard let items = (path?.children(recursive: false))?
+        let items = path.children(recursive: false)
             .filter({ p in
                 !p.isHidden && p.isDirectory &&
                     ((self.onlyDirectory && !p.isScrap) || !self.onlyDirectory)
-            }) else { return }
+            })
         DispatchQueue.main.async {
             self.items = items
         }

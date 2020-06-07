@@ -11,17 +11,22 @@ import SwiftUI
 struct DirectoryPickerView: View {
     typealias ChooseHandler = (_ path: FileKitPath?, _ sender: DirectoryPickerView) -> Void
     let path: FileKitPath
-    @ObservedObject var directoryBrowser = DirectoryBrowser(onlyDirectory: true)
-    @Binding var isPresenting: Bool
+    @ObservedObject var directoryBrowser: DirectoryBrowser
     @State var isNewFolderModalShown = false
     let chooseHandler: ChooseHandler
+
+    init(_ path: FileKitPath, chooseHandler: @escaping ChooseHandler) {
+        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: true)
+        self.path = path
+        self.chooseHandler = chooseHandler
+    }
 
     var body: some View {
         return VStack {
             List {
                 ForEach(directoryBrowser.items, id: \.self) { (item: FileKitPath) in
                     NavigationLink(
-                        destination: DirectoryPickerView(path: item, isPresenting: self.$isPresenting) { (path, sender) in
+                        destination: DirectoryPickerView(item) { (path, sender) in
                             self.choose(path, sender)
                         },
                         label: { Text(item.fileName) }
@@ -46,14 +51,11 @@ struct DirectoryPickerView: View {
         .navigationBarTitle(path.fileName)
         .sheet(isPresented: $isNewFolderModalShown) {
             CreateFolderView(path: self.path, isShown: self.$isNewFolderModalShown)
-        }.onAppear {
-            self.directoryBrowser.path = self.path
         }
     }
 
     func choose(_ path: FileKitPath?, _ sender: DirectoryPickerView) {
         chooseHandler(path, self)
-        isPresenting = false
     }
 }
 
@@ -61,8 +63,7 @@ struct DirectoryPickerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             DirectoryPickerView(
-                path: FileKitPath.userDocuments,
-                isPresenting: .constant(false)) { (_, _) in }
+                FileKitPath.userDocuments) { (_, _) in }
         }
     }
 }

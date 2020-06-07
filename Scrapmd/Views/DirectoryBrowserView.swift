@@ -10,8 +10,13 @@ import SwiftUI
 
 struct DirectoryBrowserView: View {
     let path: FileKitPath
-    @ObservedObject var directoryBrowser = DirectoryBrowser(onlyDirectory: false)
+    @ObservedObject var directoryBrowser: DirectoryBrowser
     @State var isNewModalShown = false
+
+    init(_ path: FileKitPath) {
+        self.path = path
+        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: false)
+    }
 
     var body: some View {
         List {
@@ -26,9 +31,7 @@ struct DirectoryBrowserView: View {
             self.isNewModalShown = true
         }) {
             Image(systemName: "plus")
-        }).onAppear {
-            self.directoryBrowser.path = self.path
-        }.sheet(isPresented: $isNewModalShown) {
+        }).sheet(isPresented: $isNewModalShown) {
             NewScrapView(isShown: self.$isNewModalShown)
         }
     }
@@ -41,7 +44,7 @@ struct DirectoryBrowserView: View {
 struct DirectoryBrowserView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DirectoryBrowserView(path: FileKitPath("/Users/ngs/Documents/Scrapmd Demo"))
+            DirectoryBrowserView(FileKitPath("/Users/ngs/Documents/Scrapmd Demo"))
         }
     }
 }

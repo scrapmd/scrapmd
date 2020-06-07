@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            DirectoryBrowserView(path: FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments)
+            DirectoryBrowserView(FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments)
             DetailPlaceholderView()
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
