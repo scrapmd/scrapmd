@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct DirectoryBrowserView: View {
-
-
     let path: FileKitPath
     @ObservedObject var directoryBrowser = DirectoryBrowser()
     var body: some View {
@@ -18,6 +16,7 @@ struct DirectoryBrowserView: View {
             ForEach(directoryBrowser.items, id: \.self) { (item: FileKitPath) in
                 ItemView(path: item)
             }
+            .onDelete(perform: delete)
         }
         .listStyle(DefaultListStyle())
         .navigationBarTitle(path.fileName)
@@ -25,6 +24,10 @@ struct DirectoryBrowserView: View {
             self.directoryBrowser.path = self.path
             self.directoryBrowser.onlyDirectory = false
         }
+    }
+
+    func delete(at offsets: IndexSet) {
+        directoryBrowser.delete(at: offsets)
     }
 }
 

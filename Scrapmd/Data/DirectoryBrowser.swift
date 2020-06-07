@@ -47,4 +47,15 @@ class DirectoryBrowser: ObservableObject {
             self.items = items
         }
     }
+
+    func delete(at offsets: IndexSet) {
+        offsets.forEach { offset in
+            let itemsToDelete = items[offset]
+            do {
+                try itemsToDelete.deleteFile()
+            } catch {
+                print(error)
+            }
+        }
+    }
 }

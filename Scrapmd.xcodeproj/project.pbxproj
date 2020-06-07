@@ -274,12 +274,12 @@
 				856B801B248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift */,
 				85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */,
 				857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */,
+				856B8039248C52E40055F8C0 /* MarkdownView.swift */,
 				85F9008D248B66B7007F5A33 /* ProgressBar.swift */,
 				8555F3272489F72000D162B5 /* SaveActionView.swift */,
 				857CCA6D248AAB7B00AE5BE8 /* SaveActionView.ViewModel.swift */,
 				856B8030248C3F950055F8C0 /* ScrapReaderView.swift */,
 				856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */,
-				856B8039248C52E40055F8C0 /* MarkdownView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
