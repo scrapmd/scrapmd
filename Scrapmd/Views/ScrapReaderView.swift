@@ -24,7 +24,22 @@ struct ScrapReaderView: View {
         let markdown: String
         let path: FileKitPath
         var body: some View {
-            MarkdownView(markdown: markdown, path: path)
+            VStack {
+                MarkdownView(markdown: markdown, path: path)
+                HStack {
+                    Spacer()
+                    Button(action: {}) {
+                        Image(systemName: "square.and.arrow.up")
+                    }.padding()
+                    Spacer()
+                    Button(action: {
+                        UIApplication.shared.open(self.path.fileURL, options: [:])
+                    }) {
+                        Image(systemName: "chevron.left.slash.chevron.right")
+                    }.padding()
+                    Spacer()
+                }
+            }
         }
     }
 

@@ -70,6 +70,17 @@ extension Path {
         let img = thumbnailFile.exists ? try? thumbnailFile.read() : nil
         return img ?? Image(systemName: "photo")!
     }
+
+    var fileURL: URL {
+        var urlComponents = URLComponents()
+        urlComponents.path = rawValue
+        #if !targetEnvironment(macCatalyst)
+        urlComponents.scheme = "file"
+        #else
+        urlComponents.scheme = "shareddocuments"
+        #endif
+        return urlComponents.url!
+    }
 }
 
 extension Path: Identifiable {
