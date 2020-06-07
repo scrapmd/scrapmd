@@ -27,17 +27,21 @@ struct ScrapReaderView: View {
             VStack {
                 MarkdownView(markdown: markdown, path: path)
                 HStack {
-                    Spacer()
-                    Button(action: {}) {
-                        Image(systemName: "square.and.arrow.up")
-                    }.padding()
-                    Spacer()
                     Button(action: {
                         UIApplication.shared.open(self.path.fileURL, options: [:])
                     }) {
                         Image(systemName: "chevron.left.slash.chevron.right")
                     }.padding()
                     Spacer()
+                    Button(action: {}) {
+                        Image(systemName: "square.and.arrow.up")
+                    }.padding()
+                    Spacer()
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: self.metadata.url)!)
+                    }) {
+                        Image(systemName: "link")
+                    }.padding()
                 }
             }
         }
