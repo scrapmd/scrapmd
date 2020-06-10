@@ -11,7 +11,12 @@ import Ink
 
 struct ScrapReaderView: View {
     let path: FileKitPath
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject var viewModel: ViewModel
+
+    init(_ path: FileKitPath) {
+        self.path = path
+        self.viewModel = ViewModel(path)
+    }
 
     struct ErrorView: View {
         var body: some View {
@@ -58,7 +63,7 @@ struct ScrapReaderView: View {
 
     func buildBody() -> some View {
         if self.viewModel.isLoading {
-            return AnyView(Spacer())
+            return AnyView(ActivityIndicator(isAnimating: .constant(true), style: .large))
         } else if
             let metadata = self.viewModel.metadata,
             let markdown = self.viewModel.markdown
@@ -74,17 +79,14 @@ struct ScrapReaderView: View {
 
     @ViewBuilder
     var body: some View {
-        buildBody().onAppear {
-            self.viewModel.path = self.path
-            self.viewModel.load()
-        }.navigationBarTitle("", displayMode: .inline)
+        buildBody().navigationBarTitle("", displayMode: .inline)
     }
 }
 
 struct ScrapReaderView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ScrapReaderView(path: FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")).navigationBarTitle("", displayMode: .inline)
+            ScrapReaderView(FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")).navigationBarTitle("", displayMode: .inline)
         }
     }
 }

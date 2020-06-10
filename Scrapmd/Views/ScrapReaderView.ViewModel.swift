@@ -11,14 +11,18 @@ import Combine
 
 extension ScrapReaderView {
     class ViewModel: ObservableObject {
-        @Published var isLoading = false
+        @Published var isLoading = true
         @Published var markdown: String?
         @Published var metadata: ScrapMetadata?
 
-        var path: FileKitPath?
+        let path: FileKitPath
+
+        init(_ path: FileKitPath) {
+            self.path = path
+            self.load()
+        }
 
         func load() {
-            guard let path = path else { return }
             isLoading = true
             metadata = path.metadata
             markdown = try? path.markdownFile.read()
