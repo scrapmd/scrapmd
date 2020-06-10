@@ -102,6 +102,10 @@ struct ContentSaver {
             }
             queues.append(queue)
         }
+        if queues.isEmpty {
+            completionHandler(nil)
+            return
+        }
         total = queues.count
         let q = queues.removeFirst()
         progress(q.info, 0, total)
