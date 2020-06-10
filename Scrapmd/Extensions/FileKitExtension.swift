@@ -68,7 +68,7 @@ extension Path {
 
     var thumbnail: Image {
         let img = thumbnailFile.exists ? try? thumbnailFile.read() : nil
-        return img ?? Image(systemName: "photo")!
+        return img ?? Image(named: "NoImg")!
     }
 
     func fileURL(scheme: String? = nil) -> URL {
