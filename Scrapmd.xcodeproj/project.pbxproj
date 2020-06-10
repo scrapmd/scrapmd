@@ -54,6 +54,7 @@
 		857F5EB2248B24AF00DC640D /* DirectoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */; };
 		857F5EB3248B24AF00DC640D /* DirectoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */; };
 		85948D3F24891BA400763582 /* GetHTML.js in Resources */ = {isa = PBXBuildFile; fileRef = 85948D3E24891BA400763582 /* GetHTML.js */; };
+		85A5B43F24905E1900F56AEB /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85A5B43E24905E1900F56AEB /* Asset.xcassets */; };
 		85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6A880248A050F0086F13F /* ActionViewController.swift */; };
@@ -151,6 +152,7 @@
 		857F5EAD248A0E7600DC640D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryPickerView.swift; sourceTree = "<group>"; };
 		85948D3E24891BA400763582 /* GetHTML.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetHTML.js; sourceTree = "<group>"; };
+		85A5B43E24905E1900F56AEB /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		85D6A880248A050F0086F13F /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		85F90084248B5004007F5A33 /* CreateFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderView.swift; sourceTree = "<group>"; };
 		85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMeatadata.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				8544481B2488C6C40010F1F7 /* ActionViewController.swift */,
 				8544481D2488C6C40010F1F7 /* MainInterface.storyboard */,
 				854448202488C6C40010F1F7 /* Info.plist */,
+				85A5B43E24905E1900F56AEB /* Asset.xcassets */,
 			);
 			path = ActionExtension;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8544481A2488C6C40010F1F7 /* Media.xcassets in Resources */,
+				85A5B43F24905E1900F56AEB /* Asset.xcassets in Resources */,
 				856B802E248C3B840055F8C0 /* Localizable.stringsdict in Resources */,
 				8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */,
 				85948D3F24891BA400763582 /* GetHTML.js in Resources */,
@@ -889,6 +893,7 @@
 		854448252488C6C40010F1F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
@@ -910,6 +915,7 @@
 		854448262488C6C40010F1F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
