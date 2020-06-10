@@ -63,20 +63,20 @@ class DirectoryBrowser: ObservableObject {
         let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
         let monitor = DispatchSource.makeFileSystemObjectSource(fileDescriptor: descriptor, eventMask: .all, queue: queue)
         monitor.setEventHandler { [weak self] in
-            self?.update()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                self?.update()
+            }
         }
         monitor.activate()
         self.monitor = monitor
     }
 
     func update() {
-        DispatchQueue.main.async {
-            self.items = self.path.children(recursive: false)
-                .filter({ p in
-                    !p.isHidden && p.isDirectory &&
-                        ((self.onlyDirectory && !p.isScrap) || !self.onlyDirectory)
-                }).map { Item($0) }
-        }
+        self.items = self.path.children(recursive: false)
+            .filter({ p in
+                !p.isHidden && p.isDirectory &&
+                    ((self.onlyDirectory && !p.isScrap) || !self.onlyDirectory)
+            }).map { Item($0) }
     }
 
     func delete(at offsets: IndexSet) {
