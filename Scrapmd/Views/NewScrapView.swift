@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NewScrapView: View {
     @ObservedObject var viewModel = ViewModel()
-    @ObservedObject var saverViewModel = ContentSaverViewModel()
+    @ObservedObject var saverViewModel: ContentSaverViewModel
     @Binding var isShown: Bool
 
     var body: some View {
@@ -62,6 +62,6 @@ struct NewScrapView: View {
 
 struct NewScrapView_Previews: PreviewProvider {
     static var previews: some View {
-        NewScrapView(isShown: .constant(true))
+        NewScrapView(saverViewModel: ContentSaverViewModel(), isShown: .constant(true))
     }
 }

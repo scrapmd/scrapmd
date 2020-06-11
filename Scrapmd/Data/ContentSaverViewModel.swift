@@ -19,8 +19,16 @@ class ContentSaverViewModel: ObservableObject {
         }
     }
 
+    init() {
+        self.saveLocation = Path.iCloudDocuments ?? Path.userDocuments
+    }
+
+    init(saveLocation: Path) {
+        self.saveLocation = saveLocation
+    }
+
     @Published var isDownloading = false
-    @Published var saveLocation: Path = Path.iCloudDocuments ?? Path.userDocuments
+    @Published var saveLocation: Path
     @Published var downloadProgress: Float = 0
 
     @Published var title: String = "" {
