@@ -8,6 +8,7 @@ jobs:
     container: atsnngs/danger-swift:latest
     steps:
     - uses: actions/checkout@v1
-    - run: danger
+    - name: Run Danger
+      run: npx --package danger danger-swift ci
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
