@@ -20,8 +20,8 @@ struct DirectoryBrowserView: View {
 
     var body: some View {
         List {
-            ForEach(directoryBrowser.items, id: \.self) { (item: DirectoryBrowser.Item) in
-                ItemView(item)
+            ForEach(directoryBrowser.items.indices, id: \.self) { index in
+                ItemView(item: self.$directoryBrowser.items[index])
             }
             .onDelete(perform: delete)
         }
@@ -33,11 +33,15 @@ struct DirectoryBrowserView: View {
             Image(systemName: "plus")
         }).sheet(isPresented: $isNewModalShown) {
             NewScrapView(isShown: self.$isNewModalShown)
+        }.onAppear {
+            FileManager.default.sync()
+            self.directoryBrowser.update()
         }
     }
 
     func delete(at offsets: IndexSet) {
         directoryBrowser.delete(at: offsets)
+        FileManager.default.sync()
     }
 }
 

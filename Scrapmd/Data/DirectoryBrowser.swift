@@ -18,17 +18,25 @@ class DirectoryBrowser: ObservableObject {
     class Item: ObservableObject, Identifiable, Hashable {
         @Published var metadata: ScrapMetadata?
         @Published var thumbnail: UIImage?
+        @Published var scrapsCount: Int
+        @Published var foldersCount: Int
+        @Published var fileName: String
 
         static func == (lhs: DirectoryBrowser.Item, rhs: DirectoryBrowser.Item) -> Bool {
-            lhs.path == rhs.path
+            lhs.id == rhs.id
         }
 
         let path: Path
+
         init(_ path: Path) {
             self.path = path
             self.metadata = path.metadata
             self.thumbnail = path.thumbnail
+            self.scrapsCount = path.scrapsCount
+            self.foldersCount = path.foldersCount
+            self.fileName = path.fileName
         }
+
         var id: String { // swiftlint:disable:this identifier_name
             path.id
         }
@@ -47,12 +55,14 @@ class DirectoryBrowser: ObservableObject {
         self.path = path
         update()
         updateMonitor()
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: .updateDirectory, object: nil)
     }
 
     private var monitor: DispatchSourceFileSystemObject?
 
     deinit {
         monitor?.cancel()
+        NotificationCenter.default.removeObserver(self)
     }
 
     func updateMonitor() {
@@ -72,7 +82,7 @@ class DirectoryBrowser: ObservableObject {
         self.monitor = monitor
     }
 
-    func update() {
+    @objc func update() {
         self.items = self.path.children(recursive: false)
             .filter({ path in
                 !path.isHidden && path.isDirectory &&

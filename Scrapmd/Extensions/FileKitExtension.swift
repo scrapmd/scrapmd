@@ -90,6 +90,6 @@ extension Path {
 
 extension Path: Identifiable {
     public var id: String { // swiftlint:disable:this identifier_name
-        return "\(self.rawValue)-\(self.scrapsCount)-\(self.foldersCount)"
+        return "\(self.rawValue) \(self.scrapsCount) \(self.foldersCount)".data(using: .utf8)!.base64EncodedString()
     }
 }
