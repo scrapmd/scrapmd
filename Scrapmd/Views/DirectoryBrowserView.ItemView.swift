@@ -21,8 +21,8 @@ extension DirectoryBrowserView {
                         .frame(width: 60.0, height: 60.0, alignment: .center)
                         .clipped()
                     VStack(alignment: .leading) {
-                        Text(item.metadata!.title)
-                        Text("\(item.metadata!.createdAt, formatter: displayDateFormatter)")
+                        Text(item.metadata?.title ?? item.fileName)
+                        Text("\(item.path.createdAt!, formatter: displayDateFormatter)")
                             .font(.caption)
                             .opacity(0.5)
                             .padding(.top, 5.0)
@@ -42,6 +42,12 @@ extension DirectoryBrowserView {
                         .frame(width: 60.0, height: 60.0, alignment: .center)
                     VStack(alignment: .leading) {
                         Text(item.fileName)
+                        if item.path.createdAt != nil {
+                            Text("\(item.path.createdAt!, formatter: displayDateFormatter)")
+                                .font(.caption)
+                                .opacity(0.5)
+                                .padding(.top, 5.0)
+                        }
                         HStack {
                             if item.scrapsCount > 0 {
                                 Text("\(item.scrapsCount).scraps")

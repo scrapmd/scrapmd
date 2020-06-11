@@ -21,7 +21,7 @@ struct DirectoryBrowserView: View {
     var body: some View {
         List {
             ForEach(directoryBrowser.sectionedIndices, id: \.0) { (section, indices) in
-                Section(header: Text(section)) {
+                Section(header: Text(section == "" ? "Folder" : section)) {
                     ForEach(indices, id: \.self) { index in
                         ItemView(item: self.$directoryBrowser.items[index])
                     }
@@ -31,11 +31,13 @@ struct DirectoryBrowserView: View {
         }
         .listStyle(DefaultListStyle())
         .navigationBarTitle(path.fileName)
-        .navigationBarItems(trailing: Button(action: {
-            self.isNewModalShown = true
-        }) {
-            Image(systemName: "plus")
-        }).sheet(isPresented: $isNewModalShown) {
+        .navigationBarItems(
+            trailing: Button(action: {
+                self.isNewModalShown = true
+            }) {
+                Image(systemName: "plus")
+            }
+        ).sheet(isPresented: $isNewModalShown) {
             NewScrapView(isShown: self.$isNewModalShown)
         }.onAppear {
             FileManager.default.sync()

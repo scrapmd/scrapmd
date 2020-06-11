@@ -61,16 +61,18 @@ class DirectoryBrowser: ObservableObject {
     }
 
     @objc func update() {
-        let nullDate = Date(timeIntervalSince1970: 0)
         self.items = self.path.children(recursive: false)
             .filter({ path in
                 !path.isHidden && path.isDirectory &&
                     ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
             }).sorted(by: {
-                switch self.sort {
-                case .created: return $0.metadata?.createdAt ?? nullDate > $1.metadata?.createdAt ?? nullDate
-                case .name: return $0.fileName < $1.fileName
+                if
+                    self.sort == .created,
+                    let date1 = $0.createdAt,
+                    let date2 = $1.createdAt {
+                    return date1 > date2
                 }
+                return $0.fileName < $1.fileName
             }) .map { Item($0) }
     }
 
@@ -89,17 +91,17 @@ class DirectoryBrowser: ObservableObject {
 
     var sectionedIndices: [(String, [Range<Int>.Element])] {
         Dictionary(grouping: self.items.indices) {
-            if let date = self.items[$0].metadata?.createdAt {
+            if let date = self.items[$0].path.createdAt {
                 return sectionDateFormatter.string(from: date)
             }
             return ""
         }.map { ($0, $1) }.sorted(by: {
             if
-                let date1 = self.items[$0.1[0]].metadata?.createdAt,
-                let date2 = self.items[$1.1[0]].metadata?.createdAt {
+                let date1 = self.items[$0.1[0]].path.createdAt,
+                let date2 = self.items[$1.1[0]].path.createdAt {
                 return date1 > date2
             }
-            if self.items[$0.1[0]].metadata?.createdAt != nil {
+            if self.items[$0.1[0]].path.createdAt != nil {
                 return true
             }
             return false
