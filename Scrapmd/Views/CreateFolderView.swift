@@ -42,7 +42,8 @@ struct CreateFolderView: View {
             .navigationBarTitle("Create New Folder")
             .navigationBarItems(
                 leading: Button(action: cancel, label: { Text("Cancel") }),
-                trailing: Button(action: create, label: { Text("Create").bold() }).disabled(self.name.isEmpty || self.newPath.exists)
+                trailing: Button(action: create, label: { Text("Create").bold() })
+                    .disabled(self.name.isEmpty || self.newPath.exists)
             )
         }.navigationViewStyle(StackNavigationViewStyle())
     }
@@ -64,6 +65,7 @@ struct CreateFolderView: View {
 
 struct CreateFolderView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateFolderView(path: FileKitPath.userDocuments, isShown: .constant(true)).preferredColorScheme(.dark)
+        CreateFolderView(path: FileKitPath.userDocuments, isShown: .constant(true))
+            .preferredColorScheme(.dark)
     }
 }

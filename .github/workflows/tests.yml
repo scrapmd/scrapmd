@@ -1,0 +1,26 @@
+name: Tests
+
+on: [push, pull_request]
+
+env:
+  DERIVED_DATA_PATH: DerivedData
+  SCAN_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+  MATCH_READONLY: 'true'
+  FASTLANE_SKIP_UPDATE_CHECK: 1
+
+jobs:
+  tests:
+    runs-on: macos-10.15
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      id: cache-bundler
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - run: bundle config set path 'vendor/bundle'
+    - run: bundle install
+      if: steps.cache-bundler.outputs.cache-hit != 'true'
+    - run: bundle exec fastlane tests

@@ -21,6 +21,7 @@ struct APIClient {
         var images: [String: String]
         var leadImageURL: String?
 
+        // swiftlint:disable:next nesting
         enum CodingKeys: String, CodingKey {
             case title, markdown, url, images
             case leadImageURL = "lead_image_url"
@@ -39,12 +40,17 @@ struct APIClient {
     static let endpoint = URL(string: "https://api.scrapmd.app/")!
     // static let endpoint = URL(string: "http://localhost:8000/")!
 
-    static func fetch(url: URL, title: String? = nil, prefetchedHTML: String? = nil, completionHandler: @escaping CompletionHandler) {
+    static func fetch(url: URL, title: String? = nil, prefetchedHTML: String? = nil,
+                      completionHandler: @escaping CompletionHandler) {
         let session = URLSession.shared
         var req = URLRequest(url: endpoint)
         let params = Params(html: prefetchedHTML, title: title, url: url.absoluteString)
-        let data = try! JSONEncoder().encode(params)
-        req.httpBody = data
+        do {
+            let data = try JSONEncoder().encode(params)
+            req.httpBody = data
+        } catch {
+            fatalError(error.localizedDescription)
+        }
         req.httpMethod = "POST"
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         session.dataTask(with: req) { (data, res, err) in

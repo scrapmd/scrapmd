@@ -47,6 +47,10 @@ struct SavePreviewView_Previews: PreviewProvider {
             url: "http://basin.example.org/?attack=bomb&amusement=berry#boat",
             images: [:]
         )
-        return SaveActionView(contentSaver: ContentSaver(result: result), cancelAction: {}, doneAction: {}).preferredColorScheme(.dark)
+        return SaveActionView(
+            contentSaver: ContentSaver(result: result),
+            cancelAction: {},
+            doneAction: {})
+            .preferredColorScheme(.dark)
     }
 }

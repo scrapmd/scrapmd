@@ -86,7 +86,9 @@ struct ScrapReaderView: View {
 struct ScrapReaderView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ScrapReaderView(FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")).navigationBarTitle("", displayMode: .inline)
+            ScrapReaderView(
+                FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")
+            ).navigationBarTitle("", displayMode: .inline)
         }
     }
 }
