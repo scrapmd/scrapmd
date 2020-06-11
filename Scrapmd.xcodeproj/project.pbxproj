@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
+		8539518C2492433900033AF1 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
+		8539518D2492433900033AF1 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; };
+		8539518E2492433900033AF1 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951832492433900033AF1 /* GoogleUtilities.xcframework */; };
+		8539518F2492433900033AF1 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951842492433900033AF1 /* PromisesObjC.xcframework */; };
+		853951902492433900033AF1 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951852492433900033AF1 /* FirebaseCore.xcframework */; };
+		853951912492433900033AF1 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951862492433900033AF1 /* GoogleDataTransport.xcframework */; };
+		853951922492433900033AF1 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951872492433900033AF1 /* FirebaseInstallations.xcframework */; };
+		853951932492433900033AF1 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951882492433900033AF1 /* nanopb.xcframework */; };
+		853951942492433900033AF1 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */; };
+		853951952492433900033AF1 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518A2492433900033AF1 /* FirebaseAnalytics.framework */; };
+		853951962492433900033AF1 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518B2492433900033AF1 /* GoogleAppMeasurement.framework */; };
+		853951982492443B00033AF1 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951972492443B00033AF1 /* libsqlite3.0.tbd */; };
+		8539519A2492444E00033AF1 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951992492444E00033AF1 /* libc++.tbd */; };
+		8539519C2492445800033AF1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539519B2492445800033AF1 /* StoreKit.framework */; };
 		854447E42488C6930010F1F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854447E32488C6930010F1F7 /* AppDelegate.swift */; };
 		854447E62488C6930010F1F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854447E52488C6930010F1F7 /* SceneDelegate.swift */; };
 		854447E82488C6930010F1F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854447E72488C6930010F1F7 /* ContentView.swift */; };
@@ -67,6 +82,7 @@
 		85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
 		85F9008F248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
 		85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */; };
+		85F9009424920D3F007F5A33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85F9009324920D3F007F5A33 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +124,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCrashlytics.xcframework; path = Vendor/Firebase/FirebaseCrashlytics/FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
+		853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleDataTransportCCTSupport.xcframework; path = Vendor/Firebase/FirebaseAnalytics/GoogleDataTransportCCTSupport.xcframework; sourceTree = "<group>"; };
+		853951822492433800033AF1 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Vendor/Firebase/FirebaseAnalytics/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
+		853951832492433900033AF1 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleUtilities.xcframework; path = Vendor/Firebase/FirebaseAnalytics/GoogleUtilities.xcframework; sourceTree = "<group>"; };
+		853951842492433900033AF1 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromisesObjC.xcframework; path = Vendor/Firebase/FirebaseAnalytics/PromisesObjC.xcframework; sourceTree = "<group>"; };
+		853951852492433900033AF1 /* FirebaseCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCore.xcframework; path = Vendor/Firebase/FirebaseAnalytics/FirebaseCore.xcframework; sourceTree = "<group>"; };
+		853951862492433900033AF1 /* GoogleDataTransport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleDataTransport.xcframework; path = Vendor/Firebase/FirebaseAnalytics/GoogleDataTransport.xcframework; sourceTree = "<group>"; };
+		853951872492433900033AF1 /* FirebaseInstallations.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseInstallations.xcframework; path = Vendor/Firebase/FirebaseAnalytics/FirebaseInstallations.xcframework; sourceTree = "<group>"; };
+		853951882492433900033AF1 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = Vendor/Firebase/FirebaseAnalytics/nanopb.xcframework; sourceTree = "<group>"; };
+		853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCoreDiagnostics.xcframework; path = Vendor/Firebase/FirebaseAnalytics/FirebaseCoreDiagnostics.xcframework; sourceTree = "<group>"; };
+		8539518A2492433900033AF1 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Vendor/Firebase/FirebaseAnalytics/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		8539518B2492433900033AF1 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Vendor/Firebase/FirebaseAnalytics/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		853951972492443B00033AF1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
+		853951992492444E00033AF1 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		8539519B2492445800033AF1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		854447E02488C6930010F1F7 /* Scrapmd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapmd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		854447E32488C6930010F1F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		854447E52488C6930010F1F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +190,7 @@
 		85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppInfoExtension.swift; sourceTree = "<group>"; };
 		85F9008D248B66B7007F5A33 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserView.swift; sourceTree = "<group>"; };
+		85F9009324920D3F007F5A33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +198,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8539519C2492445800033AF1 /* StoreKit.framework in Frameworks */,
+				8539519A2492444E00033AF1 /* libc++.tbd in Frameworks */,
+				853951982492443B00033AF1 /* libsqlite3.0.tbd in Frameworks */,
 				857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */,
+				853951902492433900033AF1 /* FirebaseCore.xcframework in Frameworks */,
 				856B8036248C4D030055F8C0 /* Ink in Frameworks */,
+				853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */,
+				853951962492433900033AF1 /* GoogleAppMeasurement.framework in Frameworks */,
+				853951942492433900033AF1 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
+				853951932492433900033AF1 /* nanopb.xcframework in Frameworks */,
+				8539518F2492433900033AF1 /* PromisesObjC.xcframework in Frameworks */,
+				8539518D2492433900033AF1 /* FIRAnalyticsConnector.framework in Frameworks */,
+				853951922492433900033AF1 /* FirebaseInstallations.xcframework in Frameworks */,
+				853951912492433900033AF1 /* GoogleDataTransport.xcframework in Frameworks */,
+				8539518C2492433900033AF1 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
+				8539518E2492433900033AF1 /* GoogleUtilities.xcframework in Frameworks */,
+				853951952492433900033AF1 /* FirebaseAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +326,21 @@
 		857CCA5D248960BC00AE5BE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8539519B2492445800033AF1 /* StoreKit.framework */,
+				853951992492444E00033AF1 /* libc++.tbd */,
+				853951972492443B00033AF1 /* libsqlite3.0.tbd */,
+				853951822492433800033AF1 /* FIRAnalyticsConnector.framework */,
+				8539518A2492433900033AF1 /* FirebaseAnalytics.framework */,
+				853951852492433900033AF1 /* FirebaseCore.xcframework */,
+				853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */,
+				853951872492433900033AF1 /* FirebaseInstallations.xcframework */,
+				8539518B2492433900033AF1 /* GoogleAppMeasurement.framework */,
+				853951862492433900033AF1 /* GoogleDataTransport.xcframework */,
+				853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */,
+				853951832492433900033AF1 /* GoogleUtilities.xcframework */,
+				853951882492433900033AF1 /* nanopb.xcframework */,
+				853951842492433900033AF1 /* PromisesObjC.xcframework */,
+				8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -311,6 +373,7 @@
 		857CCA61248970DF00AE5BE8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				85F9009324920D3F007F5A33 /* GoogleService-Info.plist */,
 				856B802B248C3B840055F8C0 /* Localizable.stringsdict */,
 				854447EE2488C6940010F1F7 /* LaunchScreen.storyboard */,
 				854447F12488C6940010F1F7 /* Info.plist */,
@@ -361,6 +424,7 @@
 				854447DD2488C6930010F1F7 /* Frameworks */,
 				854447DE2488C6930010F1F7 /* Resources */,
 				854448272488C6C40010F1F7 /* Embed App Extensions */,
+				85F900BB24923595007F5A33 /* Run Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -490,6 +554,7 @@
 			files = (
 				856B802F248C3BD70055F8C0 /* LaunchScreen.storyboard in Resources */,
 				856B802D248C3B840055F8C0 /* Localizable.stringsdict in Resources */,
+				85F9009424920D3F007F5A33 /* GoogleService-Info.plist in Resources */,
 				854447ED2488C6940010F1F7 /* Preview Assets.xcassets in Resources */,
 				854447EA2488C6940010F1F7 /* Assets.xcassets in Resources */,
 			);
@@ -541,6 +606,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint lint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		85F900BB24923595007F5A33 /* Run Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# \"${PROJECT_TEMP_ROOT}/../../SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n\"${SRCROOT}/Vendor/Firebase/FirebaseCrashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -704,6 +789,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Vendor/Firebase/FirebaseCrashlytics",
+					"$(SRCROOT)/Vendor/Firebase/FirebaseAnalytics",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -718,6 +807,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Firebase";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -764,6 +854,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Vendor/Firebase/FirebaseCrashlytics",
+					"$(SRCROOT)/Vendor/Firebase/FirebaseAnalytics",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -772,6 +866,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Firebase";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -789,14 +884,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Scrapmd/Scrapmd.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
+				);
 				INFOPLIST_FILE = Scrapmd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -815,11 +916,16 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
+				);
 				INFOPLIST_FILE = Scrapmd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -925,6 +1031,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd.ActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -947,6 +1054,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd.ActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
