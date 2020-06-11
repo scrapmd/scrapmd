@@ -1,8 +1,8 @@
-name: Build and Upload iOS Beta
+name: Build and Upload iOS Production
 
 on:
-  push:
-    branches: ['*']
+  release:
+    types: [published]
 
 env:
   HOMEBREW_NO_AUTO_UPDATE: 1
@@ -13,13 +13,15 @@ env:
   MATCH_READONLY: 'true'
   MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
   MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-  FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
   MATCH_KEYCHAIN_NAME: tmp.keychain
   CERT_KEYCHAIN_NAME: tmp.keychain
   KEYCHAIN_NAME: tmp.keychain
   MATCH_KEYCHAIN_PASSWORD: tmp
   CERT_KEYCHAIN_PASSWORD: tmp
   KEYCHAIN_PASSWORD: tmp
+  DELIVER_USERNAME: ${{ secrets.APPLE_ID_EMAIL }}
+  FASTLANE_USER: ${{ secrets.APPLE_ID_EMAIL }}
+  FASTLANE_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
 
 jobs:
   build:
@@ -38,15 +40,11 @@ jobs:
     - run: bundle install
       if: steps.cache-bundler.outputs.cache-hit != 'true'
     - run: bundle exec fastlane ios create_ci_keychain
-    - run: bundle exec fastlane ios beta_match
-      name: Beta match
+    - run: bundle exec fastlane ios release_match
+      name: Release match
     - run: bundle exec fastlane ios set_build_number
       name: Set build number
-    - run: bundle exec fastlane ios beta_build
-      name: Beta build
-    - run: npm i -g firebase-tools
-      name: Install Firebase
-    - run: bundle exec fastlane ios beta_upload
-      name: Upload app to Firebase
-    - run: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp Scrapmd/GoogleService-Info.plist -p ios build/ios/Scrapmd.app.dSYM.zip
-      name: Upload dSYM to Firebase
+    - run: bundle exec fastlane ios release_build
+      name: Release build
+    - run: bundle exec fastlane ios release_upload
+      name: Upload app to App Store
