@@ -48,5 +48,5 @@ jobs:
       name: Install Firebase
     - run: bundle exec fastlane ios beta_upload
       name: Upload app to Firebase
-    - run: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp Scrapmd/GoogleService-Info.plist -p ios build/ios/Scrapmd.app.dSYM.zip
+    - run: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp Scrapmd/GoogleService-Info.plist -p ios build/beta/Scrapmd.app.dSYM.zip
       name: Upload dSYM to Firebase
