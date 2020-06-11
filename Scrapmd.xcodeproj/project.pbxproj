@@ -39,7 +39,7 @@
 		856B802F248C3BD70055F8C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854447EE2488C6940010F1F7 /* LaunchScreen.storyboard */; };
 		856B8031248C3F950055F8C0 /* ScrapReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8030248C3F950055F8C0 /* ScrapReaderView.swift */; };
 		856B8033248C3FBE0055F8C0 /* DetailPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8032248C3FBE0055F8C0 /* DetailPlaceholderView.swift */; };
-		856B8036248C4D030055F8C0 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 856B8035248C4D030055F8C0 /* Ink */; };
+		856B8036248C4D030055F8C0 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 856B8035248C4D030055F8C0 /* SwiftPackageProductDependency */; };
 		856B8038248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */; };
 		856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8039248C52E40055F8C0 /* MarkdownView.swift */; };
 		856B803E248C7D630055F8C0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B803D248C7D630055F8C0 /* UIColorExtension.swift */; };
@@ -54,8 +54,8 @@
 		856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */; };
 		856B8052248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */; };
 		856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */; };
-		857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* FileKit */; };
-		857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5E248960BC00AE5BE8 /* FileKit */; };
+		857CCA5C248960A300AE5BE8 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* SwiftPackageProductDependency */; };
+		857CCA5F248960BC00AE5BE8 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5E248960BC00AE5BE8 /* SwiftPackageProductDependency */; };
 		857CCA642489712900AE5BE8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA632489712900AE5BE8 /* APIClient.swift */; };
 		857CCA652489712900AE5BE8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA632489712900AE5BE8 /* APIClient.swift */; };
 		857CCA6724897A1F00AE5BE8 /* ContentSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */; };
@@ -201,9 +201,9 @@
 				8539519C2492445800033AF1 /* StoreKit.framework in Frameworks */,
 				8539519A2492444E00033AF1 /* libc++.tbd in Frameworks */,
 				853951982492443B00033AF1 /* libsqlite3.0.tbd in Frameworks */,
-				857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */,
+				857CCA5C248960A300AE5BE8 /* BuildFile in Frameworks */,
 				853951902492433900033AF1 /* FirebaseCore.xcframework in Frameworks */,
-				856B8036248C4D030055F8C0 /* Ink in Frameworks */,
+				856B8036248C4D030055F8C0 /* BuildFile in Frameworks */,
 				853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */,
 				853951962492433900033AF1 /* GoogleAppMeasurement.framework in Frameworks */,
 				853951942492433900033AF1 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
@@ -236,7 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */,
+				857CCA5F248960BC00AE5BE8 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,8 +433,8 @@
 			);
 			name = Scrapmd;
 			packageProductDependencies = (
-				857CCA5B248960A300AE5BE8 /* FileKit */,
-				856B8035248C4D030055F8C0 /* Ink */,
+				857CCA5B248960A300AE5BE8 /* SwiftPackageProductDependency */,
+				856B8035248C4D030055F8C0 /* SwiftPackageProductDependency */,
 			);
 			productName = Scrapmd;
 			productReference = 854447E02488C6930010F1F7 /* Scrapmd.app */;
@@ -490,7 +490,7 @@
 			);
 			name = ActionExtension;
 			packageProductDependencies = (
-				857CCA5E248960BC00AE5BE8 /* FileKit */,
+				857CCA5E248960BC00AE5BE8 /* SwiftPackageProductDependency */,
 			);
 			productName = ActionExtension;
 			productReference = 854448172488C6C40010F1F7 /* ActionExtension.appex */;
@@ -532,8 +532,8 @@
 			);
 			mainGroup = 854447D72488C6920010F1F7;
 			packageReferences = (
-				857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */,
-				856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */,
+				857CCA5A248960A300AE5BE8 /* RemoteSwiftPackageReference */,
+				856B8034248C4D030055F8C0 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 854447E12488C6930010F1F7 /* Products */;
 			projectDirPath = "";
@@ -913,6 +913,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Scrapmd/Scrapmd.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -927,6 +928,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc app.scrapmd.Scrapmd";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1035,6 +1037,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				INFOPLIST_FILE = ActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1044,6 +1047,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd.ActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc app.scrapmd.Scrapmd.ActionExtension";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -1102,7 +1106,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */ = {
+		856B8034248C4D030055F8C0 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Ink.git";
 			requirement = {
@@ -1110,7 +1114,7 @@
 				minimumVersion = 0.5.0;
 			};
 		};
-		857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */ = {
+		857CCA5A248960A300AE5BE8 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nvzqz/FileKit.git";
 			requirement = {
@@ -1121,19 +1125,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		856B8035248C4D030055F8C0 /* Ink */ = {
+		856B8035248C4D030055F8C0 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */;
+			package = 856B8034248C4D030055F8C0 /* RemoteSwiftPackageReference */;
 			productName = Ink;
 		};
-		857CCA5B248960A300AE5BE8 /* FileKit */ = {
+		857CCA5B248960A300AE5BE8 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;
+			package = 857CCA5A248960A300AE5BE8 /* RemoteSwiftPackageReference */;
 			productName = FileKit;
 		};
-		857CCA5E248960BC00AE5BE8 /* FileKit */ = {
+		857CCA5E248960BC00AE5BE8 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;
+			package = 857CCA5A248960A300AE5BE8 /* RemoteSwiftPackageReference */;
 			productName = FileKit;
 		};
 /* End XCSwiftPackageProductDependency section */

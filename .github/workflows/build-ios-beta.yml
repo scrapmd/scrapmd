@@ -1,17 +1,26 @@
-name: Build iOS Beta
+name: Build and Upload iOS Beta
 
 on: push
 
 env:
+  HOMEBREW_NO_AUTO_UPDATE: 1
+  HOMEBREW_NO_INSTALL_CLEANUP: 1
   DERIVED_DATA_PATH: DerivedData
   GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
   FASTLANE_SKIP_UPDATE_CHECK: 1
   MATCH_READONLY: 'true'
   MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
   MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
+  MATCH_KEYCHAIN_NAME: tmp.keychain
+  CERT_KEYCHAIN_NAME: tmp.keychain
+  KEYCHAIN_NAME: tmp.keychain
+  MATCH_KEYCHAIN_PASSWORD: tmp
+  CERT_KEYCHAIN_PASSWORD: tmp
+  KEYCHAIN_PASSWORD: tmp
 
 jobs:
-  tests:
+  build:
     runs-on: macos-10.15
     steps:
     - uses: actions/checkout@v2
@@ -22,9 +31,20 @@ jobs:
         key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }}
         restore-keys: |
           ${{ runner.os }}-gems-
+      name: Generate random keychain password
     - run: bundle config set path 'vendor/bundle'
     - run: bundle install
       if: steps.cache-bundler.outputs.cache-hit != 'true'
-    - run: bundle exec fastlane fastlane ios beta_match
-    - run: bundle exec fastlane fastlane ios set_build_number
-    - run: bundle exec fastlane fastlane ios beta_build
+    - run: bundle exec fastlane ios create_ci_keychain
+    - run: bundle exec fastlane ios beta_match
+      name: Beta match
+    - run: bundle exec fastlane ios set_build_number
+      name: Set build number
+    - run: bundle exec fastlane ios beta_build
+      name: Beta build
+    - run: npm i -g firebase-tools
+      name: Install Firebase
+    - run: bundle exec fastlane ios beta_upload
+      name: Upload app to Firebase
+    - run: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp Scrapmd/GoogleService-Info.plist -p ios build/ios/Scrapmd.app.dSYM.zip
+      name: Upload dSYM to Firebase

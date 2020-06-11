@@ -17,6 +17,15 @@ platform :ios do
     run_tests
   end
 
+  desc 'Create keychain'
+  lane :create_ci_keychain do
+    create_keychain(
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600
+    )
+  end
+
   desc 'Build app for beta'
   lane :beta_build do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
