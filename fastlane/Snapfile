@@ -1,3 +1,5 @@
+# vim: set ft=ruby
+
 devices([
   "iPhone 8",
   "iPhone 8 Plus",
@@ -16,8 +18,8 @@ languages(["en-US"])
 
 # clear_previous_screenshots(true)
 
-project "CI2Go.xcodeproj"
-scheme "CI2GoUITests"
+project "Scrapmd.xcodeproj"
+scheme "ScrapmdUITests"
 launch_arguments ["-circleToken #{ENV.fetch('UI_TEST_CIRCLE_TOKEN')}"]
 
 # For more information about all available options run
