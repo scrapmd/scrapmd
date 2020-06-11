@@ -61,7 +61,10 @@ class DirectoryBrowser: ObservableObject {
     }
 
     @objc func update() {
-        self.items = self.path.children(recursive: false)
+        let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
+        queueId += 1
+        queue.async {
+            let items = self.path.children(recursive: false)
             .filter({ path in
                 !path.isHidden && path.isDirectory &&
                     ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
@@ -74,6 +77,10 @@ class DirectoryBrowser: ObservableObject {
                 }
                 return $0.fileName < $1.fileName
             }) .map { Item($0) }
+            DispatchQueue.main.async {
+                self.items = items
+            }
+        }
     }
 
     func delete(at offsets: IndexSet) {
