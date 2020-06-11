@@ -16,7 +16,7 @@ struct DirectoryPickerView: View {
     let chooseHandler: ChooseHandler
 
     init(_ path: FileKitPath, chooseHandler: @escaping ChooseHandler) {
-        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: true)
+        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: true, sort: .name)
         self.path = path
         self.chooseHandler = chooseHandler
     }

@@ -15,13 +15,17 @@ struct DirectoryBrowserView: View {
 
     init(_ path: FileKitPath) {
         self.path = path
-        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: false)
+        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: false, sort: .created)
     }
 
     var body: some View {
         List {
-            ForEach(directoryBrowser.items.indices, id: \.self) { index in
-                ItemView(item: self.$directoryBrowser.items[index])
+            ForEach(directoryBrowser.sectionedIndices, id: \.0) { (section, indices) in
+                Section(header: Text(section)) {
+                    ForEach(indices, id: \.self) { index in
+                        ItemView(item: self.$directoryBrowser.items[index])
+                    }
+                }
             }
             .onDelete(perform: delete)
         }

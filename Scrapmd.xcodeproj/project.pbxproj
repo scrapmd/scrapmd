@@ -11,6 +11,8 @@
 		85049C242492862200934746 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C232492862200934746 /* NotificationExtension.swift */; };
 		85049C25249286D200934746 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C232492862200934746 /* NotificationExtension.swift */; };
 		85049C26249295E000934746 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C212492834500934746 /* FileManagerExtension.swift */; };
+		85049C2824929BB600934746 /* DirectoryBrowser.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */; };
+		85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */; };
 		853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
 		8539518C2492433900033AF1 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
 		8539518D2492433900033AF1 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; };
@@ -130,6 +132,7 @@
 /* Begin PBXFileReference section */
 		85049C212492834500934746 /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		85049C232492862200934746 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowser.Item.swift; sourceTree = "<group>"; };
 		8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCrashlytics.xcframework; path = Vendor/Firebase/FirebaseCrashlytics/FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
 		853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleDataTransportCCTSupport.xcframework; path = Vendor/Firebase/FirebaseAnalytics/GoogleDataTransportCCTSupport.xcframework; sourceTree = "<group>"; };
 		853951822492433800033AF1 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Vendor/Firebase/FirebaseAnalytics/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
@@ -414,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */,
+				85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */,
 				85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */,
 				856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */,
 			);
@@ -653,6 +657,7 @@
 				85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */,
 				857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				854447E42488C6930010F1F7 /* AppDelegate.swift in Sources */,
+				85049C2824929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
 				85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */,
 				856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */,
 				85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */,
@@ -699,6 +704,7 @@
 			files = (
 				85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
+				85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
 				857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */,
 				856B804D248CD08F0055F8C0 /* SaveActionInputView.swift in Sources */,
