@@ -26,10 +26,14 @@ struct SaveActionView: View {
                 .navigationBarItems(
                     leading: Button(action: cancelAction, label: {
                         Text("Cancel")
-                    }),
+                    }).disabled(saverViewModel.isDownloading),
                     trailing: Button(action: save, label: {
-                        Text("Save").fontWeight(.bold)
-                    }))
+                        if saverViewModel.isDownloading {
+                            ActivityIndicator(isAnimating: .constant(true), style: .medium)
+                        } else {
+                            Text("Save").fontWeight(.bold)
+                        }
+                    }).disabled(saverViewModel.isDownloading))
                 .onAppear { self.saverViewModel.contentSaver = self.contentSaver }
         }
     }

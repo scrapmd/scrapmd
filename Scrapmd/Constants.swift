@@ -21,6 +21,13 @@ let displayDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+let sectionDateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .medium
+    dateFormatter.timeStyle = .none
+    return dateFormatter
+}()
+
 extension JSONEncoder.DateEncodingStrategy {
     static var `default`: JSONEncoder.DateEncodingStrategy { .iso8601 }
 }

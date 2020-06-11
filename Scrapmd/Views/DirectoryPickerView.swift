@@ -14,11 +14,13 @@ struct DirectoryPickerView: View {
     @ObservedObject var directoryBrowser: DirectoryBrowser
     @State var isNewFolderModalShown = false
     let chooseHandler: ChooseHandler
+    let chosenPath: FileKitPath?
 
-    init(_ path: FileKitPath, chooseHandler: @escaping ChooseHandler) {
-        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: true)
+    init(_ path: FileKitPath, chosenPath: FileKitPath? = nil, chooseHandler: @escaping ChooseHandler) {
+        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: true, sort: .name)
         self.path = path
         self.chooseHandler = chooseHandler
+        self.chosenPath = chosenPath
     }
 
     var body: some View {
@@ -29,7 +31,15 @@ struct DirectoryPickerView: View {
                         destination: DirectoryPickerView(item.path) { (path, sender) in
                             self.choose(path, sender)
                         },
-                        label: { Text(item.path.fileName) }
+                        label: {
+                            HStack {
+                                Text(item.path.fileName)
+                                if self.chosenPath == item.path {
+                                    Spacer()
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                    }
                     ).isDetailLink(false)
                 }
             }
@@ -63,7 +73,7 @@ struct DirectoryPickerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             DirectoryPickerView(
-                FileKitPath.userDocuments) { (_, _) in }
+            FileKitPath.userDocuments) { (_, _) in }
         }
     }
 }

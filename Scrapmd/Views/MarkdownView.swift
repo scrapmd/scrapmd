@@ -14,9 +14,9 @@ struct MarkdownView: UIViewRepresentable {
     let path: FileKitPath
     @Binding var showSource: Bool
 
-    func wrapHTML(_ html: String) -> String {
+    func wrapHTML(_ html: String, width: CGFloat) -> String {
         // swiftlint:disable:next line_length
-        "<html><head><meta charset=\"utf-8\"><style type=\"text/css\">body { font-family: Helvetica, sans-serif; line-height: 200%; color: \(UIColor.label.cssHex) } a { color: \(Color.accentColor.cssHex) } img { max-width: 100%; max-height: 320px; }</style></head><body>\(html)</body></html>".replacingOccurrences(of: "<img src=\"img/", with: "<img src=\"file://\(path.rawValue)/img/")
+        "<html><head><meta charset=\"utf-8\"><style type=\"text/css\">body { font-family: Helvetica, sans-serif; line-height: 200%; color: \(UIColor.label.cssHex) } a { color: \(Color.accentColor.cssHex) } img { max-width: \(width > 500 ? "100%" : "\(width - 20)px"); max-height: \(width)px; text-align: center; display: block; margin: 0 auto; }</style></head><body>\(html)</body></html>".replacingOccurrences(of: "<img src=\"img/", with: "<img src=\"file://\(path.rawValue)/img/")
     }
 
     func makeUIView(context: Context) -> UITextView {
@@ -34,7 +34,7 @@ struct MarkdownView: UIViewRepresentable {
             return
         }
         let parser = MarkdownParser()
-        let html = wrapHTML(parser.html(from: markdown))
+        let html = wrapHTML(parser.html(from: markdown), width: UIApplication.shared.windows.first?.bounds.width ?? 320)
         let data = html.data(using: .utf8)!
         DispatchQueue.main.async {
             do {

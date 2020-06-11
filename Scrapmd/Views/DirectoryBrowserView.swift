@@ -15,24 +15,32 @@ struct DirectoryBrowserView: View {
 
     init(_ path: FileKitPath) {
         self.path = path
-        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: false)
+        self.directoryBrowser = DirectoryBrowser(path, onlyDirectory: false, sort: .created)
     }
 
     var body: some View {
         List {
-            ForEach(directoryBrowser.items, id: \.self) { (item: DirectoryBrowser.Item) in
-                ItemView(item)
+            ForEach(directoryBrowser.sectionedIndices, id: \.0) { (section, indices) in
+                Section(header: Text(section == "" ? "Folder" : section)) {
+                    ForEach(indices, id: \.self) { index in
+                        ItemView(item: self.$directoryBrowser.items[index])
+                    }
+                }
             }
             .onDelete(perform: delete)
         }
         .listStyle(DefaultListStyle())
         .navigationBarTitle(path.fileName)
-        .navigationBarItems(trailing: Button(action: {
-            self.isNewModalShown = true
-        }) {
-            Image(systemName: "plus")
-        }).sheet(isPresented: $isNewModalShown) {
+        .navigationBarItems(
+            trailing: Button(action: {
+                self.isNewModalShown = true
+            }) {
+                Image(systemName: "plus")
+            }
+        ).sheet(isPresented: $isNewModalShown) {
             NewScrapView(isShown: self.$isNewModalShown)
+        }.onAppear {
+            FileManager.default.sync()
         }
     }
 

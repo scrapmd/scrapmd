@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85049C222492834500934746 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C212492834500934746 /* FileManagerExtension.swift */; };
+		85049C242492862200934746 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C232492862200934746 /* NotificationExtension.swift */; };
+		85049C25249286D200934746 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C232492862200934746 /* NotificationExtension.swift */; };
+		85049C26249295E000934746 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C212492834500934746 /* FileManagerExtension.swift */; };
+		85049C2824929BB600934746 /* DirectoryBrowser.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */; };
+		85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */; };
 		853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
 		8539518C2492433900033AF1 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
 		8539518D2492433900033AF1 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; };
@@ -39,7 +45,7 @@
 		856B802F248C3BD70055F8C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854447EE2488C6940010F1F7 /* LaunchScreen.storyboard */; };
 		856B8031248C3F950055F8C0 /* ScrapReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8030248C3F950055F8C0 /* ScrapReaderView.swift */; };
 		856B8033248C3FBE0055F8C0 /* DetailPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8032248C3FBE0055F8C0 /* DetailPlaceholderView.swift */; };
-		856B8036248C4D030055F8C0 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 856B8035248C4D030055F8C0 /* SwiftPackageProductDependency */; };
+		856B8036248C4D030055F8C0 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 856B8035248C4D030055F8C0 /* Ink */; };
 		856B8038248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */; };
 		856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8039248C52E40055F8C0 /* MarkdownView.swift */; };
 		856B803E248C7D630055F8C0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B803D248C7D630055F8C0 /* UIColorExtension.swift */; };
@@ -54,8 +60,8 @@
 		856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */; };
 		856B8052248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */; };
 		856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */; };
-		857CCA5C248960A300AE5BE8 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* SwiftPackageProductDependency */; };
-		857CCA5F248960BC00AE5BE8 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5E248960BC00AE5BE8 /* SwiftPackageProductDependency */; };
+		857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* FileKit */; };
+		857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5E248960BC00AE5BE8 /* FileKit */; };
 		857CCA642489712900AE5BE8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA632489712900AE5BE8 /* APIClient.swift */; };
 		857CCA652489712900AE5BE8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA632489712900AE5BE8 /* APIClient.swift */; };
 		857CCA6724897A1F00AE5BE8 /* ContentSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */; };
@@ -124,6 +130,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		85049C212492834500934746 /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
+		85049C232492862200934746 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowser.Item.swift; sourceTree = "<group>"; };
 		8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCrashlytics.xcframework; path = Vendor/Firebase/FirebaseCrashlytics/FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
 		853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleDataTransportCCTSupport.xcframework; path = Vendor/Firebase/FirebaseAnalytics/GoogleDataTransportCCTSupport.xcframework; sourceTree = "<group>"; };
 		853951822492433800033AF1 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Vendor/Firebase/FirebaseAnalytics/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
@@ -201,9 +210,9 @@
 				8539519C2492445800033AF1 /* StoreKit.framework in Frameworks */,
 				8539519A2492444E00033AF1 /* libc++.tbd in Frameworks */,
 				853951982492443B00033AF1 /* libsqlite3.0.tbd in Frameworks */,
-				857CCA5C248960A300AE5BE8 /* BuildFile in Frameworks */,
+				857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */,
 				853951902492433900033AF1 /* FirebaseCore.xcframework in Frameworks */,
-				856B8036248C4D030055F8C0 /* BuildFile in Frameworks */,
+				856B8036248C4D030055F8C0 /* Ink in Frameworks */,
 				853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */,
 				853951962492433900033AF1 /* GoogleAppMeasurement.framework in Frameworks */,
 				853951942492433900033AF1 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
@@ -236,7 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				857CCA5F248960BC00AE5BE8 /* BuildFile in Frameworks */,
+				857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +407,8 @@
 				857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */,
 				856B803D248C7D630055F8C0 /* UIColorExtension.swift */,
 				856B8045248CBE3A0055F8C0 /* URLExtension.swift */,
+				85049C212492834500934746 /* FileManagerExtension.swift */,
+				85049C232492862200934746 /* NotificationExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -406,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */,
+				85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */,
 				85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */,
 				856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */,
 			);
@@ -433,8 +445,8 @@
 			);
 			name = Scrapmd;
 			packageProductDependencies = (
-				857CCA5B248960A300AE5BE8 /* SwiftPackageProductDependency */,
-				856B8035248C4D030055F8C0 /* SwiftPackageProductDependency */,
+				857CCA5B248960A300AE5BE8 /* FileKit */,
+				856B8035248C4D030055F8C0 /* Ink */,
 			);
 			productName = Scrapmd;
 			productReference = 854447E02488C6930010F1F7 /* Scrapmd.app */;
@@ -490,7 +502,7 @@
 			);
 			name = ActionExtension;
 			packageProductDependencies = (
-				857CCA5E248960BC00AE5BE8 /* SwiftPackageProductDependency */,
+				857CCA5E248960BC00AE5BE8 /* FileKit */,
 			);
 			productName = ActionExtension;
 			productReference = 854448172488C6C40010F1F7 /* ActionExtension.appex */;
@@ -532,8 +544,8 @@
 			);
 			mainGroup = 854447D72488C6920010F1F7;
 			packageReferences = (
-				857CCA5A248960A300AE5BE8 /* RemoteSwiftPackageReference */,
-				856B8034248C4D030055F8C0 /* RemoteSwiftPackageReference */,
+				857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */,
+				856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */,
 			);
 			productRefGroup = 854447E12488C6930010F1F7 /* Products */;
 			projectDirPath = "";
@@ -645,6 +657,7 @@
 				85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */,
 				857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				854447E42488C6930010F1F7 /* AppDelegate.swift in Sources */,
+				85049C2824929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
 				85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */,
 				856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */,
 				85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */,
@@ -660,10 +673,12 @@
 				856B8040248C8D820055F8C0 /* ActivityViewController.swift in Sources */,
 				854447E82488C6930010F1F7 /* ContentView.swift in Sources */,
 				857CCA6724897A1F00AE5BE8 /* ContentSaver.swift in Sources */,
+				85049C242492862200934746 /* NotificationExtension.swift in Sources */,
 				857CCA642489712900AE5BE8 /* APIClient.swift in Sources */,
 				85F9008B248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */,
 				856B804C248CCE090055F8C0 /* SaveActionInputView.swift in Sources */,
 				856B8044248CA5BA0055F8C0 /* NewScrapView.swift in Sources */,
+				85049C222492834500934746 /* FileManagerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,14 +704,17 @@
 			files = (
 				85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
+				85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
 				857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */,
 				856B804D248CD08F0055F8C0 /* SaveActionInputView.swift in Sources */,
+				85049C26249295E000934746 /* FileManagerExtension.swift in Sources */,
 				8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */,
 				85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */,
 				857CCA652489712900AE5BE8 /* APIClient.swift in Sources */,
 				857F5EAF248A0E7600DC640D /* Constants.swift in Sources */,
 				857F5EB3248B24AF00DC640D /* DirectoryPickerView.swift in Sources */,
+				85049C25249286D200934746 /* NotificationExtension.swift in Sources */,
 				857CCA6C24897C5600AE5BE8 /* FileKitExtension.swift in Sources */,
 				85F90086248B5004007F5A33 /* CreateFolderView.swift in Sources */,
 				85F9008F248B66B7007F5A33 /* ProgressBar.swift in Sources */,
@@ -886,12 +904,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Scrapmd/Scrapmd.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
+				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
 				);
 				INFOPLIST_FILE = Scrapmd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -901,6 +922,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development app.scrapmd.Scrapmd";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -919,6 +941,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
 				);
 				INFOPLIST_FILE = Scrapmd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1016,6 +1039,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				INFOPLIST_FILE = ActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1025,6 +1050,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd.ActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development app.scrapmd.Scrapmd.ActionExtension";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -1106,7 +1132,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		856B8034248C4D030055F8C0 /* RemoteSwiftPackageReference */ = {
+		856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Ink.git";
 			requirement = {
@@ -1114,7 +1140,7 @@
 				minimumVersion = 0.5.0;
 			};
 		};
-		857CCA5A248960A300AE5BE8 /* RemoteSwiftPackageReference */ = {
+		857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nvzqz/FileKit.git";
 			requirement = {
@@ -1125,19 +1151,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		856B8035248C4D030055F8C0 /* SwiftPackageProductDependency */ = {
+		856B8035248C4D030055F8C0 /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 856B8034248C4D030055F8C0 /* RemoteSwiftPackageReference */;
+			package = 856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */;
 			productName = Ink;
 		};
-		857CCA5B248960A300AE5BE8 /* SwiftPackageProductDependency */ = {
+		857CCA5B248960A300AE5BE8 /* FileKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 857CCA5A248960A300AE5BE8 /* RemoteSwiftPackageReference */;
+			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;
 			productName = FileKit;
 		};
-		857CCA5E248960BC00AE5BE8 /* SwiftPackageProductDependency */ = {
+		857CCA5E248960BC00AE5BE8 /* FileKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 857CCA5A248960A300AE5BE8 /* RemoteSwiftPackageReference */;
+			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;
 			productName = FileKit;
 		};
 /* End XCSwiftPackageProductDependency section */

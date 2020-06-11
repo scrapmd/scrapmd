@@ -30,6 +30,16 @@ extension Path {
         return nil
     }
 
+    var createdAt: Date? {
+        if let date = metadata?.createdAt {
+            return date
+        }
+        return children(recursive: true)
+            .filter { $0.createdAt != nil }
+            .sorted(by: { $0.createdAt! > $1.createdAt! })
+            .first?.createdAt
+    }
+
     var isHidden: Bool {
         isDotfile || (isScrap && !metadataFile.exists)
     }
@@ -90,6 +100,6 @@ extension Path {
 
 extension Path: Identifiable {
     public var id: String { // swiftlint:disable:this identifier_name
-        return "\(self.rawValue)-\(self.scrapsCount)-\(self.foldersCount)"
+        "\(self.rawValue) \(self.scrapsCount) \(self.foldersCount)".data(using: .utf8)!.base64EncodedString()
     }
 }

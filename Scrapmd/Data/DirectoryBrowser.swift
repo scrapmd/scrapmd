@@ -11,48 +11,36 @@ import Combine
 import FileKit
 import Dispatch
 import UIKit
+import SwiftUI
 
 private var queueId = 0
 
 class DirectoryBrowser: ObservableObject {
-    class Item: ObservableObject, Identifiable, Hashable {
-        @Published var metadata: ScrapMetadata?
-        @Published var thumbnail: UIImage?
-
-        static func == (lhs: DirectoryBrowser.Item, rhs: DirectoryBrowser.Item) -> Bool {
-            lhs.path == rhs.path
-        }
-
-        let path: Path
-        init(_ path: Path) {
-            self.path = path
-            self.metadata = path.metadata
-            self.thumbnail = path.thumbnail
-        }
-        var id: String { // swiftlint:disable:this identifier_name
-            path.id
-        }
-
-        func hash(into hasher: inout Hasher) {
-            self.path.hash(into: &hasher)
-        }
-    }
     let onlyDirectory: Bool
     @Published var items: [Item]
-    let path: Path
+    let path: FileKitPath
+    let sort: Sort
 
-    init(_ path: Path, onlyDirectory: Bool) {
+    enum Sort {
+        case created
+        case name
+    }
+
+    init(_ path: FileKitPath, onlyDirectory: Bool, sort: Sort) {
         self.onlyDirectory = onlyDirectory
         self.items = []
         self.path = path
+        self.sort = sort
         update()
         updateMonitor()
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: .updateDirectory, object: nil)
     }
 
     private var monitor: DispatchSourceFileSystemObject?
 
     deinit {
         monitor?.cancel()
+        NotificationCenter.default.removeObserver(self)
     }
 
     func updateMonitor() {
@@ -72,21 +60,51 @@ class DirectoryBrowser: ObservableObject {
         self.monitor = monitor
     }
 
-    func update() {
+    @objc func update() {
         self.items = self.path.children(recursive: false)
             .filter({ path in
                 !path.isHidden && path.isDirectory &&
                     ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
-            }).map { Item($0) }
+            }).sorted(by: {
+                if
+                    self.sort == .created,
+                    let date1 = $0.createdAt,
+                    let date2 = $1.createdAt {
+                    return date1 > date2
+                }
+                return $0.fileName < $1.fileName
+            }) .map { Item($0) }
     }
 
     func delete(at offsets: IndexSet) {
         offsets.forEach { offset in
             do {
                 try items[offset].path.deleteFile()
+                items.remove(at: offset)
             } catch {
                 print(error)
             }
         }
+        FileManager.default.sync()
+        NotificationCenter.default.post(Notification(name: .updateDirectory))
+    }
+
+    var sectionedIndices: [(String, [Range<Int>.Element])] {
+        Dictionary(grouping: self.items.indices) {
+            if let date = self.items[$0].path.createdAt {
+                return sectionDateFormatter.string(from: date)
+            }
+            return ""
+        }.map { ($0, $1) }.sorted(by: {
+            if
+                let date1 = self.items[$0.1[0]].path.createdAt,
+                let date2 = self.items[$1.1[0]].path.createdAt {
+                return date1 > date2
+            }
+            if self.items[$0.1[0]].path.createdAt != nil {
+                return true
+            }
+            return false
+        })
     }
 }

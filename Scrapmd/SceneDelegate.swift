@@ -24,4 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        FileManager.default.sync()
+        NotificationCenter.default.post(Notification(name: .updateDirectory))
+    }
 }

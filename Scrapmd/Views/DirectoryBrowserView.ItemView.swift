@@ -10,21 +10,19 @@ import SwiftUI
 
 extension DirectoryBrowserView {
     struct ScrapItemView: View {
-        let path: FileKitPath
-        @Binding var metadata: ScrapMetadata?
-        let thumbnail: UIImage?
+        @Binding var item: DirectoryBrowser.Item
 
         var body: some View {
-            NavigationLink(destination: ScrapReaderView(path)) {
+            NavigationLink(destination: ScrapReaderView(item.path)) {
                 HStack {
-                    Image(uiImage: thumbnail ?? UIImage())
+                    Image(uiImage: item.thumbnail ?? UIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 60.0, height: 60.0, alignment: .center)
                         .clipped()
                     VStack(alignment: .leading) {
-                        Text(metadata!.title)
-                        Text("\(metadata!.createdAt, formatter: displayDateFormatter)")
+                        Text(item.metadata?.title ?? item.fileName)
+                        Text("\(item.path.createdAt!, formatter: displayDateFormatter)")
                             .font(.caption)
                             .opacity(0.5)
                             .padding(.top, 5.0)
@@ -35,23 +33,29 @@ extension DirectoryBrowserView {
     }
 
     struct FolderItemView: View {
-        let path: FileKitPath
+        @Binding var item: DirectoryBrowser.Item
 
         var body: some View {
-            NavigationLink(destination: DirectoryBrowserView(path)) {
+            NavigationLink(destination: DirectoryBrowserView(item.path)) {
                 HStack {
                     Image(systemName: "folder")
                         .frame(width: 60.0, height: 60.0, alignment: .center)
                     VStack(alignment: .leading) {
-                        Text(path.fileName)
+                        Text(item.fileName)
+                        if item.path.createdAt != nil {
+                            Text("\(item.path.createdAt!, formatter: displayDateFormatter)")
+                                .font(.caption)
+                                .opacity(0.5)
+                                .padding(.top, 5.0)
+                        }
                         HStack {
-                            if path.scrapsCount > 0 {
-                                Text("\(path.scrapsCount).scraps")
+                            if item.scrapsCount > 0 {
+                                Text("\(item.scrapsCount).scraps")
                                     .font(.caption)
                                     .opacity(0.5)
                             }
-                            if path.foldersCount > 0 {
-                                Text("\(path.foldersCount).folders")
+                            if item.foldersCount > 0 {
+                                Text("\(item.foldersCount).folders")
                                     .font(.caption)
                                     .opacity(0.5)
                             }
@@ -63,22 +67,13 @@ extension DirectoryBrowserView {
     }
 
     struct ItemView: View {
-        @ObservedObject var item: DirectoryBrowser.Item
-
-        init(_ item: DirectoryBrowser.Item) {
-            self.item = item
-        }
+        @Binding var item: DirectoryBrowser.Item
 
         var body: some View {
-            let path = item.path
             if item.metadata != nil {
-                return AnyView(DirectoryBrowserView.ScrapItemView(
-                    path: path,
-                    metadata: $item.metadata,
-                    thumbnail: item.thumbnail
-                ))
+                return AnyView(DirectoryBrowserView.ScrapItemView(item: $item))
             }
-            return AnyView(DirectoryBrowserView.FolderItemView(path: path))
+            return AnyView(DirectoryBrowserView.FolderItemView(item: $item))
         }
     }
 }
@@ -86,15 +81,10 @@ extension DirectoryBrowserView {
 struct DirectoryBrowserViewItemView_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            DirectoryBrowserView.FolderItemView(path: FileKitPath("/Users/ngs/Documents"))
-            DirectoryBrowserView.ScrapItemView(
-                path: FileKitPath("."),
-                metadata: .constant(ScrapMetadata(
-                    title: "寿限無　寿限無　五劫のすりきれ 海砂利水魚の水行末　雲来末　風来末 食う寝るところに住むところ",
-                    url: "https://ja.ngs.io/",
-                    createdAt: Date(timeIntervalSince1970: 1591473224),
-                    appVersion: "1.0.0")),
-                thumbnail: #imageLiteral(resourceName: "thumbnail"))
+            DirectoryBrowserView.FolderItemView(item:
+                .constant(DirectoryBrowser.Item(FileKitPath("/Users/ngs/Documents"))))
+            DirectoryBrowserView.ScrapItemView(item:
+                .constant(DirectoryBrowser.Item(FileKitPath("/Users/ngs/Documents"))))
         }
     }
 }
