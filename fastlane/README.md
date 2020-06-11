@@ -26,6 +26,11 @@ Set Build Number to GITHUB_RUN_ID
 fastlane ios tests
 ```
 Run tests
+### ios create_ci_keychain
+```
+fastlane ios create_ci_keychain
+```
+Create keychain
 ### ios beta_build
 ```
 fastlane ios beta_build

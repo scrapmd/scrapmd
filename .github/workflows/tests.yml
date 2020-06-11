@@ -1,6 +1,10 @@
 name: Tests
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
 
 env:
   DERIVED_DATA_PATH: DerivedData
