@@ -79,6 +79,8 @@
 		85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6A880248A050F0086F13F /* ActionViewController.swift */; };
+		85E87AC72492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */; };
+		85E87AC82492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */; };
 		85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
 		85F90086248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
 		85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */; };
@@ -194,6 +196,7 @@
 		85948D3E24891BA400763582 /* GetHTML.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetHTML.js; sourceTree = "<group>"; };
 		85A5B43E24905E1900F56AEB /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		85D6A880248A050F0086F13F /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		85F90084248B5004007F5A33 /* CreateFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderView.swift; sourceTree = "<group>"; };
 		85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMeatadata.swift; sourceTree = "<group>"; };
 		85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppInfoExtension.swift; sourceTree = "<group>"; };
@@ -409,6 +412,7 @@
 				856B8045248CBE3A0055F8C0 /* URLExtension.swift */,
 				85049C212492834500934746 /* FileManagerExtension.swift */,
 				85049C232492862200934746 /* NotificationExtension.swift */,
+				85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -658,6 +662,7 @@
 				857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				854447E42488C6930010F1F7 /* AppDelegate.swift in Sources */,
 				85049C2824929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
+				85E87AC72492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */,
 				85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */,
 				856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */,
 				85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */,
@@ -705,6 +710,7 @@
 				85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
 				85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
+				85E87AC82492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */,
 				857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */,
 				856B804D248CD08F0055F8C0 /* SaveActionInputView.swift in Sources */,

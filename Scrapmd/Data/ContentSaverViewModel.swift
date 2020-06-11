@@ -20,7 +20,7 @@ class ContentSaverViewModel: ObservableObject {
     }
 
     init() {
-        self.saveLocation = Path.iCloudDocuments ?? Path.userDocuments
+        self.saveLocation = UserDefaults.shared.lastLocation
     }
 
     init(saveLocation: Path) {
@@ -51,6 +51,7 @@ class ContentSaverViewModel: ObservableObject {
     }
 
     func download(completionHandler: @escaping () -> Void) {
+        UserDefaults.shared.lastLocation = saveLocation
         isDownloading = true
         downloadProgress = 0
         contentSaver?.download(to: saveLocation, name: title, progress: { (_, current, total) in
