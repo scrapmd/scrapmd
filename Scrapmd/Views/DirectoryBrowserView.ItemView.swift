@@ -72,14 +72,18 @@ extension DirectoryBrowserView {
         var body: some View {
             let path = item.path
             if item.metadata != nil {
-                return AnyView(DirectoryBrowserView.ScrapItemView(path: path, metadata: $item.metadata, thumbnail: item.thumbnail))
+                return AnyView(DirectoryBrowserView.ScrapItemView(
+                    path: path,
+                    metadata: $item.metadata,
+                    thumbnail: item.thumbnail
+                ))
             }
             return AnyView(DirectoryBrowserView.FolderItemView(path: path))
         }
     }
 }
 
-struct DirectoryBrowserView_ItemView_Previews: PreviewProvider {
+struct DirectoryBrowserViewItemView_Previews: PreviewProvider {
     static var previews: some View {
         List {
             DirectoryBrowserView.FolderItemView(path: FileKitPath("/Users/ngs/Documents"))

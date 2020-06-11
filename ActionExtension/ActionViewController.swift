@@ -50,20 +50,23 @@ import SwiftUI
     func renderSaveView(result: APIClient.Result) {
         let saver = ContentSaver(result: result)
         let rootView = SaveActionView(contentSaver: saver, cancelAction: done, doneAction: done)
-        let vc = UIHostingController<SaveActionView>(rootView: rootView)
-        addChild(vc)
-        view.addSubview(vc.view)
-        vc.didMove(toParent: self)
-        vc.view.translatesAutoresizingMaskIntoConstraints = false
-        vc.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
-        vc.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
-        vc.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
-        vc.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
-        hostingViewController = vc
+        let viewController = UIHostingController<SaveActionView>(rootView: rootView)
+        addChild(viewController)
+        view.addSubview(viewController.view)
+        viewController.didMove(toParent: self)
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        viewController.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        viewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        viewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        viewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
+        hostingViewController = viewController
     }
 
     func done() {
-        self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
+        self.extensionContext!.completeRequest(
+            returningItems: self.extensionContext!.inputItems,
+            completionHandler: nil
+        )
     }
 
 }

@@ -49,7 +49,7 @@ class ContentSaverViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.downloadProgress = Float(current) / Float(total)
             }
-        }) { err in
+        }, completionHandler: { err in
             DispatchQueue.main.async {
                 self.downloadProgress = 1.0
                 if let err = err {
@@ -62,6 +62,6 @@ class ContentSaverViewModel: ObservableObject {
                     }
                 }
             }
-        }
+        })
     }
 }

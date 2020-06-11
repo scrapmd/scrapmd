@@ -52,19 +52,22 @@ struct ContentSaver {
 
     func finalize(_ dest: Path) {
         if !dest.thumbnailFile.exists {
-            let found = (dest + "img").children().sorted { (a: Path, b: Path) in
-                (a.fileSize ?? 0) > (b.fileSize ?? 0)
+            let found = (dest + "img").children().sorted {
+                ($0.fileSize ?? 0) > ($1.fileSize ?? 0)
             }.first
             try? found?.copyFile(to: dest.thumbnailFile.path)
         }
     }
 
-    func download(to: Path, name: String, progress: @escaping ProgressHandler, completionHandler: @escaping CompletionHandler) {
+    // swiftlint:disable:next identifier_name function_body_length
+    func download(to: Path, name: String, progress: @escaping ProgressHandler,
+                  completionHandler: @escaping CompletionHandler) {
         var dest = to + "\(name)\(scrapDirectoryNameSuffix)"
-        var i = 0
+        var num = 0
         while dest.exists {
-            i += 1
-            let suffix = " \(i)"
+            num += 1
+            let suffix = " \(num)"
+            // swiftlint:disable:next line_length
             dest = dest.parent + "\(name.prefix(scrapDirectoryNameMaxLength - suffix.count))\(suffix)\(scrapDirectoryNameSuffix)"
         }
         do {
@@ -86,7 +89,10 @@ struct ContentSaver {
             images[thumbnailPath] = leadImageURL
         }
         for (sum, url) in images {
-            let queue = ProgressInfo(url: URL(string: url)!, destination: ImageFile(path: dest + sum)).queue { (info, err) in
+            let queue = ProgressInfo(
+                url: URL(string: url)!,
+                destination: ImageFile(path: dest + sum)
+            ).queue { (info, err) in
                 if let err = err {
                     completionHandler(err)
                     return
@@ -96,9 +102,9 @@ struct ContentSaver {
                     completionHandler(nil)
                     return
                 }
-                let q = queues.removeFirst()
-                progress(q.info, total - queues.count - 1, total)
-                q.resume()
+                let firstQueue = queues.removeFirst()
+                progress(firstQueue.info, total - queues.count - 1, total)
+                firstQueue.resume()
             }
             queues.append(queue)
         }
@@ -107,8 +113,8 @@ struct ContentSaver {
             return
         }
         total = queues.count
-        let q = queues.removeFirst()
-        progress(q.info, 0, total)
-        q.resume()
+        let firstQueue = queues.removeFirst()
+        progress(firstQueue.info, 0, total)
+        firstQueue.resume()
     }
 }

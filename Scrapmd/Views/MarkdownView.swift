@@ -15,6 +15,7 @@ struct MarkdownView: UIViewRepresentable {
     @Binding var showSource: Bool
 
     func wrapHTML(_ html: String) -> String {
+        // swiftlint:disable:next line_length
         "<html><head><meta charset=\"utf-8\"><style type=\"text/css\">body { font-family: Helvetica, sans-serif; line-height: 200%; color: \(UIColor.label.cssHex) } a { color: \(Color.accentColor.cssHex) } img { max-width: 100%; max-height: 320px; }</style></head><body>\(html)</body></html>".replacingOccurrences(of: "<img src=\"img/", with: "<img src=\"file://\(path.rawValue)/img/")
     }
 

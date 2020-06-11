@@ -29,7 +29,7 @@ class DirectoryBrowser: ObservableObject {
             self.metadata = path.metadata
             self.thumbnail = path.thumbnail
         }
-        var id: String {
+        var id: String { // swiftlint:disable:this identifier_name
             path.id
         }
 
@@ -61,7 +61,8 @@ class DirectoryBrowser: ObservableObject {
         let descriptor = open(path.rawValue, O_EVTONLY)
         queueId += 1
         let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
-        let monitor = DispatchSource.makeFileSystemObjectSource(fileDescriptor: descriptor, eventMask: .all, queue: queue)
+        let monitor = DispatchSource.makeFileSystemObjectSource(
+            fileDescriptor: descriptor, eventMask: .all, queue: queue)
         monitor.setEventHandler { [weak self] in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                 self?.update()
@@ -73,9 +74,9 @@ class DirectoryBrowser: ObservableObject {
 
     func update() {
         self.items = self.path.children(recursive: false)
-            .filter({ p in
-                !p.isHidden && p.isDirectory &&
-                    ((self.onlyDirectory && !p.isScrap) || !self.onlyDirectory)
+            .filter({ path in
+                !path.isHidden && path.isDirectory &&
+                    ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
             }).map { Item($0) }
     }
 
