@@ -10,6 +10,7 @@
 		85049C222492834500934746 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C212492834500934746 /* FileManagerExtension.swift */; };
 		85049C242492862200934746 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C232492862200934746 /* NotificationExtension.swift */; };
 		85049C25249286D200934746 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C232492862200934746 /* NotificationExtension.swift */; };
+		85049C26249295E000934746 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C212492834500934746 /* FileManagerExtension.swift */; };
 		853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
 		8539518C2492433900033AF1 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
 		8539518D2492433900033AF1 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; };
@@ -701,6 +702,7 @@
 				857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */,
 				856B804D248CD08F0055F8C0 /* SaveActionInputView.swift in Sources */,
+				85049C26249295E000934746 /* FileManagerExtension.swift in Sources */,
 				8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */,
 				85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */,
 				857CCA652489712900AE5BE8 /* APIClient.swift in Sources */,

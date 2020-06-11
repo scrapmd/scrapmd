@@ -94,9 +94,12 @@ class DirectoryBrowser: ObservableObject {
         offsets.forEach { offset in
             do {
                 try items[offset].path.deleteFile()
+                items.remove(at: offset)
             } catch {
                 print(error)
             }
         }
+        FileManager.default.sync()
+        NotificationCenter.default.post(Notification(name: .updateDirectory))
     }
 }

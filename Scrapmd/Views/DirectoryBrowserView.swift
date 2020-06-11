@@ -35,13 +35,11 @@ struct DirectoryBrowserView: View {
             NewScrapView(isShown: self.$isNewModalShown)
         }.onAppear {
             FileManager.default.sync()
-            self.directoryBrowser.update()
         }
     }
 
     func delete(at offsets: IndexSet) {
         directoryBrowser.delete(at: offsets)
-        FileManager.default.sync()
     }
 }
 

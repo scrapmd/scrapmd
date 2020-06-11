@@ -20,7 +20,7 @@ struct SaveActionInputView: View {
             ProgressBar(value: $downloadProgress).frame(height: 2)
             List {
                 Section(header: Text("Name")) {
-                    TextField("Name", text: $title).disabled(isDownloading)
+                    TextField("Name", text: $title)
                 }
                 Section(header: Text("Save Location")) {
                     NavigationLink(destination: DirectoryPickerView(
@@ -36,7 +36,7 @@ struct SaveActionInputView: View {
                             .foregroundColor(.accentColor)
                     }
                 }
-            }
+            }.disabled(isDownloading)
         }
         .listStyle(GroupedListStyle())
     }
