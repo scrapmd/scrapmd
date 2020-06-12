@@ -48,7 +48,7 @@ struct ContentSaver {
     }
 
     typealias ProgressHandler = (ProgressInfo, Int, Int) -> Void
-    typealias CompletionHandler = (Error?) -> Void
+    typealias CompletionHandler = (Path?, Error?) -> Void
 
     func finalize(_ dest: Path) {
         if !dest.thumbnailFile.exists {
@@ -80,7 +80,7 @@ struct ContentSaver {
             let data = try encoder.encode(result.createMetadata())
             try String(data: data, encoding: .utf8)! |> TextFile(path: dest + metadataFilename)
         } catch {
-            completionHandler(error)
+            completionHandler(nil, error)
             return
         }
         var queues: [DownloadQueue] = []
@@ -95,12 +95,12 @@ struct ContentSaver {
                 destination: ImageFile(path: dest + sum)
             ).queue { (info, err) in
                 if let err = err {
-                    completionHandler(err)
+                    completionHandler(nil, err)
                     return
                 }
                 if queues.isEmpty {
                     self.finalize(dest)
-                    completionHandler(nil)
+                    completionHandler(dest, nil)
                     return
                 }
                 let firstQueue = queues.removeFirst()
@@ -110,7 +110,7 @@ struct ContentSaver {
             queues.append(queue)
         }
         if queues.isEmpty {
-            completionHandler(nil)
+            completionHandler(dest, nil)
             return
         }
         total = queues.count

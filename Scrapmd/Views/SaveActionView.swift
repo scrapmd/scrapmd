@@ -7,17 +7,32 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct SaveActionView: View {
-    let cancelAction: () -> Void
-    let doneAction: () -> Void
+    typealias Action = () -> Void
+    typealias FilePathAction = (_ path: FileKitPath) -> Void
+    let cancelAction: Action
+    let doneAction: FilePathAction
+    let openAction: FilePathAction
+    let showCompletion: Bool
     @ObservedObject var saverViewModel: SaveActionView.ViewModel
     @State var isDirectoryPickerActive = false
+    @State var isCompleteShown = false
+    @State var savedPath: FileKitPath?
 
-    init(contentSaver: ContentSaver, cancelAction: @escaping () -> Void, doneAction: @escaping () -> Void) {
+    init(
+        contentSaver: ContentSaver,
+        showCompletion: Bool = false,
+        cancelAction: @escaping Action,
+        doneAction: @escaping FilePathAction,
+        openAction: @escaping FilePathAction
+    ) {
         self.saverViewModel = SaveActionView.ViewModel(contentSaver: contentSaver)
+        self.showCompletion = showCompletion
         self.cancelAction = cancelAction
         self.doneAction = doneAction
+        self.openAction = openAction
     }
 
     var body: some View {
@@ -41,15 +56,29 @@ struct SaveActionView: View {
                             .foregroundColor(.accentColor)
                     }
                 }
-            }.disabled(saverViewModel.isDownloading)
+            }
+            .disabled(saverViewModel.isDownloading)
+            .listStyle(GroupedListStyle())
+            NavigationLink(
+                destination: SaveCompleteView(savedPath: self.savedPath) { path in
+                    if let path = path {
+                        self.openAction(path)
+                    } else {
+                        self.cancelAction()
+                    }
+                },
+                isActive: $isCompleteShown) {
+                    Spacer()
+            }.hidden()
         }
-        .listStyle(GroupedListStyle())
+        .background(Color(UIColor.systemGroupedBackground))
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarTitle("Save Scrap")
         .navigationBarItems(
-            leading: Button(action: cancelAction, label: {
-                Text("Cancel")
-            }).disabled(saverViewModel.isDownloading),
+            leading: Button(
+                action: self.cancelAction,
+                label: { Text("Cancel") }
+            ).disabled(saverViewModel.isDownloading),
             trailing: Button(action: save, label: {
                 if saverViewModel.isDownloading {
                     ActivityIndicator(isAnimating: .constant(true), style: .medium)
@@ -60,7 +89,13 @@ struct SaveActionView: View {
     }
 
     func save() {
-        saverViewModel.download(completionHandler: doneAction)
+        saverViewModel.download { dest in
+            self.savedPath = dest
+            self.doneAction(dest)
+            if self.showCompletion {
+                self.isCompleteShown = true
+            }
+        }
     }
 }
 
@@ -75,7 +110,8 @@ struct SavePreviewView_Previews: PreviewProvider {
         return SaveActionView(
             contentSaver: ContentSaver(result: result),
             cancelAction: {},
-            doneAction: {})
+            doneAction: { _ in },
+            openAction: { _ in })
             .preferredColorScheme(.dark)
     }
 }

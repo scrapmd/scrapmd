@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DirectoryBrowserView: View {
     let path: FileKitPath
+    @EnvironmentObject var pendingNavigation: PendingNavigation
     @ObservedObject var directoryBrowser: DirectoryBrowser
     @State var isNewModalShown = false
 
@@ -19,17 +20,23 @@ struct DirectoryBrowserView: View {
     }
 
     var body: some View {
-        List {
-            ForEach(directoryBrowser.sectionedIndices, id: \.0) { (section, indices) in
-                Section(header: Text(section == "" ? "Folder" : section)) {
-                    ForEach(indices, id: \.self) { index in
-                        ItemView(item: self.$directoryBrowser.items[index])
+        VStack {
+            List {
+                ForEach(directoryBrowser.sectionedIndices, id: \.0) { (section, indices) in
+                    Section(header: Text(section == "" ? "Folder" : section)) {
+                        ForEach(indices, id: \.self) { index in
+                            ItemView(item: self.$directoryBrowser.items[index])
+                        }
                     }
                 }
+                .onDelete(perform: delete)
             }
-            .onDelete(perform: delete)
+            .listStyle(DefaultListStyle())
+            NavigationLink(
+                destination: ScrapReaderView(pendingNavigation.path ?? FileKitPath("")),
+                isActive: $pendingNavigation.isPending) { Spacer().hidden() }
+                .onAppear {}
         }
-        .listStyle(DefaultListStyle())
         .navigationBarTitle(path.fileName)
         .navigationBarItems(
             trailing: Button(action: {
@@ -38,7 +45,10 @@ struct DirectoryBrowserView: View {
                 Image(systemName: "plus")
             }
         ).sheet(isPresented: $isNewModalShown) {
-            NewScrapView(isShown: self.$isNewModalShown)
+            NavigationView {
+                NewScrapView(isShown: self.$isNewModalShown)
+                    .environmentObject(self.pendingNavigation)
+            }.navigationViewStyle(StackNavigationViewStyle())
         }.onAppear {
             FileManager.default.sync()
         }

@@ -11,6 +11,7 @@ import Combine
 import FileKit
 
 extension SaveActionView {
+    typealias CompletionHandler = (_ dest: Path) -> Void
     class ViewModel: ObservableObject {
         let contentSaver: ContentSaver
 
@@ -47,7 +48,7 @@ extension SaveActionView {
             }
         }
 
-        func download(completionHandler: @escaping () -> Void) {
+        func download(completionHandler: @escaping CompletionHandler) {
             UserDefaults.shared.lastLocation = saveLocation
             isDownloading = true
             downloadProgress = 0
@@ -55,17 +56,17 @@ extension SaveActionView {
                 DispatchQueue.main.async {
                     self.downloadProgress = Float(current) / Float(total)
                 }
-            }, completionHandler: { err in
+            }, completionHandler: { (dest, err) in
                 DispatchQueue.main.async {
                     self.downloadProgress = 1.0
-                    if let err = err {
-                        print(err)
+                    guard let dest = dest else {
+                        print(err.debugDescription)
                         self.isDownloading = false
-                    } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            completionHandler()
-                            self.isDownloading = false
-                        }
+                        return
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        completionHandler(dest)
+                        self.isDownloading = false
                     }
                 }
             })
