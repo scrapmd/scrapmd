@@ -12,12 +12,13 @@ import FileKit
 import Dispatch
 import UIKit
 import SwiftUI
+import CoreData
 
 private var queueId = 0
 
 class DirectoryBrowser: ObservableObject {
-    let onlyDirectory: Bool
     @Published var items: [Item]
+    let onlyDirectory: Bool
     let path: FileKitPath
     let sort: Sort
 
@@ -72,11 +73,22 @@ class DirectoryBrowser: ObservableObject {
     }
 
     func fetchItems() -> [Item] {
-        return self.path.children(recursive: false)
+        let pathes = self.path.children(recursive: false)
         .filter({ path in
             !path.isHidden && path.isDirectory &&
                 ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
-        }).sorted(by: {
+        })
+        if let context = FileKitPath.createBackgroundContext() {
+            context.performAndWait {
+                pathes.forEach { path in
+                    if path.cachedCreatedAt == nil, let date = path.loadCreatedAt() {
+                        path.cache(createdAt: date, in: context)
+                    }
+                }
+            }
+            try? context.save()
+        }
+        return pathes.sorted(by: {
             if
                 self.sort == .created,
                 let date1 = $0.createdAt,
@@ -84,20 +96,7 @@ class DirectoryBrowser: ObservableObject {
                 return date1 > date2
             }
             return $0.fileName < $1.fileName
-        }) .map { Item($0) }
-    }
-
-    func delete(at offsets: IndexSet) {
-        offsets.forEach { offset in
-            do {
-                try items[offset].path.deleteFile()
-                items.remove(at: offset)
-            } catch {
-                print(error)
-            }
-        }
-        FileManager.default.sync()
-        NotificationCenter.default.post(Notification(name: .updateDirectory))
+        }).map { Item($0) }
     }
 
     var sectionedIndices: [(String, [Range<Int>.Element])] {
