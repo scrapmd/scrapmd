@@ -9,44 +9,69 @@
 import SwiftUI
 
 struct NewScrapView: View {
+    @EnvironmentObject var pendingNavigation: PendingNavigation
     @ObservedObject var viewModel = ViewModel()
-    @ObservedObject var saverViewModel = ContentSaverViewModel()
     @Binding var isShown: Bool
 
     var body: some View {
-        if let result = viewModel.result {
-            if saverViewModel.contentSaver == nil {
-                saverViewModel.contentSaver = ContentSaver(result: result)
+        return
+            VStack {
+                HStack {
+                    Text("Enter URL to fetch")
+                        .font(.caption)
+                        .foregroundColor(Color(UIColor.secondaryLabel))
+                    Spacer()
+                }
+                TextField("URL", text: $viewModel.urlString)
+                    .keyboardType(.URL)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding(.all)
+                    .background(Color(UIColor.secondarySystemFill))
+                    .cornerRadius(11)
+                    .disabled(viewModel.isFetching)
+                HStack {
+                    Text(viewModel.errorMessage)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                    Spacer()
+                }
+                Spacer().frame(height: 10)
+                Button(action: { self.viewModel.fetch() }) {
+                    (self.viewModel.isFetching ?
+                        AnyView(ActivityIndicator(
+                            isAnimating: .constant(true), style: .medium)) :
+                        AnyView(Text("Fetch Web Page")))
+                        .foregroundColor(.white)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding(.all)
+                        .background(Color.accentColor)
+                        .cornerRadius(11)
+                }
+                .multilineTextAlignment(.center)
+                .disabled(!self.viewModel.isValid || self.viewModel.isFetching)
+                Spacer()
+                NavigationLink(
+                    destination: SaveActionView(
+                        contentSaver: ContentSaver(result: viewModel.result),
+                        cancelAction: cancel,
+                        doneAction: { path in
+                            self.pendingNavigation.path = path
+                            self.pendingNavigation.isPending = true
+                            self.cancel()
+                        },
+                        openAction: { _ in }),
+                    isActive: $viewModel.isFetched) {
+                        Spacer().hidden()
+                }
             }
-            return AnyView(NavigationView {
-                SaveActionInputView(
-                    downloadProgress: $saverViewModel.downloadProgress,
-                    title: $saverViewModel.title,
-                    isDownloading: $saverViewModel.isDownloading,
-                    saveLocation: $saverViewModel.saveLocation)
-                    .navigationBarTitle("Save Scrap")
-                    .navigationBarItems(
-                        leading: Button(action: cancel, label: {
-                            Text("Cancel")
-                        }),
-                        trailing: Button(action: save, label: {
-                            Text("Save").fontWeight(.bold)
-                        })
-                )
-            }.navigationViewStyle(StackNavigationViewStyle()))
-        }
-        return AnyView(NavigationView {
-            NewScrapURLInputView(
-                urlString: $viewModel.urlString,
-                errorMessage: $viewModel.errorMessage,
-                isValid: $viewModel.isValid,
-                isFetching: $viewModel.isFetching
-            ) {
-                self.viewModel.fetch()
-            }.navigationBarItems(
+            .padding(.all)
+            .background(Color(UIColor.systemGroupedBackground))
+            .navigationBarTitle("Create New Scrap")
+            .navigationBarItems(
                 leading: Button(action: cancel, label: { Text("Cancel") })
-            )
-        }.navigationViewStyle(StackNavigationViewStyle()))
+        )
     }
 
     func cancel() {
@@ -54,9 +79,9 @@ struct NewScrapView: View {
     }
 
     func save() {
-        saverViewModel.download {
-            self.isShown = false
-        }
+        //        saverViewModel.download {
+        //            self.isShown = false
+        //        }
     }
 }
 

@@ -53,11 +53,8 @@
 		856B8044248CA5BA0055F8C0 /* NewScrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8043248CA5BA0055F8C0 /* NewScrapView.swift */; };
 		856B8046248CBE3A0055F8C0 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8045248CBE3A0055F8C0 /* URLExtension.swift */; };
 		856B8048248CC7090055F8C0 /* NewScrapView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8047248CC7090055F8C0 /* NewScrapView.ViewModel.swift */; };
-		856B804A248CCC110055F8C0 /* NewScrapURLInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8049248CCC110055F8C0 /* NewScrapURLInputView.swift */; };
-		856B804C248CCE090055F8C0 /* SaveActionInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804B248CCE090055F8C0 /* SaveActionInputView.swift */; };
-		856B804D248CD08F0055F8C0 /* SaveActionInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804B248CCE090055F8C0 /* SaveActionInputView.swift */; };
-		856B804F248CD0EE0055F8C0 /* ContentSaverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */; };
-		856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */; };
+		856B804F248CD0EE0055F8C0 /* SaveActionView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804E248CD0EE0055F8C0 /* SaveActionView.ViewModel.swift */; };
+		856B8050248CD0F40055F8C0 /* SaveActionView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B804E248CD0EE0055F8C0 /* SaveActionView.ViewModel.swift */; };
 		856B8052248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */; };
 		856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */; };
 		857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 857CCA5B248960A300AE5BE8 /* FileKit */; };
@@ -79,6 +76,11 @@
 		85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6A880248A050F0086F13F /* ActionViewController.swift */; };
+		85E87AC72492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */; };
+		85E87AC82492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */; };
+		85E87ACC24930BC800B3BA7D /* SaveCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */; };
+		85E87ACD24930BC800B3BA7D /* SaveCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */; };
+		85E87ACF2493318600B3BA7D /* PendingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87ACE2493318600B3BA7D /* PendingNavigation.swift */; };
 		85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
 		85F90086248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
 		85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */; };
@@ -181,9 +183,7 @@
 		856B8043248CA5BA0055F8C0 /* NewScrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScrapView.swift; sourceTree = "<group>"; };
 		856B8045248CBE3A0055F8C0 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		856B8047248CC7090055F8C0 /* NewScrapView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScrapView.ViewModel.swift; sourceTree = "<group>"; };
-		856B8049248CCC110055F8C0 /* NewScrapURLInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScrapURLInputView.swift; sourceTree = "<group>"; };
-		856B804B248CCE090055F8C0 /* SaveActionInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionInputView.swift; sourceTree = "<group>"; };
-		856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSaverViewModel.swift; sourceTree = "<group>"; };
+		856B804E248CD0EE0055F8C0 /* SaveActionView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionView.ViewModel.swift; sourceTree = "<group>"; };
 		856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		857CCA632489712900AE5BE8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		857CCA6624897A1F00AE5BE8 /* ContentSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSaver.swift; sourceTree = "<group>"; };
@@ -194,6 +194,9 @@
 		85948D3E24891BA400763582 /* GetHTML.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetHTML.js; sourceTree = "<group>"; };
 		85A5B43E24905E1900F56AEB /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		85D6A880248A050F0086F13F /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCompleteView.swift; sourceTree = "<group>"; };
+		85E87ACE2493318600B3BA7D /* PendingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingNavigation.swift; sourceTree = "<group>"; };
 		85F90084248B5004007F5A33 /* CreateFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderView.swift; sourceTree = "<group>"; };
 		85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMeatadata.swift; sourceTree = "<group>"; };
 		85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppInfoExtension.swift; sourceTree = "<group>"; };
@@ -367,14 +370,11 @@
 				85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */,
 				857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */,
 				856B8039248C52E40055F8C0 /* MarkdownView.swift */,
-				856B8049248CCC110055F8C0 /* NewScrapURLInputView.swift */,
 				856B8043248CA5BA0055F8C0 /* NewScrapView.swift */,
-				856B8047248CC7090055F8C0 /* NewScrapView.ViewModel.swift */,
 				85F9008D248B66B7007F5A33 /* ProgressBar.swift */,
-				856B804B248CCE090055F8C0 /* SaveActionInputView.swift */,
 				8555F3272489F72000D162B5 /* SaveActionView.swift */,
+				85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */,
 				856B8030248C3F950055F8C0 /* ScrapReaderView.swift */,
-				856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -405,10 +405,11 @@
 			children = (
 				85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */,
 				857CCA6A24897C5600AE5BE8 /* FileKitExtension.swift */,
-				856B803D248C7D630055F8C0 /* UIColorExtension.swift */,
-				856B8045248CBE3A0055F8C0 /* URLExtension.swift */,
 				85049C212492834500934746 /* FileManagerExtension.swift */,
 				85049C232492862200934746 /* NotificationExtension.swift */,
+				856B803D248C7D630055F8C0 /* UIColorExtension.swift */,
+				856B8045248CBE3A0055F8C0 /* URLExtension.swift */,
+				85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -416,10 +417,13 @@
 		857F5EA9248A0A8500DC640D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */,
 				85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */,
+				857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */,
+				856B8047248CC7090055F8C0 /* NewScrapView.ViewModel.swift */,
+				856B804E248CD0EE0055F8C0 /* SaveActionView.ViewModel.swift */,
 				85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */,
-				856B804E248CD0EE0055F8C0 /* ContentSaverViewModel.swift */,
+				856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */,
+				85E87ACE2493318600B3BA7D /* PendingNavigation.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -617,7 +621,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint lint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect\n  swiftlint lint --strict\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		85F900BB24923595007F5A33 /* Run Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -648,21 +652,23 @@
 			files = (
 				856B8038248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift in Sources */,
 				856B8046248CBE3A0055F8C0 /* URLExtension.swift in Sources */,
-				856B804F248CD0EE0055F8C0 /* ContentSaverViewModel.swift in Sources */,
+				856B804F248CD0EE0055F8C0 /* SaveActionView.ViewModel.swift in Sources */,
 				85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */,
 				857CCA6B24897C5600AE5BE8 /* FileKitExtension.swift in Sources */,
 				85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */,
 				856B803E248C7D630055F8C0 /* UIColorExtension.swift in Sources */,
+				85E87ACC24930BC800B3BA7D /* SaveCompleteView.swift in Sources */,
 				856B8033248C3FBE0055F8C0 /* DetailPlaceholderView.swift in Sources */,
+				85E87ACF2493318600B3BA7D /* PendingNavigation.swift in Sources */,
 				85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */,
 				857F5EAB248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
 				854447E42488C6930010F1F7 /* AppDelegate.swift in Sources */,
 				85049C2824929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
+				85E87AC72492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */,
 				85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */,
 				856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */,
 				85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */,
 				85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
-				856B804A248CCC110055F8C0 /* NewScrapURLInputView.swift in Sources */,
 				856B8052248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
 				856B8048248CC7090055F8C0 /* NewScrapView.ViewModel.swift in Sources */,
 				856B8031248C3F950055F8C0 /* ScrapReaderView.swift in Sources */,
@@ -676,7 +682,6 @@
 				85049C242492862200934746 /* NotificationExtension.swift in Sources */,
 				857CCA642489712900AE5BE8 /* APIClient.swift in Sources */,
 				85F9008B248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */,
-				856B804C248CCE090055F8C0 /* SaveActionInputView.swift in Sources */,
 				856B8044248CA5BA0055F8C0 /* NewScrapView.swift in Sources */,
 				85049C222492834500934746 /* FileManagerExtension.swift in Sources */,
 			);
@@ -705,9 +710,10 @@
 				85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
 				85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
+				85E87AC82492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */,
 				857F5EAC248A0AD600DC640D /* DirectoryBrowser.swift in Sources */,
-				856B8050248CD0F40055F8C0 /* ContentSaverViewModel.swift in Sources */,
-				856B804D248CD08F0055F8C0 /* SaveActionInputView.swift in Sources */,
+				856B8050248CD0F40055F8C0 /* SaveActionView.ViewModel.swift in Sources */,
+				85E87ACD24930BC800B3BA7D /* SaveCompleteView.swift in Sources */,
 				85049C26249295E000934746 /* FileManagerExtension.swift in Sources */,
 				8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */,
 				85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */,

@@ -31,7 +31,7 @@ class DirectoryBrowser: ObservableObject {
         self.items = []
         self.path = path
         self.sort = sort
-        update()
+        self.items = fetchItems()
         updateMonitor()
         NotificationCenter.default.addObserver(self, selector: #selector(update), name: .updateDirectory, object: nil)
     }
@@ -61,19 +61,30 @@ class DirectoryBrowser: ObservableObject {
     }
 
     @objc func update() {
-        self.items = self.path.children(recursive: false)
-            .filter({ path in
-                !path.isHidden && path.isDirectory &&
-                    ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
-            }).sorted(by: {
-                if
-                    self.sort == .created,
-                    let date1 = $0.createdAt,
-                    let date2 = $1.createdAt {
-                    return date1 > date2
-                }
-                return $0.fileName < $1.fileName
-            }) .map { Item($0) }
+        let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
+        queueId += 1
+        queue.async {
+            let items = self.fetchItems()
+            DispatchQueue.main.async {
+                self.items = items
+            }
+        }
+    }
+
+    func fetchItems() -> [Item] {
+        return self.path.children(recursive: false)
+        .filter({ path in
+            !path.isHidden && path.isDirectory &&
+                ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
+        }).sorted(by: {
+            if
+                self.sort == .created,
+                let date1 = $0.createdAt,
+                let date2 = $1.createdAt {
+                return date1 > date2
+            }
+            return $0.fileName < $1.fileName
+        }) .map { Item($0) }
     }
 
     func delete(at offsets: IndexSet) {

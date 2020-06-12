@@ -10,7 +10,7 @@ import Foundation
 import FileKit
 
 struct ContentSaver {
-    let result: APIClient.Result
+    let result: APIClient.Result?
 
     struct ProgressInfo {
         let url: URL
@@ -48,7 +48,7 @@ struct ContentSaver {
     }
 
     typealias ProgressHandler = (ProgressInfo, Int, Int) -> Void
-    typealias CompletionHandler = (Error?) -> Void
+    typealias CompletionHandler = (Path?, Error?) -> Void
 
     func finalize(_ dest: Path) {
         if !dest.thumbnailFile.exists {
@@ -62,6 +62,7 @@ struct ContentSaver {
     // swiftlint:disable:next identifier_name function_body_length
     func download(to: Path, name: String, progress: @escaping ProgressHandler,
                   completionHandler: @escaping CompletionHandler) {
+        guard let result = result else { return }
         var dest = to + "\(name)\(scrapDirectoryNameSuffix)"
         var num = 0
         while dest.exists {
@@ -79,7 +80,7 @@ struct ContentSaver {
             let data = try encoder.encode(result.createMetadata())
             try String(data: data, encoding: .utf8)! |> TextFile(path: dest + metadataFilename)
         } catch {
-            completionHandler(error)
+            completionHandler(nil, error)
             return
         }
         var queues: [DownloadQueue] = []
@@ -94,12 +95,12 @@ struct ContentSaver {
                 destination: ImageFile(path: dest + sum)
             ).queue { (info, err) in
                 if let err = err {
-                    completionHandler(err)
+                    completionHandler(nil, err)
                     return
                 }
                 if queues.isEmpty {
                     self.finalize(dest)
-                    completionHandler(nil)
+                    completionHandler(dest, nil)
                     return
                 }
                 let firstQueue = queues.removeFirst()
@@ -109,7 +110,7 @@ struct ContentSaver {
             queues.append(queue)
         }
         if queues.isEmpty {
-            completionHandler(nil)
+            completionHandler(dest, nil)
             return
         }
         total = queues.count

@@ -11,9 +11,9 @@ import MobileCoreServices
 import FileKit
 import SwiftUI
 
- class ActionViewController: UIViewController {
+class ActionViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    var hostingViewController: UIHostingController<SaveActionView>?
+    var hostingViewController: UIHostingController<NavigationView<SaveActionView>>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +49,16 @@ import SwiftUI
 
     func renderSaveView(result: APIClient.Result) {
         let saver = ContentSaver(result: result)
-        let rootView = SaveActionView(contentSaver: saver, cancelAction: done, doneAction: done)
-        let viewController = UIHostingController<SaveActionView>(rootView: rootView)
+        let rootView = NavigationView {
+            SaveActionView(
+                contentSaver: saver,
+                showCompletion: true,
+                cancelAction: done,
+                doneAction: { _ in },
+                openAction: openSavedScrap
+            )
+        }
+        let viewController = UIHostingController<NavigationView>(rootView: rootView)
         addChild(viewController)
         view.addSubview(viewController.view)
         viewController.didMove(toParent: self)
@@ -64,9 +72,27 @@ import SwiftUI
 
     func done() {
         self.extensionContext!.completeRequest(
-            returningItems: self.extensionContext!.inputItems,
+            returningItems: nil,
             completionHandler: nil
         )
+    }
+
+    func openSavedScrap(path: FileKitPath) {
+        let url = path.fileURL(scheme: "scrapmd")
+        _ = self.openURL(url)
+        self.done()
+    }
+
+    //  https://stackoverflow.com/a/44499222
+    @objc func openURL(_ url: URL) -> Bool {
+        var responder: UIResponder? = self
+        while responder != nil {
+            if let application = responder as? UIApplication {
+                return application.perform(#selector(openURL(_:)), with: url) != nil
+            }
+            responder = responder?.next
+        }
+        return false
     }
 
 }

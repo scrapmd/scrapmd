@@ -34,7 +34,7 @@ extension Path {
         if let date = metadata?.createdAt {
             return date
         }
-        return children(recursive: true)
+        return children(recursive: false)
             .filter { $0.createdAt != nil }
             .sorted(by: { $0.createdAt! > $1.createdAt! })
             .first?.createdAt
