@@ -83,13 +83,11 @@
 		85E87B1324933CB600B3BA7D /* Scrapmd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1124933CB600B3BA7D /* Scrapmd.xcdatamodeld */; };
 		85E87B1524933D4F00B3BA7D /* FileKit+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1424933D4F00B3BA7D /* FileKit+Cache.swift */; };
 		85E87B1924933E4800B3BA7D /* TimestampCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1824933E4800B3BA7D /* TimestampCache.swift */; };
-		85E87B5C24934B1C00B3BA7D /* CoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */; };
 		85E87B5D24934C3800B3BA7D /* DirectoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */; };
 		85E87B5F24934C5600B3BA7D /* DirectoryBrowser+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B5E24934C5600B3BA7D /* DirectoryBrowser+Delete.swift */; };
 		85E87B612493512700B3BA7D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B602493512700B3BA7D /* CoreDataManager.swift */; };
 		85E87B6224935B3C00B3BA7D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B602493512700B3BA7D /* CoreDataManager.swift */; };
 		85E87B6324935B5600B3BA7D /* FileKit+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1424933D4F00B3BA7D /* FileKit+Cache.swift */; };
-		85E87B6424935B6700B3BA7D /* CoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */; };
 		85E87B6524935B7200B3BA7D /* Scrapmd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1124933CB600B3BA7D /* Scrapmd.xcdatamodeld */; };
 		85E87B6624935B7900B3BA7D /* TimestampCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1824933E4800B3BA7D /* TimestampCache.swift */; };
 		85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
@@ -211,7 +209,6 @@
 		85E87B1224933CB600B3BA7D /* Scrapmd.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Scrapmd.xcdatamodel; sourceTree = "<group>"; };
 		85E87B1424933D4F00B3BA7D /* FileKit+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileKit+Cache.swift"; sourceTree = "<group>"; };
 		85E87B1824933E4800B3BA7D /* TimestampCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampCache.swift; sourceTree = "<group>"; };
-		85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExtension.swift; sourceTree = "<group>"; };
 		85E87B5E24934C5600B3BA7D /* DirectoryBrowser+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DirectoryBrowser+Delete.swift"; sourceTree = "<group>"; };
 		85E87B602493512700B3BA7D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		85F90084248B5004007F5A33 /* CreateFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderView.swift; sourceTree = "<group>"; };
@@ -429,7 +426,6 @@
 				856B803D248C7D630055F8C0 /* UIColorExtension.swift */,
 				856B8045248CBE3A0055F8C0 /* URLExtension.swift */,
 				85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */,
-				85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -710,7 +706,6 @@
 				85E87B1324933CB600B3BA7D /* Scrapmd.xcdatamodeld in Sources */,
 				85F9008B248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */,
 				856B8044248CA5BA0055F8C0 /* NewScrapView.swift in Sources */,
-				85E87B5C24934B1C00B3BA7D /* CoreDataExtension.swift in Sources */,
 				85E87B612493512700B3BA7D /* CoreDataManager.swift in Sources */,
 				85049C222492834500934746 /* FileManagerExtension.swift in Sources */,
 			);
@@ -738,7 +733,6 @@
 			files = (
 				85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
-				85E87B6424935B6700B3BA7D /* CoreDataExtension.swift in Sources */,
 				85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
 				85E87AC82492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */,
 				856B8050248CD0F40055F8C0 /* SaveActionView.ViewModel.swift in Sources */,

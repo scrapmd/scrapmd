@@ -87,15 +87,18 @@ class DirectoryBrowser: ObservableObject {
             !path.isHidden && path.isDirectory &&
                 ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
         })
-        if let context = FileKitPath.createBackgroundContext() {
-            context.performAndWait {
-                pathes.forEach { path in
-                    if path.cachedCreatedAt == nil, let date = path.loadCreatedAt() {
-                        path.cache(createdAt: date, in: context)
-                    }
+        let context = CoreDataManager.shared.persistentContainer.newBackgroundContext()
+        context.performAndWait {
+            pathes.forEach { path in
+                if path.cachedCreatedAt == nil, let date = path.loadCreatedAt() {
+                    path.cache(createdAt: date, in: context)
                 }
             }
-            try? context.save()
+        }
+        do {
+            try context.save()
+        } catch {
+            print(error)
         }
         return pathes.sorted(by: {
             if

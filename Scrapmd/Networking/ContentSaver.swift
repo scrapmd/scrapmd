@@ -58,13 +58,16 @@ struct ContentSaver {
             }.first
             try? found?.copyFile(to: dest.thumbnailFile.path)
         }
-        if
-            let date = dest.loadCreatedAt(),
-            let moc = NSPersistentContainer.shared?.newBackgroundContext() {
+        if let date = dest.loadCreatedAt() {
+            let moc = CoreDataManager.shared.persistentContainer.newBackgroundContext()
             moc.performAndWait {
                 dest.cache(createdAt: date, in: moc)
             }
-            try? moc.save()
+            do {
+                try moc.save()
+            } catch {
+                print(error)
+            }
         }
     }
 

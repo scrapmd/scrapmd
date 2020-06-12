@@ -12,10 +12,6 @@ import CoreData
 import UIKit
 
 extension Path {
-    static func createBackgroundContext() -> NSManagedObjectContext? {
-        return NSPersistentContainer.shared?.newBackgroundContext()
-    }
-
     func cache(createdAt: Date, in context: NSManagedObjectContext) {
         if self == .userDocuments || self == Path.iCloudDocuments {
             return
@@ -26,9 +22,7 @@ extension Path {
     }
 
     var cachedCreatedAt: Date? {
-        guard let context = NSPersistentContainer.shared?.viewContext else {
-            return nil
-        }
+        let context = CoreDataManager.shared.persistentContainer.viewContext
         return TimestampCache.findOrCreate(by: self, in: context).createdAt
     }
 }

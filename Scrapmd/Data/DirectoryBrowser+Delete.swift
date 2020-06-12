@@ -22,13 +22,17 @@ extension DirectoryBrowser {
             return path
         }
 
-        NSPersistentContainer.shared?.performBackgroundTask { context in
+        CoreDataManager.shared.persistentContainer.performBackgroundTask { context in
             pathes.forEach { path in
                 if let found = TimestampCache.find(by: path, in: context) {
                     context.delete(found)
                 }
             }
-            try? context.save()
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
         }
         items.remove(atOffsets: offsets)
         FileManager.default.sync()
