@@ -21,6 +21,7 @@ class DirectoryBrowser: ObservableObject {
     let onlyDirectory: Bool
     let path: FileKitPath
     let sort: Sort
+    private var currentWork: DispatchWorkItem?
 
     enum Sort {
         case created
@@ -62,14 +63,22 @@ class DirectoryBrowser: ObservableObject {
     }
 
     @objc func update() {
+        cancelUpdate()
         let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
         queueId += 1
-        queue.async {
+        let work = DispatchWorkItem {
             let items = self.fetchItems()
-            DispatchQueue.main.async {
-                self.items = items
-            }
+            let work = DispatchWorkItem { self.items = items }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: work)
+            self.currentWork = work
         }
+        queue.async(execute: work)
+        currentWork = work
+    }
+
+    func cancelUpdate() {
+        currentWork?.cancel()
+        currentWork = nil
     }
 
     func fetchItems() -> [Item] {

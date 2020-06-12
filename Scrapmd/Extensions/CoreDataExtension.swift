@@ -12,6 +12,6 @@ import UIKit
 
 extension NSPersistentContainer {
     static var shared: NSPersistentContainer? {
-        (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        CoreDataManager.shared.persistentContainer
     }
 }

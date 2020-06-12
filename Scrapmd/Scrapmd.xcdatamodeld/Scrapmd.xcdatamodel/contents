@@ -3,9 +3,8 @@
     <entity name="TimestampCache" representedClassName="TimestampCache" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="path" optional="YES" attributeType="String"/>
-        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimestampCache"/>
     </entity>
     <elements>
-        <element name="TimestampCache" positionX="-9805.328125" positionY="-17406.49609375" width="128" height="88"/>
+        <element name="TimestampCache" positionX="-9805.328125" positionY="-17406.49609375" width="128" height="73"/>
     </elements>
 </model>

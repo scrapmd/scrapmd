@@ -24,7 +24,6 @@ extension TimestampCache {
         }
         let cache = self.init(context: context)
         cache.path = path.rawValue
-        cache.parent = self.findOrCreate(by: path.parent, in: context)
         return cache
     }
 }

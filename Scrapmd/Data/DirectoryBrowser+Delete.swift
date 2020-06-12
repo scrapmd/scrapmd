@@ -11,6 +11,7 @@ import CoreData
 
 extension DirectoryBrowser {
     func delete(at offsets: IndexSet) {
+        cancelUpdate()
         let pathes = offsets.map { offset -> FileKitPath in
             let path = items[offset].path
             do {

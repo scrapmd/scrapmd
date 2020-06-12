@@ -87,6 +87,7 @@
 		85E87B5C24934B1C00B3BA7D /* CoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */; };
 		85E87B5D24934C3800B3BA7D /* DirectoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */; };
 		85E87B5F24934C5600B3BA7D /* DirectoryBrowser+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B5E24934C5600B3BA7D /* DirectoryBrowser+Delete.swift */; };
+		85E87B612493512700B3BA7D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B602493512700B3BA7D /* CoreDataManager.swift */; };
 		85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
 		85F90086248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
 		85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */; };
@@ -209,6 +210,7 @@
 		85E87B1824933E4800B3BA7D /* TimestampCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampCache.swift; sourceTree = "<group>"; };
 		85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExtension.swift; sourceTree = "<group>"; };
 		85E87B5E24934C5600B3BA7D /* DirectoryBrowser+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DirectoryBrowser+Delete.swift"; sourceTree = "<group>"; };
+		85E87B602493512700B3BA7D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		85F90084248B5004007F5A33 /* CreateFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderView.swift; sourceTree = "<group>"; };
 		85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMeatadata.swift; sourceTree = "<group>"; };
 		85F9008A248B6281007F5A33 /* BundleAppInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppInfoExtension.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */,
 				856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */,
 				85E87B1824933E4800B3BA7D /* TimestampCache.swift */,
+				85E87B602493512700B3BA7D /* CoreDataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				85F9008B248B6281007F5A33 /* BundleAppInfoExtension.swift in Sources */,
 				856B8044248CA5BA0055F8C0 /* NewScrapView.swift in Sources */,
 				85E87B5C24934B1C00B3BA7D /* CoreDataExtension.swift in Sources */,
+				85E87B612493512700B3BA7D /* CoreDataManager.swift in Sources */,
 				85049C222492834500934746 /* FileManagerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
