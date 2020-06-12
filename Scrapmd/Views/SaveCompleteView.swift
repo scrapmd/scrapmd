@@ -11,12 +11,15 @@ import SwiftUI
 struct SaveCompleteView: View {
     let savedPath: FileKitPath?
     let action: (_ path: FileKitPath?) -> Void
+    @State var appeared = false
     var body: some View {
         VStack {
             Image(systemName: "checkmark.circle.fill")
                 .resizable()
-                .frame(width: UIFont.systemFontSize * 3, height: UIFont.systemFontSize * 3, alignment: .center)
+                .frame(width: UIFont.systemFontSize * 8, height: UIFont.systemFontSize * 8, alignment: .center)
                 .foregroundColor(.green)
+                .scaleEffect(appeared ? 1 : 0.5)
+                .animation(.spring(dampingFraction: 0.5))
             Spacer().frame(height: 40)
             Text("Saved!").font(.largeTitle)
             Spacer().frame(height: 40)
@@ -35,7 +38,9 @@ struct SaveCompleteView: View {
             self.action(nil)
         }) {
             Text("Done")
-        })
+        }).onAppear {
+            self.appeared = true
+        }
     }
 }
 
