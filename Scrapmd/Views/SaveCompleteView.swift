@@ -22,12 +22,12 @@ struct SaveCompleteView: View {
             Spacer().frame(height: 40)
             Button(action: { self.action(self.savedPath) }) {
                 Text("View Scrap")
+                .foregroundColor(.white)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding(.all)
+                .background(Color.accentColor)
+                .cornerRadius(11)
             }
-            .foregroundColor(.white)
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(.all)
-            .background(Color.accentColor)
-            .cornerRadius(11)
         }
         .padding()
         .navigationBarBackButtonHidden(true)
