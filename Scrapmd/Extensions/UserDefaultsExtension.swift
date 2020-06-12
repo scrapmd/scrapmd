@@ -9,7 +9,6 @@
 import Foundation
 
 private var _shared: UserDefaults?
-private let suiteName = "group.app.scrapmd"
 
 extension UserDefaults {
     static var shared: UserDefaults {

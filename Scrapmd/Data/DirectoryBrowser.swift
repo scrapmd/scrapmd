@@ -12,14 +12,16 @@ import FileKit
 import Dispatch
 import UIKit
 import SwiftUI
+import CoreData
 
 private var queueId = 0
 
 class DirectoryBrowser: ObservableObject {
-    let onlyDirectory: Bool
     @Published var items: [Item]
+    let onlyDirectory: Bool
     let path: FileKitPath
     let sort: Sort
+    private var currentWork: DispatchWorkItem?
 
     enum Sort {
         case created
@@ -61,22 +63,44 @@ class DirectoryBrowser: ObservableObject {
     }
 
     @objc func update() {
+        cancelUpdate()
         let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")
         queueId += 1
-        queue.async {
+        let work = DispatchWorkItem {
             let items = self.fetchItems()
-            DispatchQueue.main.async {
-                self.items = items
-            }
+            let work = DispatchWorkItem { self.items = items }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: work)
+            self.currentWork = work
         }
+        queue.async(execute: work)
+        currentWork = work
+    }
+
+    func cancelUpdate() {
+        currentWork?.cancel()
+        currentWork = nil
     }
 
     func fetchItems() -> [Item] {
-        return self.path.children(recursive: false)
+        let pathes = self.path.children(recursive: false)
         .filter({ path in
             !path.isHidden && path.isDirectory &&
                 ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
-        }).sorted(by: {
+        })
+        let context = CoreDataManager.shared.persistentContainer.newBackgroundContext()
+        context.performAndWait {
+            pathes.forEach { path in
+                if path.cachedCreatedAt == nil, let date = path.loadCreatedAt() {
+                    path.cache(createdAt: date, in: context)
+                }
+            }
+        }
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+        return pathes.sorted(by: {
             if
                 self.sort == .created,
                 let date1 = $0.createdAt,
@@ -84,20 +108,7 @@ class DirectoryBrowser: ObservableObject {
                 return date1 > date2
             }
             return $0.fileName < $1.fileName
-        }) .map { Item($0) }
-    }
-
-    func delete(at offsets: IndexSet) {
-        offsets.forEach { offset in
-            do {
-                try items[offset].path.deleteFile()
-                items.remove(at: offset)
-            } catch {
-                print(error)
-            }
-        }
-        FileManager.default.sync()
-        NotificationCenter.default.post(Notification(name: .updateDirectory))
+        }).map { Item($0) }
     }
 
     var sectionedIndices: [(String, [Range<Int>.Element])] {

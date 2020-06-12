@@ -31,10 +31,11 @@ extension Path {
     }
 
     var createdAt: Date? {
-        if let date = metadata?.createdAt {
-            return date
-        }
-        return children(recursive: false)
+        cachedCreatedAt ?? loadCreatedAt()
+    }
+
+    func loadCreatedAt() -> Date? {
+        metadata?.createdAt ?? children(recursive: false)
             .filter { $0.createdAt != nil }
             .sorted(by: { $0.createdAt! > $1.createdAt! })
             .first?.createdAt

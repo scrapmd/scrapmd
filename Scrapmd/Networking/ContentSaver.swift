@@ -8,6 +8,7 @@
 
 import Foundation
 import FileKit
+import CoreData
 
 struct ContentSaver {
     let result: APIClient.Result?
@@ -56,6 +57,17 @@ struct ContentSaver {
                 ($0.fileSize ?? 0) > ($1.fileSize ?? 0)
             }.first
             try? found?.copyFile(to: dest.thumbnailFile.path)
+        }
+        if let date = dest.loadCreatedAt() {
+            let moc = CoreDataManager.shared.persistentContainer.newBackgroundContext()
+            moc.performAndWait {
+                dest.cache(createdAt: date, in: moc)
+            }
+            do {
+                try moc.save()
+            } catch {
+                print(error)
+            }
         }
     }
 
