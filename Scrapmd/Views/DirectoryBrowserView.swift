@@ -38,7 +38,7 @@ struct DirectoryBrowserView: View {
                 Image(systemName: "plus")
             }
         ).sheet(isPresented: $isNewModalShown) {
-            NewScrapView(saverViewModel: ContentSaverViewModel(saveLocation: self.path), isShown: self.$isNewModalShown)
+            NewScrapView(isShown: self.$isNewModalShown)
         }.onAppear {
             FileManager.default.sync()
         }

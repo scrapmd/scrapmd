@@ -13,6 +13,7 @@ extension NewScrapView {
     class ViewModel: ObservableObject {
         @Published var result: APIClient.Result?
         @Published var isFetching = false
+        @Published var isFetched = false
         @Published var isValid = false
         @Published var errorMessage = ""
         @Published var urlString = "" {
@@ -45,6 +46,7 @@ extension NewScrapView {
                         return
                     }
                     self.result = result
+                    self.isFetched = true
                 }
             }
         }

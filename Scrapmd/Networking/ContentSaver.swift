@@ -10,7 +10,7 @@ import Foundation
 import FileKit
 
 struct ContentSaver {
-    let result: APIClient.Result
+    let result: APIClient.Result?
 
     struct ProgressInfo {
         let url: URL
@@ -62,6 +62,7 @@ struct ContentSaver {
     // swiftlint:disable:next identifier_name function_body_length
     func download(to: Path, name: String, progress: @escaping ProgressHandler,
                   completionHandler: @escaping CompletionHandler) {
+        guard let result = result else { return }
         var dest = to + "\(name)\(scrapDirectoryNameSuffix)"
         var num = 0
         while dest.exists {

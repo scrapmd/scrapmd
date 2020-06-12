@@ -13,7 +13,7 @@ import SwiftUI
 
  class ActionViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    var hostingViewController: UIHostingController<SaveActionView>?
+    var hostingViewController: UIHostingController<NavigationView<SaveActionView>>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +49,8 @@ import SwiftUI
 
     func renderSaveView(result: APIClient.Result) {
         let saver = ContentSaver(result: result)
-        let rootView = SaveActionView(contentSaver: saver, cancelAction: done, doneAction: done)
-        let viewController = UIHostingController<SaveActionView>(rootView: rootView)
+        let rootView = NavigationView { SaveActionView(contentSaver: saver, cancelAction: done, doneAction: done) }
+        let viewController = UIHostingController<NavigationView>(rootView: rootView)
         addChild(viewController)
         view.addSubview(viewController.view)
         viewController.didMove(toParent: self)

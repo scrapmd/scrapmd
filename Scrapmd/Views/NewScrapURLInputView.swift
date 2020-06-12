@@ -13,6 +13,7 @@ struct NewScrapURLInputView: View {
     @Binding var errorMessage: String
     @Binding var isValid: Bool
     @Binding var isFetching: Bool
+    @Binding var isFetched: Bool
     let fetchAction: () -> Void
     var body: some View {
         VStack {
@@ -66,6 +67,7 @@ struct NewScrapURLInputView_Previews: PreviewProvider {
             errorMessage: .constant("Hoge"),
             isValid: .constant(true),
             isFetching: .constant(true),
+            isFetched: .constant(false),
             fetchAction: {}
         ).preferredColorScheme(.light)
     }
