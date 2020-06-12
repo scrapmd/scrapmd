@@ -13,6 +13,7 @@ let scrapDirectoryNameMaxLength = 255 - scrapDirectoryNameSuffix.count
 let markdownFilename = "content.md"
 let metadataFilename = "metadata.json"
 let thumbnailPath = "img/thumbnail.png"
+let suiteName = "group.app.scrapmd"
 
 let displayDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()

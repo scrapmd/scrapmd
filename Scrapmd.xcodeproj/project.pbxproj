@@ -82,12 +82,16 @@
 		85E87ACF2493318600B3BA7D /* PendingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87ACE2493318600B3BA7D /* PendingNavigation.swift */; };
 		85E87B1324933CB600B3BA7D /* Scrapmd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1124933CB600B3BA7D /* Scrapmd.xcdatamodeld */; };
 		85E87B1524933D4F00B3BA7D /* FileKit+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1424933D4F00B3BA7D /* FileKit+Cache.swift */; };
-		85E87B1724933D9C00B3BA7D /* FileKit+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1624933D9C00B3BA7D /* FileKit+Cache.swift */; };
 		85E87B1924933E4800B3BA7D /* TimestampCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1824933E4800B3BA7D /* TimestampCache.swift */; };
 		85E87B5C24934B1C00B3BA7D /* CoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */; };
 		85E87B5D24934C3800B3BA7D /* DirectoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */; };
 		85E87B5F24934C5600B3BA7D /* DirectoryBrowser+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B5E24934C5600B3BA7D /* DirectoryBrowser+Delete.swift */; };
 		85E87B612493512700B3BA7D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B602493512700B3BA7D /* CoreDataManager.swift */; };
+		85E87B6224935B3C00B3BA7D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B602493512700B3BA7D /* CoreDataManager.swift */; };
+		85E87B6324935B5600B3BA7D /* FileKit+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1424933D4F00B3BA7D /* FileKit+Cache.swift */; };
+		85E87B6424935B6700B3BA7D /* CoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */; };
+		85E87B6524935B7200B3BA7D /* Scrapmd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1124933CB600B3BA7D /* Scrapmd.xcdatamodeld */; };
+		85E87B6624935B7900B3BA7D /* TimestampCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87B1824933E4800B3BA7D /* TimestampCache.swift */; };
 		85F90085248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
 		85F90086248B5004007F5A33 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90084248B5004007F5A33 /* CreateFolderView.swift */; };
 		85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */; };
@@ -206,7 +210,6 @@
 		85E87ACE2493318600B3BA7D /* PendingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingNavigation.swift; sourceTree = "<group>"; };
 		85E87B1224933CB600B3BA7D /* Scrapmd.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Scrapmd.xcdatamodel; sourceTree = "<group>"; };
 		85E87B1424933D4F00B3BA7D /* FileKit+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileKit+Cache.swift"; sourceTree = "<group>"; };
-		85E87B1624933D9C00B3BA7D /* FileKit+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileKit+Cache.swift"; sourceTree = "<group>"; };
 		85E87B1824933E4800B3BA7D /* TimestampCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampCache.swift; sourceTree = "<group>"; };
 		85E87B5B24934B1C00B3BA7D /* CoreDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExtension.swift; sourceTree = "<group>"; };
 		85E87B5E24934C5600B3BA7D /* DirectoryBrowser+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DirectoryBrowser+Delete.swift"; sourceTree = "<group>"; };
@@ -339,7 +342,6 @@
 		854448182488C6C40010F1F7 /* ActionExtension */ = {
 			isa = PBXGroup;
 			children = (
-				85E87B1624933D9C00B3BA7D /* FileKit+Cache.swift */,
 				85948D3E24891BA400763582 /* GetHTML.js */,
 				854448282488C6CD0010F1F7 /* ActionExtension.entitlements */,
 				854448192488C6C40010F1F7 /* Media.xcassets */,
@@ -435,6 +437,7 @@
 		857F5EA9248A0A8500DC640D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				85E87B602493512700B3BA7D /* CoreDataManager.swift */,
 				85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */,
 				857F5EAA248A0AD600DC640D /* DirectoryBrowser.swift */,
 				85E87B5E24934C5600B3BA7D /* DirectoryBrowser+Delete.swift */,
@@ -444,7 +447,6 @@
 				85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */,
 				856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */,
 				85E87B1824933E4800B3BA7D /* TimestampCache.swift */,
-				85E87B602493512700B3BA7D /* CoreDataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -736,18 +738,22 @@
 			files = (
 				85F90089248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				856B8053248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
+				85E87B6424935B6700B3BA7D /* CoreDataExtension.swift in Sources */,
 				85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */,
 				85E87AC82492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */,
 				856B8050248CD0F40055F8C0 /* SaveActionView.ViewModel.swift in Sources */,
 				85E87ACD24930BC800B3BA7D /* SaveCompleteView.swift in Sources */,
+				85E87B6524935B7200B3BA7D /* Scrapmd.xcdatamodeld in Sources */,
 				85E87B5D24934C3800B3BA7D /* DirectoryBrowser.swift in Sources */,
 				85049C26249295E000934746 /* FileManagerExtension.swift in Sources */,
 				8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */,
 				85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */,
 				857CCA652489712900AE5BE8 /* APIClient.swift in Sources */,
+				85E87B6324935B5600B3BA7D /* FileKit+Cache.swift in Sources */,
 				857F5EAF248A0E7600DC640D /* Constants.swift in Sources */,
+				85E87B6624935B7900B3BA7D /* TimestampCache.swift in Sources */,
+				85E87B6224935B3C00B3BA7D /* CoreDataManager.swift in Sources */,
 				857F5EB3248B24AF00DC640D /* DirectoryPickerView.swift in Sources */,
-				85E87B1724933D9C00B3BA7D /* FileKit+Cache.swift in Sources */,
 				85049C25249286D200934746 /* NotificationExtension.swift in Sources */,
 				857CCA6C24897C5600AE5BE8 /* FileKitExtension.swift in Sources */,
 				85F90086248B5004007F5A33 /* CreateFolderView.swift in Sources */,

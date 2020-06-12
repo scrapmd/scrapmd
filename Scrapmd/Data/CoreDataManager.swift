@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import FileKit
 
 struct CoreDataManager {
     static var shared = CoreDataManager()
@@ -15,7 +16,11 @@ struct CoreDataManager {
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Scrapmd")
+        let dbName = "Scrapmd"
+        let container = NSPersistentContainer(name: dbName)
+        let url = (Path(groupIdentifier: suiteName)! + "\(dbName).sql").url
+        let storeDescription = NSPersistentStoreDescription(url: url)
+        container.persistentStoreDescriptions = [storeDescription]
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
