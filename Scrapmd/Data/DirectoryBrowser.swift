@@ -49,6 +49,9 @@ class DirectoryBrowser: ObservableObject {
     func updateMonitor() {
         monitor?.cancel()
         monitor = nil
+        if !path.exists {
+            try? path.createDirectory()
+        }
         let descriptor = open(path.rawValue, O_EVTONLY)
         queueId += 1
         let queue = DispatchQueue(label: "app.scrapmd.directoryBrowser-\(queueId)")

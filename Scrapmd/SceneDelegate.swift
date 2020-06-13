@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
+
         let contentView = ContentView().environmentObject(pendingNavigation)
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -23,6 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        #if DEBUG
+        if CommandLine.arguments.contains("UITestingDarkModeEnabled") {
+            window?.overrideUserInterfaceStyle = .dark
+        }
+        #endif
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {

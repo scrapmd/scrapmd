@@ -83,11 +83,15 @@ extension Path {
     }
 
     var isRoot: Bool {
-        return self == .documentRoot
+        return self == .iCloudDocuments || self == .groupDocuments
+    }
+
+    static var groupDocuments: Path {
+        Path(groupIdentifier: suiteName)! + "Documents"
     }
 
     static var documentRoot: Path {
-        Path.iCloudDocuments ?? Path.userDocuments
+        Path.iCloudDocuments ?? Path.groupDocuments
     }
 
     func fileURL(scheme: String? = nil) -> URL {

@@ -13,7 +13,7 @@ import UIKit
 
 extension Path {
     func cache(createdAt: Date, in context: NSManagedObjectContext) {
-        if self.isRoot {
+        if self.isRoot || self.rawValue == "/" {
             return
         }
         let found = TimestampCache.findOrCreate(by: self, in: context)
