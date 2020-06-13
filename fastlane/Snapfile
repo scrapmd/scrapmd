@@ -10,7 +10,7 @@ devices([
   "iPad Pro (12.9-inch) (4th generation)"
 ])
 
-languages(["ja"])
+languages(["en-US", "ja"])
 
 # clear_previous_screenshots true
 test_without_building true
