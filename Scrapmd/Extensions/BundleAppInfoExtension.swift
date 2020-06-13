@@ -51,7 +51,7 @@ Version: \(appVersion) (\(buildNumber))
     }
 
     var submitIssueURL: URL {
-        return URL(string: "https://github.com/ngs/scrapmd/issues/new?body=\(deviceSummary)")!
+        return URL(string: "https://github.com/scrapmd/scrapmd/issues/new?body=\(deviceSummary)")!
     }
 
     var contactURL: URL {

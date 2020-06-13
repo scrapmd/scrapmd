@@ -44,6 +44,11 @@ struct DirectoryBrowserView: View {
                 NewScrapView(path: self.path, isShown: self.$isNewModalShown)
                     .environmentObject(self.pendingNavigation)
             }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .sheet(isPresented: $isAboutModalShown) {
+            NavigationView {
+                AboutView(isShown: self.$isAboutModalShown)
+            }.navigationViewStyle(StackNavigationViewStyle())
         }.onAppear {
             FileManager.default.sync()
         }
@@ -57,7 +62,7 @@ struct DirectoryBrowserView: View {
                 leading: Button(action: {
                     self.isAboutModalShown = true
                 }) {
-                    Image(systemName: "info")
+                    Image(systemName: "info.circle.fill")
                 },
                 trailing: newButton
             ))

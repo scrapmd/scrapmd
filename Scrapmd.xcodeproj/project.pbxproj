@@ -112,6 +112,7 @@
 		85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
 		85F9008F248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
 		85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */; };
+		85FA180B2494AD8700047F95 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA180A2494AD8700047F95 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,7 @@
 		85F9008D248B66B7007F5A33 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserView.swift; sourceTree = "<group>"; };
 		85F9009324920D3F007F5A33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		85FA180A2494AD8700047F95 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +419,7 @@
 				8555F3272489F72000D162B5 /* SaveActionView.swift */,
 				85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */,
 				856B8030248C3F950055F8C0 /* ScrapReaderView.swift */,
+				85FA180A2494AD8700047F95 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				85F90088248B60A1007F5A33 /* ScrapMeatadata.swift in Sources */,
 				856B8052248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
 				856B8048248CC7090055F8C0 /* NewScrapView.ViewModel.swift in Sources */,
+				85FA180B2494AD8700047F95 /* AboutView.swift in Sources */,
 				856B8031248C3F950055F8C0 /* ScrapReaderView.swift in Sources */,
 				857F5EB2248B24AF00DC640D /* DirectoryPickerView.swift in Sources */,
 				856B801C248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift in Sources */,
