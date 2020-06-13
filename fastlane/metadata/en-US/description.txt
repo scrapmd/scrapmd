@@ -1,0 +1,9 @@
+Scrapmd is a scrapbook to collect Markdown formatted web page clippings and images.
+
+Those contents are saved in iCloud Drive, so you can browse and use it from both macOS and iOS.
+
+The following clipping methods are supported:
+
+* Browser Action Menu
+* In-app direct input
+* Clipboard content 
