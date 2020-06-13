@@ -16,7 +16,7 @@ devices([
 
 languages(["en-US", "ja"])
 
-# clear_previous_screenshots(true)
+clear_previous_screenshots(true)
 
 project "Scrapmd.xcodeproj"
 scheme "ScrapmdUITests"
