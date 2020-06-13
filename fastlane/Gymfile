@@ -2,3 +2,4 @@
 
 project 'Scrapmd.xcodeproj'
 scheme 'Scrapmd'
+derived_data_path 'DerivedData'

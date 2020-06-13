@@ -3,28 +3,22 @@
 devices([
   "iPhone 8",
   "iPhone 8 Plus",
-  # "iPhone 11",
   "iPhone 11 Pro",
   "iPhone 11 Pro Max",
-  "iPhone SE (2nd generation)",
   "iPad Pro (9.7-inch)",
-  "iPad (7th generation)",
   "iPad Pro (11-inch) (2nd generation)",
-  "iPad Pro (12.9-inch) (4th generation)",
-  # "iPad Air (3rd generation)"
+  "iPad Pro (12.9-inch) (4th generation)"
 ])
 
-languages(["en-US", "ja"])
+languages(["ja"])
 
-clear_previous_screenshots(true)
+# clear_previous_screenshots true
+test_without_building true
 
 project "Scrapmd.xcodeproj"
 scheme "ScrapmdUITests"
-launch_arguments ["-circleToken #{ENV.fetch('UI_TEST_CIRCLE_TOKEN')}"]
 
-# For more information about all available options run
-# fastlane action snapshot
-derived_data_path 'DerivedData'
-namespace_log_files false
-# ttest_without_building true
+derived_data_path './DerivedData'
+namespace_log_files true
 erase_simulator true
+concurrent_simulators false

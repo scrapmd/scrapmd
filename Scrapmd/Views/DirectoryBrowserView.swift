@@ -51,7 +51,7 @@ struct DirectoryBrowserView: View {
             }.navigationViewStyle(StackNavigationViewStyle())
         }.onAppear {
             FileManager.default.sync()
-        }
+        }.accessibility(identifier: "DirectoryBrowser")
         let newButton = Button(action: {
             self.isNewModalShown = true
         }) {
