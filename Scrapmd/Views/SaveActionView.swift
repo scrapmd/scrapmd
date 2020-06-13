@@ -26,13 +26,17 @@ struct SaveActionView: View {
         showCompletion: Bool = false,
         cancelAction: @escaping Action,
         doneAction: @escaping FilePathAction,
-        openAction: @escaping FilePathAction
+        openAction: @escaping FilePathAction,
+        path: FileKitPath? = nil
     ) {
         self.saverViewModel = SaveActionView.ViewModel(contentSaver: contentSaver)
         self.showCompletion = showCompletion
         self.cancelAction = cancelAction
         self.doneAction = doneAction
         self.openAction = openAction
+        if let path = path {
+            self.saverViewModel.saveLocation = path
+        }
     }
 
     var body: some View {
@@ -44,7 +48,7 @@ struct SaveActionView: View {
                 }
                 Section(header: Text("Save Location")) {
                     NavigationLink(destination: DirectoryPickerView(
-                    FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments) { (path, _) in
+                    FileKitPath.documentRoot) { (path, _) in
                         if let path = path {
                             self.saverViewModel.saveLocation = path
                         }

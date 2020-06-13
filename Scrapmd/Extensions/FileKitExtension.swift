@@ -82,6 +82,14 @@ extension Path {
         return img ?? Image(named: "NoImg")!
     }
 
+    var isRoot: Bool {
+        return self == .documentRoot
+    }
+
+    static var documentRoot: Path {
+        Path.iCloudDocuments ?? Path.userDocuments
+    }
+
     func fileURL(scheme: String? = nil) -> URL {
         var urlComponents = URLComponents()
         urlComponents.path = rawValue

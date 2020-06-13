@@ -13,6 +13,7 @@ struct DirectoryBrowserView: View {
     @EnvironmentObject var pendingNavigation: PendingNavigation
     @ObservedObject var directoryBrowser: DirectoryBrowser
     @State var isNewModalShown = false
+    @State var isAboutModalShown = false
 
     init(_ path: FileKitPath) {
         self.path = path
@@ -20,7 +21,7 @@ struct DirectoryBrowserView: View {
     }
 
     var body: some View {
-        VStack {
+        let vstack = VStack {
             List {
                 ForEach(directoryBrowser.sectionedIndices, id: \.0) { (section, indices) in
                     Section(header: Text(section == "" ? "Folder" : section)) {
@@ -38,20 +39,32 @@ struct DirectoryBrowserView: View {
                 .onAppear {}
         }
         .navigationBarTitle(path.fileName)
-        .navigationBarItems(
-            trailing: Button(action: {
-                self.isNewModalShown = true
-            }) {
-                Image(systemName: "plus")
-            }
-        ).sheet(isPresented: $isNewModalShown) {
+        .sheet(isPresented: $isNewModalShown) {
             NavigationView {
-                NewScrapView(isShown: self.$isNewModalShown)
+                NewScrapView(path: self.path, isShown: self.$isNewModalShown)
                     .environmentObject(self.pendingNavigation)
             }.navigationViewStyle(StackNavigationViewStyle())
         }.onAppear {
             FileManager.default.sync()
         }
+        let newButton = Button(action: {
+            self.isNewModalShown = true
+        }) {
+            Image(systemName: "plus")
+        }
+        if path.isRoot {
+            return AnyView(vstack.navigationBarItems(
+                leading: Button(action: {
+                    self.isAboutModalShown = true
+                }) {
+                    Image(systemName: "info")
+                },
+                trailing: newButton
+            ))
+        }
+        return AnyView(vstack.navigationBarItems(
+            trailing: newButton
+        ))
     }
 
     func delete(at offsets: IndexSet) {

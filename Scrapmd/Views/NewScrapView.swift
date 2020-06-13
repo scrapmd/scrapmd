@@ -11,6 +11,7 @@ import SwiftUI
 struct NewScrapView: View {
     @EnvironmentObject var pendingNavigation: PendingNavigation
     @ObservedObject var viewModel = ViewModel()
+    let path: FileKitPath
     @Binding var isShown: Bool
 
     var body: some View {
@@ -61,7 +62,9 @@ struct NewScrapView: View {
                             self.pendingNavigation.isPending = true
                             self.cancel()
                         },
-                        openAction: { _ in }),
+                        openAction: { _ in },
+                        path: path
+                    ),
                     isActive: $viewModel.isFetched) {
                         Spacer().hidden()
                 }
@@ -87,6 +90,6 @@ struct NewScrapView: View {
 
 struct NewScrapView_Previews: PreviewProvider {
     static var previews: some View {
-        NewScrapView(isShown: .constant(true))
+        NewScrapView(path: .documentRoot, isShown: .constant(true))
     }
 }

@@ -13,7 +13,7 @@ import UIKit
 
 extension Path {
     func cache(createdAt: Date, in context: NSManagedObjectContext) {
-        if self == .userDocuments || self == Path.iCloudDocuments {
+        if self.isRoot {
             return
         }
         let found = TimestampCache.findOrCreate(by: self, in: context)

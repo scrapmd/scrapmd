@@ -46,7 +46,7 @@ extension UserDefaults {
             if let raw = self.string(forKey: .lastLocation) {
                 return FileKitPath(raw)
             }
-            return FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments
+            return FileKitPath.documentRoot
         }
         set(path) {
             self.set(path.rawValue, forKey: .lastLocation)

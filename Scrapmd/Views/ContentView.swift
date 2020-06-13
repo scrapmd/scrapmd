@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            DirectoryBrowserView(FileKitPath.iCloudDocuments ?? FileKitPath.userDocuments)
+            DirectoryBrowserView(FileKitPath.documentRoot)
             DetailPlaceholderView()
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
