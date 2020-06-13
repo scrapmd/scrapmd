@@ -75,6 +75,19 @@
 		85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6A880248A050F0086F13F /* ActionViewController.swift */; };
+		85DC9C0524949D25002D5982 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951852492433900033AF1 /* FirebaseCore.xcframework */; };
+		85DC9C0624949D25002D5982 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */; };
+		85DC9C0724949D25002D5982 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
+		85DC9C0824949D25002D5982 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951872492433900033AF1 /* FirebaseInstallations.xcframework */; };
+		85DC9C0924949D25002D5982 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951862492433900033AF1 /* GoogleDataTransport.xcframework */; };
+		85DC9C0A24949D25002D5982 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
+		85DC9C0B24949D25002D5982 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951832492433900033AF1 /* GoogleUtilities.xcframework */; };
+		85DC9C0C24949D25002D5982 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951882492433900033AF1 /* nanopb.xcframework */; };
+		85DC9C0D24949D25002D5982 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951842492433900033AF1 /* PromisesObjC.xcframework */; };
+		85DC9C0E24949D30002D5982 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951992492444E00033AF1 /* libc++.tbd */; };
+		85DC9C1024949D38002D5982 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DC9C0F24949D38002D5982 /* libsqlite3.tbd */; };
+		85DC9C1424949FBD002D5982 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85F9009324920D3F007F5A33 /* GoogleService-Info.plist */; };
+		85DC9C1524949FBD002D5982 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85F9009324920D3F007F5A33 /* GoogleService-Info.plist */; };
 		85E87AC72492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */; };
 		85E87AC82492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */; };
 		85E87ACC24930BC800B3BA7D /* SaveCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */; };
@@ -99,7 +112,6 @@
 		85F9008E248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
 		85F9008F248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
 		85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */; };
-		85F9009424920D3F007F5A33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85F9009324920D3F007F5A33 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +215,9 @@
 		85948D3E24891BA400763582 /* GetHTML.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetHTML.js; sourceTree = "<group>"; };
 		85A5B43E24905E1900F56AEB /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		85D6A880248A050F0086F13F /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		85DC9C042491761E002D5982 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		85DC9C0F24949D38002D5982 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		85DC9C1124949E21002D5982 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCompleteView.swift; sourceTree = "<group>"; };
 		85E87ACE2493318600B3BA7D /* PendingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingNavigation.swift; sourceTree = "<group>"; };
@@ -262,6 +277,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85DC9C1024949D38002D5982 /* libsqlite3.tbd in Frameworks */,
+				85DC9C0E24949D30002D5982 /* libc++.tbd in Frameworks */,
+				85DC9C0524949D25002D5982 /* FirebaseCore.xcframework in Frameworks */,
+				85DC9C0624949D25002D5982 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
+				85DC9C0724949D25002D5982 /* FirebaseCrashlytics.xcframework in Frameworks */,
+				85DC9C0824949D25002D5982 /* FirebaseInstallations.xcframework in Frameworks */,
+				85DC9C0924949D25002D5982 /* GoogleDataTransport.xcframework in Frameworks */,
+				85DC9C0A24949D25002D5982 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
+				85DC9C0B24949D25002D5982 /* GoogleUtilities.xcframework in Frameworks */,
+				85DC9C0C24949D25002D5982 /* nanopb.xcframework in Frameworks */,
+				85DC9C0D24949D25002D5982 /* PromisesObjC.xcframework in Frameworks */,
 				857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +298,7 @@
 		854447D72488C6920010F1F7 = {
 			isa = PBXGroup;
 			children = (
+				85DC9C042491761E002D5982 /* README.md */,
 				854447E22488C6930010F1F7 /* Scrapmd */,
 				854447F92488C6950010F1F7 /* ScrapmdTests */,
 				854448042488C6950010F1F7 /* ScrapmdUITests */,
@@ -339,6 +366,7 @@
 		854448182488C6C40010F1F7 /* ActionExtension */ = {
 			isa = PBXGroup;
 			children = (
+				85DC9C1124949E21002D5982 /* GoogleService-Info.plist */,
 				85948D3E24891BA400763582 /* GetHTML.js */,
 				854448282488C6CD0010F1F7 /* ActionExtension.entitlements */,
 				854448192488C6C40010F1F7 /* Media.xcassets */,
@@ -353,6 +381,7 @@
 		857CCA5D248960BC00AE5BE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85DC9C0F24949D38002D5982 /* libsqlite3.tbd */,
 				8539519B2492445800033AF1 /* StoreKit.framework */,
 				853951992492444E00033AF1 /* libc++.tbd */,
 				853951972492443B00033AF1 /* libsqlite3.0.tbd */,
@@ -518,6 +547,7 @@
 				854448132488C6C40010F1F7 /* Sources */,
 				854448142488C6C40010F1F7 /* Frameworks */,
 				854448152488C6C40010F1F7 /* Resources */,
+				85DC9C1324949EF5002D5982 /* Run Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -589,7 +619,7 @@
 			files = (
 				856B802F248C3BD70055F8C0 /* LaunchScreen.storyboard in Resources */,
 				856B802D248C3B840055F8C0 /* Localizable.stringsdict in Resources */,
-				85F9009424920D3F007F5A33 /* GoogleService-Info.plist in Resources */,
+				85DC9C1424949FBD002D5982 /* GoogleService-Info.plist in Resources */,
 				854447ED2488C6940010F1F7 /* Preview Assets.xcassets in Resources */,
 				854447EA2488C6940010F1F7 /* Assets.xcassets in Resources */,
 			);
@@ -618,12 +648,33 @@
 				856B802E248C3B840055F8C0 /* Localizable.stringsdict in Resources */,
 				8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */,
 				85948D3F24891BA400763582 /* GetHTML.js in Resources */,
+				85DC9C1524949FBD002D5982 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		85DC9C1324949EF5002D5982 /* Run Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# \"${PROJECT_TEMP_ROOT}/../../SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n\"${SRCROOT}/Vendor/Firebase/FirebaseCrashlytics/run\"\n\n";
+		};
 		85F900922491F1C7007F5A33 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -943,11 +994,6 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
-				);
 				INFOPLIST_FILE = Scrapmd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -972,11 +1018,6 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
-				);
 				INFOPLIST_FILE = Scrapmd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

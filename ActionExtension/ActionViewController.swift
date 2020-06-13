@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import FileKit
 import SwiftUI
+import FirebaseCore
 
 class ActionViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -17,6 +18,7 @@ class ActionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirebaseApp.configure()
         loadItem()
     }
 
@@ -26,7 +28,10 @@ class ActionViewController: UIViewController {
             let provider = inputItems
                 .flatMap({ $0.attachments ?? [] })
                 .first(where: { $0.hasItemConformingToTypeIdentifier(kUTTypePropertyList as String) })
-            else { return }
+            else {
+                self.extensionContext!.cancelRequest(withError: NSError())
+                return
+        }
         provider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { (results, _) in
             guard
                 let results = results as? [String: Any],
@@ -35,12 +40,19 @@ class ActionViewController: UIViewController {
                 let title = jsResults["title"] as? String,
                 let urlString = jsResults["url"] as? String,
                 let url = URL(string: urlString)
-                else { return }
-            APIClient.fetch(url: url, title: title, prefetchedHTML: html) { (result, _, _) in
+                else {
+                    self.extensionContext!.cancelRequest(withError: NSError())
+                    return
+            }
+            APIClient.fetch(url: url, title: title, prefetchedHTML: html) { (result, _, err) in
                 if let result = result {
                     DispatchQueue.main.async {
                         self.renderSaveView(result: result)
                         self.activityIndicatorView.stopAnimating()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.extensionContext!.cancelRequest(withError: err ?? NSError())
                     }
                 }
             }
