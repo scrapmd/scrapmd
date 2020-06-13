@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseCrashlytics
 
 struct APIClient {
     struct Params: Encodable {
@@ -56,6 +57,7 @@ struct APIClient {
         session.dataTask(with: req) { (data, res, err) in
             guard let res = res as? HTTPURLResponse else { fatalError() }
             if let err = err {
+                Crashlytics.crashlytics().record(error: err)
                 completionHandler(nil, res, err)
                 return
             }

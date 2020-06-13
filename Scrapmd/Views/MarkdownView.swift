@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Ink
+import FirebaseCrashlytics
 
 struct MarkdownView: UIViewRepresentable {
     let markdown: String
@@ -45,6 +46,7 @@ struct MarkdownView: UIViewRepresentable {
                 textView.attributedText = attributedText
             } catch {
                 print(error)
+                Crashlytics.crashlytics().record(error: error)
             }
         }
     }

@@ -13,6 +13,7 @@ import Dispatch
 import UIKit
 import SwiftUI
 import CoreData
+import FirebaseCrashlytics
 
 private var queueId = 0
 
@@ -87,7 +88,7 @@ class DirectoryBrowser: ObservableObject {
             !path.isHidden && path.isDirectory &&
                 ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
         })
-        let context = CoreDataManager.shared.persistentContainer.newBackgroundContext()
+        let context = CoreDataManager.shared.newBackgroundContext()
         context.performAndWait {
             pathes.forEach { path in
                 if path.cachedCreatedAt == nil, let date = path.loadCreatedAt() {
@@ -99,6 +100,7 @@ class DirectoryBrowser: ObservableObject {
             try context.save()
         } catch {
             print(error)
+            Crashlytics.crashlytics().record(error: error)
         }
         return pathes.sorted(by: {
             if

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import FirebaseCrashlytics
 
 extension DirectoryBrowser {
     func delete(at offsets: IndexSet) {
@@ -18,11 +19,13 @@ extension DirectoryBrowser {
                 try path.deleteFile()
             } catch {
                 print(error)
+                Crashlytics.crashlytics().record(error: error)
             }
             return path
         }
 
-        CoreDataManager.shared.persistentContainer.performBackgroundTask { context in
+        let context = CoreDataManager.shared.newBackgroundContext()
+        context.perform {
             pathes.forEach { path in
                 if let found = TimestampCache.find(by: path, in: context) {
                     context.delete(found)
@@ -32,6 +35,12 @@ extension DirectoryBrowser {
                 try context.save()
             } catch {
                 print(error)
+                Crashlytics.crashlytics().record(error: error)
+            }
+            do {
+                try context.save()
+            } catch {
+                Crashlytics.crashlytics().record(error: error)
             }
         }
         items.remove(atOffsets: offsets)

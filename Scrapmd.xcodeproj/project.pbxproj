@@ -217,7 +217,6 @@
 		85D6A880248A050F0086F13F /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		85DC9C042491761E002D5982 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		85DC9C0F24949D38002D5982 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
-		85DC9C1124949E21002D5982 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCompleteView.swift; sourceTree = "<group>"; };
 		85E87ACE2493318600B3BA7D /* PendingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingNavigation.swift; sourceTree = "<group>"; };
@@ -366,7 +365,6 @@
 		854448182488C6C40010F1F7 /* ActionExtension */ = {
 			isa = PBXGroup;
 			children = (
-				85DC9C1124949E21002D5982 /* GoogleService-Info.plist */,
 				85948D3E24891BA400763582 /* GetHTML.js */,
 				854448282488C6CD0010F1F7 /* ActionExtension.entitlements */,
 				854448192488C6C40010F1F7 /* Media.xcassets */,

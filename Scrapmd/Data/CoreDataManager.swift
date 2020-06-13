@@ -9,11 +9,19 @@
 import Foundation
 import CoreData
 import FileKit
+import FirebaseCrashlytics
 
 struct CoreDataManager {
     static var shared = CoreDataManager()
+    static let defaultMergePolicy = NSMergePolicy(merge: .overwriteMergePolicyType)
 
     // MARK: - Core Data stack
+
+    mutating func newBackgroundContext() -> NSManagedObjectContext {
+        let ctx = persistentContainer.newBackgroundContext()
+        ctx.mergePolicy = CoreDataManager.defaultMergePolicy
+        return ctx
+    }
 
     lazy var persistentContainer: NSPersistentContainer = {
         let dbName = "Scrapmd"
@@ -22,8 +30,9 @@ struct CoreDataManager {
         let storeDescription = NSPersistentStoreDescription(url: url)
         container.persistentStoreDescriptions = [storeDescription]
         container.loadPersistentStores(completionHandler: { (_, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+            if let error = error {
+                Crashlytics.crashlytics().record(error: error)
+                fatalError("Unresolved error \(error), \(error)")
             }
         })
         return container
@@ -33,6 +42,7 @@ struct CoreDataManager {
 
     mutating func saveContext () {
         let context = persistentContainer.viewContext
+        context.mergePolicy = CoreDataManager.defaultMergePolicy
         if context.hasChanges {
             do {
                 try context.save()
