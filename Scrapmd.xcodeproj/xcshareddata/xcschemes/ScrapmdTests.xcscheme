@@ -51,15 +51,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "854447DF2488C6930010F1F7"
-            BuildableName = "Scrapmd.app"
-            BlueprintName = "Scrapmd"
-            ReferencedContainer = "container:Scrapmd.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

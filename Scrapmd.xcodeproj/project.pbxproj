@@ -39,6 +39,22 @@
 		8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8544481B2488C6C40010F1F7 /* ActionViewController.swift */; };
 		8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544481D2488C6C40010F1F7 /* MainInterface.storyboard */; };
 		854448232488C6C40010F1F7 /* ActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 854448172488C6C40010F1F7 /* ActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		855DB2BE2495867100736915 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DC9C0F24949D38002D5982 /* libsqlite3.tbd */; };
+		855DB2BF2495867100736915 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539519B2492445800033AF1 /* StoreKit.framework */; };
+		855DB2C02495867100736915 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951992492444E00033AF1 /* libc++.tbd */; };
+		855DB2C12495867100736915 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951972492443B00033AF1 /* libsqlite3.0.tbd */; };
+		855DB2C22495867100736915 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; };
+		855DB2C32495867100736915 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518A2492433900033AF1 /* FirebaseAnalytics.framework */; };
+		855DB2C42495867100736915 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951852492433900033AF1 /* FirebaseCore.xcframework */; };
+		855DB2C52495867100736915 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */; };
+		855DB2C62495867100736915 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951872492433900033AF1 /* FirebaseInstallations.xcframework */; };
+		855DB2C72495867100736915 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518B2492433900033AF1 /* GoogleAppMeasurement.framework */; };
+		855DB2C82495867100736915 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951862492433900033AF1 /* GoogleDataTransport.xcframework */; };
+		855DB2C92495867100736915 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
+		855DB2CA2495867100736915 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951832492433900033AF1 /* GoogleUtilities.xcframework */; };
+		855DB2CB2495867100736915 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951882492433900033AF1 /* nanopb.xcframework */; };
+		855DB2CC2495867100736915 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951842492433900033AF1 /* PromisesObjC.xcframework */; };
+		855DB2CD2495867100736915 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
 		8563B7FD2494D2BC003B2155 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8563B7FC2494D2BC003B2155 /* SnapshotHelper.swift */; };
 		856B801C248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B801B248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift */; };
 		856B802D248C3B840055F8C0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 856B802B248C3B840055F8C0 /* Localizable.stringsdict */; };
@@ -76,17 +92,6 @@
 		85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6A880248A050F0086F13F /* ActionViewController.swift */; };
-		85DC9C0524949D25002D5982 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951852492433900033AF1 /* FirebaseCore.xcframework */; };
-		85DC9C0624949D25002D5982 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */; };
-		85DC9C0724949D25002D5982 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
-		85DC9C0824949D25002D5982 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951872492433900033AF1 /* FirebaseInstallations.xcframework */; };
-		85DC9C0924949D25002D5982 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951862492433900033AF1 /* GoogleDataTransport.xcframework */; };
-		85DC9C0A24949D25002D5982 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
-		85DC9C0B24949D25002D5982 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951832492433900033AF1 /* GoogleUtilities.xcframework */; };
-		85DC9C0C24949D25002D5982 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951882492433900033AF1 /* nanopb.xcframework */; };
-		85DC9C0D24949D25002D5982 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951842492433900033AF1 /* PromisesObjC.xcframework */; };
-		85DC9C0E24949D30002D5982 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951992492444E00033AF1 /* libc++.tbd */; };
-		85DC9C1024949D38002D5982 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DC9C0F24949D38002D5982 /* libsqlite3.tbd */; };
 		85DC9C1424949FBD002D5982 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85F9009324920D3F007F5A33 /* GoogleService-Info.plist */; };
 		85DC9C1524949FBD002D5982 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85F9009324920D3F007F5A33 /* GoogleService-Info.plist */; };
 		85E87AC72492E0BD00B3BA7D /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E87AC62492E0BD00B3BA7D /* UserDefaultsExtension.swift */; };
@@ -285,18 +290,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85DC9C1024949D38002D5982 /* libsqlite3.tbd in Frameworks */,
-				85DC9C0E24949D30002D5982 /* libc++.tbd in Frameworks */,
-				85DC9C0524949D25002D5982 /* FirebaseCore.xcframework in Frameworks */,
-				85DC9C0624949D25002D5982 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
-				85DC9C0724949D25002D5982 /* FirebaseCrashlytics.xcframework in Frameworks */,
-				85DC9C0824949D25002D5982 /* FirebaseInstallations.xcframework in Frameworks */,
-				85DC9C0924949D25002D5982 /* GoogleDataTransport.xcframework in Frameworks */,
-				85DC9C0A24949D25002D5982 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
-				85DC9C0B24949D25002D5982 /* GoogleUtilities.xcframework in Frameworks */,
-				85DC9C0C24949D25002D5982 /* nanopb.xcframework in Frameworks */,
-				85DC9C0D24949D25002D5982 /* PromisesObjC.xcframework in Frameworks */,
 				857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */,
+				855DB2BE2495867100736915 /* libsqlite3.tbd in Frameworks */,
+				855DB2BF2495867100736915 /* StoreKit.framework in Frameworks */,
+				855DB2C02495867100736915 /* libc++.tbd in Frameworks */,
+				855DB2C12495867100736915 /* libsqlite3.0.tbd in Frameworks */,
+				855DB2C22495867100736915 /* FIRAnalyticsConnector.framework in Frameworks */,
+				855DB2C32495867100736915 /* FirebaseAnalytics.framework in Frameworks */,
+				855DB2C42495867100736915 /* FirebaseCore.xcframework in Frameworks */,
+				855DB2C52495867100736915 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
+				855DB2C62495867100736915 /* FirebaseInstallations.xcframework in Frameworks */,
+				855DB2C72495867100736915 /* GoogleAppMeasurement.framework in Frameworks */,
+				855DB2C82495867100736915 /* GoogleDataTransport.xcframework in Frameworks */,
+				855DB2C92495867100736915 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
+				855DB2CA2495867100736915 /* GoogleUtilities.xcframework in Frameworks */,
+				855DB2CB2495867100736915 /* nanopb.xcframework in Frameworks */,
+				855DB2CC2495867100736915 /* PromisesObjC.xcframework in Frameworks */,
+				855DB2CD2495867100736915 /* FirebaseCrashlytics.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,7 +925,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -937,7 +946,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/**";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -983,7 +992,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -999,7 +1007,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/**";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1018,7 +1026,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Scrapmd/Scrapmd.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_PREVIEWS = YES;
@@ -1142,6 +1149,10 @@
 				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
+				);
 				INFOPLIST_FILE = ActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1164,6 +1175,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
 				CODE_SIGN_STYLE = Manual;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
+				);
 				INFOPLIST_FILE = ActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
