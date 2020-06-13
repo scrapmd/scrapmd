@@ -38,7 +38,7 @@ struct DirectoryBrowserView: View {
                 isActive: $pendingNavigation.isPending) { Spacer().hidden() }
                 .onAppear {}
         }
-        .navigationBarTitle(path.fileName)
+        .navigationBarTitle(path.isRoot ? NSLocalizedString("Home", comment: "Home") : path.fileName)
         .sheet(isPresented: $isNewModalShown) {
             NavigationView {
                 NewScrapView(path: self.path, isShown: self.$isNewModalShown)
