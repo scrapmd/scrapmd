@@ -115,8 +115,7 @@ platform :ios do
     )
   end
 
-  lane :release_submit do
-    build_number = sh('cat ../build/buildnum.ios.txt').strip
+  lane :release_submit do |options|
     deliver(
       platform: 'ios',
       skip_binary_upload: true,
@@ -125,7 +124,7 @@ platform :ios do
       submit_for_review: true,
       automatic_release: true,
       reject_if_possible: true,
-      build_number: build_number,
+      build_number: options[:build_number],
       submission_information: {
         export_compliance_encryption_updated: false
       }
@@ -314,7 +313,6 @@ platform :mac do
   end
 
   lane :release_submit do
-    build_number = sh('cat ../build/buildnum.mac.txt').strip
     begin
       deliver(
         platform: 'osx',
@@ -326,7 +324,7 @@ platform :mac do
         submit_for_review: true,
         automatic_release: true,
         reject_if_possible: false,
-        build_number: build_number,
+        build_number: options[:build_number],
         submission_information: {
           export_compliance_encryption_updated: false
         }
