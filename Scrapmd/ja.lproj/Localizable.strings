@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Scrapmd
+
+  Created by Atsushi Nagase on 2020/06/13.
+  Copyright © 2020 LittleApps Inc. All rights reserved.
+*/
+"Folder Name" = "フォルダ名";
+"Create New Folder" = "新規フォルダ作成";
+"Cancel" = "キャンセル";
+"Create" = "作成";
+"Failed to create folder" = "フォルダの作成に失敗しました";
+"Folder" = "フォルダ";
+"Fetch Web Page" = "ウェブページを取得";
+"Enter URL to fetch" = "取得するページの URL を入力してください";
+"Create New Scrap" = "新しいスクラップを作成";
+"Name" = "名称";
+"Save Location" = "保存先";
+"Save Scrap" = "スクラップを保存";
+"Save" = "保存";
+"Saved!" = "保存しました！";
+"View Scrap" = "スクラップを見る";
+"Done" = "完了";
+"Could not load scrap" = "スクラップの読み込みに失敗しました。";
+"Srapmd Homepage" = "Srapmd ホームページ";
+"https://scrapmd.app/" = "https://scrapmd.app/ja/";
+"Rate Scrapmd" = "Scrapmd を評価する";
+"Submit an Issue" = "不具合を報告";
+"Contact Author" = "作者に連絡する";
+"Close" = "閉じる";
+"Version %@ Build %@" = "バージョン %@ ビルド %@";

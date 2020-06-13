@@ -113,6 +113,8 @@
 		85F9008F248B66B7007F5A33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9008D248B66B7007F5A33 /* ProgressBar.swift */; };
 		85F90091248B7004007F5A33 /* DirectoryBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */; };
 		85FA180B2494AD8700047F95 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA180A2494AD8700047F95 /* AboutView.swift */; };
+		85FA180F2494B7AA00047F95 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85FA18122494B7AA00047F95 /* Localizable.strings */; };
+		85FA18102494B7AA00047F95 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85FA18122494B7AA00047F95 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +235,9 @@
 		85F90090248B7004007F5A33 /* DirectoryBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserView.swift; sourceTree = "<group>"; };
 		85F9009324920D3F007F5A33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85FA180A2494AD8700047F95 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		85FA18112494B7AA00047F95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		85FA18132494B7C200047F95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		85FA18142494B7C200047F95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ja; path = ja.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +409,7 @@
 		857CCA60248970C800AE5BE8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				85FA180A2494AD8700047F95 /* AboutView.swift */,
 				85D6A880248A050F0086F13F /* ActionViewController.swift */,
 				856B8051248CD97E0055F8C0 /* ActivityIndicator.swift */,
 				856B803F248C8D820055F8C0 /* ActivityViewController.swift */,
@@ -419,7 +425,6 @@
 				8555F3272489F72000D162B5 /* SaveActionView.swift */,
 				85E87ACB24930BC800B3BA7D /* SaveCompleteView.swift */,
 				856B8030248C3F950055F8C0 /* ScrapReaderView.swift */,
-				85FA180A2494AD8700047F95 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				85F9009324920D3F007F5A33 /* GoogleService-Info.plist */,
+				85FA18122494B7AA00047F95 /* Localizable.strings */,
 				856B802B248C3B840055F8C0 /* Localizable.stringsdict */,
 				854447EE2488C6940010F1F7 /* LaunchScreen.storyboard */,
 				854447F12488C6940010F1F7 /* Info.plist */,
@@ -595,6 +601,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 854447D72488C6920010F1F7;
 			packageReferences = (
@@ -619,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				856B802F248C3BD70055F8C0 /* LaunchScreen.storyboard in Resources */,
+				85FA180F2494B7AA00047F95 /* Localizable.strings in Resources */,
 				856B802D248C3B840055F8C0 /* Localizable.stringsdict in Resources */,
 				85DC9C1424949FBD002D5982 /* GoogleService-Info.plist in Resources */,
 				854447ED2488C6940010F1F7 /* Preview Assets.xcassets in Resources */,
@@ -647,6 +655,7 @@
 				8544481A2488C6C40010F1F7 /* Media.xcassets in Resources */,
 				85A5B43F24905E1900F56AEB /* Asset.xcassets in Resources */,
 				856B802E248C3B840055F8C0 /* Localizable.stringsdict in Resources */,
+				85FA18102494B7AA00047F95 /* Localizable.strings in Resources */,
 				8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */,
 				85948D3F24891BA400763582 /* GetHTML.js in Resources */,
 				85DC9C1524949FBD002D5982 /* GoogleService-Info.plist in Resources */,
@@ -851,8 +860,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				856B802C248C3B840055F8C0 /* en */,
+				85FA18142494B7C200047F95 /* ja */,
 			);
 			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		85FA18122494B7AA00047F95 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85FA18112494B7AA00047F95 /* en */,
+				85FA18132494B7C200047F95 /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -862,6 +881,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -928,6 +948,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

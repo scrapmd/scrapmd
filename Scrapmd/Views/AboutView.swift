@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AboutView: View {
     struct Item: View {
-        let label: String
+        let label: LocalizedStringKey
         let url: URL
 
         var body: some View {
@@ -42,7 +42,8 @@ struct AboutView: View {
                 .opacity(0.4)
             }
             List {
-                Item(label: "Srapmd Homepage", url: URL(string: "https://scrapmd.app/")!)
+                Item(label: "Srapmd Homepage",
+                     url: URL(string: NSLocalizedString("https://scrapmd.app/", comment: "Homepage URL"))!)
                 Item(label: "Rate Scrapmd",
                      url: URL(string: "https://itunes.apple.com/app/id1517295689?action=write-review")!)
                 Item(label: "Submit an Issue", url: Bundle.main.submitIssueURL)
@@ -60,7 +61,7 @@ struct AboutView: View {
         .navigationBarItems(trailing: Button(action: {
             self.isShown = false
         }) {
-            Text("Done")
+            Text("Close")
         })
     }
 }
@@ -70,5 +71,6 @@ struct AboutView_Previews: PreviewProvider {
         NavigationView {
             AboutView(isShown: .constant(true))
         }
+        .environment(\.locale, .init(identifier: "ja"))
     }
 }

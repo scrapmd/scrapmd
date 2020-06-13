@@ -52,9 +52,7 @@ struct ScrapReaderView: View {
                     }) {
                         Image(systemName: "link")
                     }.padding()
-                }.sheet(isPresented: $isSharePresented, onDismiss: {
-                    print("Dismiss")
-                }, content: {
+                }.sheet(isPresented: $isSharePresented, content: {
                     ActivityViewController(activityItems: [self.path.fileURL(scheme: "file")])
                 })
             }
