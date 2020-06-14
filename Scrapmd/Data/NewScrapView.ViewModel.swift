@@ -41,8 +41,12 @@ extension NewScrapView {
             APIClient.fetch(url: url) { (result, _, _)  in
                 DispatchQueue.main.async {
                     self.isFetching = false
-                    guard let result = result, !result.markdown.isEmpty else {
+                    guard let result = result else {
                         self.errorMessage = "Error fetching from URL"
+                        return
+                    }
+                    if result.markdown.isEmpty {
+                        self.errorMessage = "This site is not supported"
                         return
                     }
                     self.result = result

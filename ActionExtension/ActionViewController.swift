@@ -58,6 +58,19 @@ class ActionViewController: UIViewController {
     }
 
     func renderSaveView(result: APIClient.Result) {
+        if result.markdown.isEmpty {
+            let alertView = UIAlertController(
+                title: NSLocalizedString("Error", comment: "Error"),
+                message: NSLocalizedString("This site is not supported", comment: "not supported"),
+                preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(
+                title: NSLocalizedString("Close", comment: "Close"),
+                style: .cancel) { _ in
+                self.done()
+            })
+            self.present(alertView, animated: true)
+            return
+        }
         let saver = ContentSaver(result: result)
         let rootView = NavigationView {
             SaveActionView(
