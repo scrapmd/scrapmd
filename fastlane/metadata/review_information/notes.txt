@@ -1,0 +1,1 @@
+Tab + button on right of master view. Fill any accessible URL which has some text content and hit "Fetch ..." button, hit "Save" button on next screen then you may see the downloaded web content stored in your local.
