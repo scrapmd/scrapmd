@@ -61,6 +61,11 @@ Build app for beta
 fastlane ios release_upload
 ```
 Publish app to App Store
+### ios release_slack
+```
+fastlane ios release_slack
+```
+Notify to Slack
 ### ios release_submit
 ```
 fastlane ios release_submit
