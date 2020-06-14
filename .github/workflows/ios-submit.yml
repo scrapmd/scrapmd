@@ -24,22 +24,14 @@ jobs:
     - run: bundle config set path 'vendor/bundle'
     - run: bundle install
       if: steps.cache-bundler.outputs.cache-hit != 'true'
-    - id: set_state_in_progress
-      name: Set deployment status to [in_progress]
-      uses: rsotnychenko/deployment-status-update@0.2.0
-      with:
-        run_id: ${{ github.run_id }}
-        status: in_progress
+    - name: Set deployment status to [in_progress]
+      run: ./.github/workflows/set-deployment-status.sh in_progress
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: bundle exec fastlane ios release_submit build_number:${{ github.event.deployment.payload.build_number }}
       name: Submit for Review
-    - id: set_state_final
-      if: always()
-      name: Set deployment status
-      uses: rsotnychenko/deployment-status-update@0.2.0
-      with:
-        status: ${{ job.status }}
-        run_id: ${{ github.run_id }}
+    - if: always()
+      name: Set deployment status to ${{ job.status }}
+      run: ./.github/workflows/set-deployment-status.sh ${{ job.status }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
