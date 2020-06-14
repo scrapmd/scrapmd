@@ -24,23 +24,22 @@ jobs:
     - run: bundle config set path 'vendor/bundle'
     - run: bundle install
       if: steps.cache-bundler.outputs.cache-hit != 'true'
+    - id: set_state_in_progress
+      name: Set deployment status to [in_progress]
+      uses: rsotnychenko/deployment-status-update@0.2.0
+      with:
+        run_id: ${{ github.run_id }}
+        status: in_progress
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: bundle exec fastlane ios release_submit build_number:${{ github.event.deployment.payload.build_number }}
       name: Submit for Review
-    - run: |
-        curl \
-          -XPOST \
-          -d "{\"state\":\"success\",\"target_url\":\"https://github.com/${GITHUB_REPOSITORY}/runs/${GITHUB_RUN_ID}?check_suite_focus=true\"}" \
-          -H 'Content-Type: application/json' \
-          -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          "${{ github.events.deployment.statuses_url}}"
-      name: Update deployment status to success
-      if: ${{ success() }}
-    - run: |
-        curl \
-          -XPOST \
-          -d "{\"state\":\"failure\",\"target_url\":\"https://github.com/${GITHUB_REPOSITORY}/runs/${GITHUB_RUN_ID}?check_suite_focus=true\"}" \
-          -H 'Content-Type: application/json' \
-          -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          "${{ github.events.deployment.statuses_url}}"
-      name: Update deployment status to failure
-      if: ${{ failure() }}
+    - id: set_state_final
+      if: always()
+      name: Set deployment status
+      uses: rsotnychenko/deployment-status-update@0.2.0
+      with:
+        status: ${{ job.status }}
+        run_id: ${{ github.run_id }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
