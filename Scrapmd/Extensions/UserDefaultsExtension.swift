@@ -22,6 +22,7 @@ extension UserDefaults {
 
     enum Key: String {
         case lastLocation = "ScrapmdLastLocation"
+        case lastConfirmedURL = "ScrapmdLastConfirmedURL"
     }
 
     // MARK: -
@@ -35,6 +36,10 @@ extension UserDefaults {
 
     func string(forKey defaultKey: Key) -> String? {
         return string(forKey: defaultKey.rawValue)
+    }
+
+    func url(forKey defaultKey: Key) -> URL? {
+        return url(forKey: defaultKey.rawValue)
     }
 
     func dictionary(forKey defaultKey: Key) -> [String: Any]? {
@@ -51,6 +56,18 @@ extension UserDefaults {
         set(path) {
             self.set(path.rawValue, forKey: .lastLocation)
             self.synchronize()
+        }
+    }
+
+    var lastConfirmedURL: URL? {
+        get {
+            if let str = self.string(forKey: .lastConfirmedURL) {
+                return URL(string: str)
+            }
+            return nil
+        }
+        set(url) {
+            self.set(url?.absoluteString, forKey: .lastConfirmedURL)
         }
     }
 

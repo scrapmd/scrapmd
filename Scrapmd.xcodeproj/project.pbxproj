@@ -39,6 +39,7 @@
 		8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8544481B2488C6C40010F1F7 /* ActionViewController.swift */; };
 		8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544481D2488C6C40010F1F7 /* MainInterface.storyboard */; };
 		854448232488C6C40010F1F7 /* ActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 854448172488C6C40010F1F7 /* ActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		855DB31B2495AF3200736915 /* ConfirmingCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855DB31A2495AF3200736915 /* ConfirmingCreate.swift */; };
 		8563B7FD2494D2BC003B2155 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8563B7FC2494D2BC003B2155 /* SnapshotHelper.swift */; };
 		856B801C248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B801B248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift */; };
 		856B802D248C3B840055F8C0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 856B802B248C3B840055F8C0 /* Localizable.stringsdict */; };
@@ -186,6 +187,7 @@
 		854448282488C6CD0010F1F7 /* ActionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActionExtension.entitlements; sourceTree = "<group>"; };
 		854448292488C6D10010F1F7 /* Scrapmd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scrapmd.entitlements; sourceTree = "<group>"; };
 		8555F3272489F72000D162B5 /* SaveActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionView.swift; sourceTree = "<group>"; };
+		855DB31A2495AF3200736915 /* ConfirmingCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmingCreate.swift; sourceTree = "<group>"; };
 		8563B7FC2494D2BC003B2155 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		856B801B248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserView.ItemView.swift; sourceTree = "<group>"; };
 		856B802C248C3B840055F8C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				85F90087248B60A1007F5A33 /* ScrapMeatadata.swift */,
 				856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */,
 				85E87B1824933E4800B3BA7D /* TimestampCache.swift */,
+				855DB31A2495AF3200736915 /* ConfirmingCreate.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				856B8052248CD97E0055F8C0 /* ActivityIndicator.swift in Sources */,
 				856B8048248CC7090055F8C0 /* NewScrapView.ViewModel.swift in Sources */,
 				85FA180B2494AD8700047F95 /* AboutView.swift in Sources */,
+				855DB31B2495AF3200736915 /* ConfirmingCreate.swift in Sources */,
 				856B8031248C3F950055F8C0 /* ScrapReaderView.swift in Sources */,
 				857F5EB2248B24AF00DC640D /* DirectoryPickerView.swift in Sources */,
 				856B801C248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift in Sources */,

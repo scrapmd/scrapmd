@@ -30,3 +30,5 @@
 "Close" = "閉じる";
 "Version %@ Build %@" = "バージョン %@ ビルド %@";
 "Home" = "ホーム";
+"Yes" = "はい";
+"pasteboard.confirmMessage %@" = "クリップボードにある、以下の URL からスクラップを作成しますか？\n\n%@";

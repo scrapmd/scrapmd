@@ -22,7 +22,7 @@ struct CreateFolderView: View {
             if let message = message {
                 Text(message)
             } else {
-                Spacer()
+                EmptyView()
             }
         }
     }

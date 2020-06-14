@@ -72,8 +72,8 @@ struct SaveActionView: View {
                     }
                 },
                 isActive: $isCompleteShown) {
-                    Spacer()
-            }.hidden()
+                    EmptyView()
+            }
         }
         .background(Color(UIColor.systemGroupedBackground))
         .navigationViewStyle(StackNavigationViewStyle())
