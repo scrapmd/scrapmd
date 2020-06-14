@@ -2,7 +2,7 @@ name: Build and Upload iOS Production
 
 on:
   release:
-    types: [published]
+    types: [prereleased]
 
 env:
   HOMEBREW_NO_AUTO_UPDATE: 1
