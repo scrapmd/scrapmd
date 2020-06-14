@@ -9,11 +9,15 @@
 import SwiftUI
 
 struct DirectoryBrowserView: View {
+    enum Sheet {
+        case about, new
+    }
     let path: FileKitPath
     @EnvironmentObject var pendingNavigation: PendingNavigation
+    @EnvironmentObject var confirmingCreate: ConfirmingCreate
     @ObservedObject var directoryBrowser: DirectoryBrowser
-    @State var isNewModalShown = false
-    @State var isAboutModalShown = false
+    @State var isModalShown = false
+    @State var currentSheet: Sheet = .about
 
     init(_ path: FileKitPath) {
         self.path = path
@@ -35,32 +39,37 @@ struct DirectoryBrowserView: View {
             .listStyle(DefaultListStyle())
             NavigationLink(
                 destination: ScrapReaderView(pendingNavigation.path ?? FileKitPath("")),
-                isActive: $pendingNavigation.isPending) { Spacer().hidden() }
+                isActive: $pendingNavigation.isPending) { EmptyView() }
                 .onAppear {}
         }
         .navigationBarTitle(path.isRoot ? NSLocalizedString("Home", comment: "Home") : path.fileName)
-        .sheet(isPresented: $isNewModalShown) {
-            NavigationView {
-                NewScrapView(path: self.path, isShown: self.$isNewModalShown)
-                    .environmentObject(self.pendingNavigation)
-            }.navigationViewStyle(StackNavigationViewStyle())
+        .alert(isPresented: $confirmingCreate.isConfirming) {
+            Alert(
+                title: Text("Create New Scrap"),
+                message: Text("pasteboard.confirmMessage \(self.confirmingCreate.url?.absoluteString ?? "")"),
+                primaryButton: .default(Text("Yes")) {
+                    self.showSheet(.new)
+                },
+                secondaryButton: .cancel() {
+                    self.confirmingCreate.url = nil
+                })
         }
-        .sheet(isPresented: $isAboutModalShown) {
-            NavigationView {
-                AboutView(isShown: self.$isAboutModalShown)
-            }.navigationViewStyle(StackNavigationViewStyle())
-        }.onAppear {
+        .sheet(isPresented: $isModalShown) {
+            NavigationView { self.buildSheetContent() }
+                .navigationViewStyle(StackNavigationViewStyle())
+        }
+        .onAppear {
             FileManager.default.sync()
         }.accessibility(identifier: "DirectoryBrowser")
         let newButton = Button(action: {
-            self.isNewModalShown = true
+            self.showSheet(.new)
         }) {
             Image(systemName: "plus")
         }
         if path.isRoot {
             return AnyView(vstack.navigationBarItems(
                 leading: Button(action: {
-                    self.isAboutModalShown = true
+                    self.showSheet(.about)
                 }) {
                     Image(systemName: "info.circle.fill")
                 },
@@ -70,6 +79,24 @@ struct DirectoryBrowserView: View {
         return AnyView(vstack.navigationBarItems(
             trailing: newButton
         ))
+    }
+
+    func showSheet(_ sheet: Sheet) {
+        currentSheet = sheet
+        isModalShown = true
+    }
+
+    @ViewBuilder
+    func buildSheetContent() -> some View {
+        if currentSheet == .new {
+            NewScrapView(path: path, isShown: $isModalShown)
+                .environmentObject(pendingNavigation)
+                .environmentObject(confirmingCreate)
+        } else if currentSheet == .about {
+            AboutView(isShown: $isModalShown)
+        } else {
+            EmptyView()
+        }
     }
 
     func delete(at offsets: IndexSet) {

@@ -10,7 +10,8 @@ import SwiftUI
 
 struct NewScrapView: View {
     @EnvironmentObject var pendingNavigation: PendingNavigation
-    @ObservedObject var viewModel = ViewModel()
+    @EnvironmentObject var confirmingCreate: ConfirmingCreate
+    @ObservedObject(initialValue: ViewModel()) var viewModel: ViewModel
     let path: FileKitPath
     @Binding var isShown: Bool
 
@@ -32,6 +33,13 @@ struct NewScrapView: View {
                     .background(Color(UIColor.secondarySystemFill))
                     .cornerRadius(11)
                     .disabled(viewModel.isFetching)
+                    .onAppear {
+                        if let url = self.confirmingCreate.url,
+                            url.absoluteString != self.viewModel.urlString {
+                            self.viewModel.urlString = url.absoluteString
+                            self.viewModel.fetch()
+                        }
+                }
                 HStack {
                     Text(viewModel.errorMessage)
                         .font(.caption)
@@ -61,12 +69,12 @@ struct NewScrapView: View {
                             self.pendingNavigation.path = path
                             self.pendingNavigation.isPending = true
                             self.cancel()
-                        },
+                    },
                         openAction: { _ in },
                         path: path
                     ),
                     isActive: $viewModel.isFetched) {
-                        Spacer().hidden()
+                        EmptyView()
                 }
             }
             .padding(.all)
@@ -78,13 +86,8 @@ struct NewScrapView: View {
     }
 
     func cancel() {
+        confirmingCreate.url = nil
         isShown = false
-    }
-
-    func save() {
-        //        saverViewModel.download {
-        //            self.isShown = false
-        //        }
     }
 }
 

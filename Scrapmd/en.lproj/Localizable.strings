@@ -5,3 +5,5 @@
   Created by Atsushi Nagase on 2020/06/13.
   Copyright © 2020 LittleApps Inc. All rights reserved.
 */
+
+"pasteboard.confirmMessage %@" = "Do you want to create scrap from the URL in clipboard?\n\n%@";

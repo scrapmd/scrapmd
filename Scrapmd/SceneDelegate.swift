@@ -12,12 +12,15 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var pendingNavigation: PendingNavigation = PendingNavigation()
+    var pendingNavigation = PendingNavigation()
+    var confirmingCreate = ConfirmingCreate()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
-        let contentView = ContentView().environmentObject(pendingNavigation)
+        let contentView = ContentView()
+            .environmentObject(pendingNavigation)
+            .environmentObject(confirmingCreate)
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)
@@ -34,6 +37,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         FileManager.default.sync()
         NotificationCenter.default.post(Notification(name: .updateDirectory))
+        guard let url = UIPasteboard.general.url else {
+            UserDefaults.shared.lastConfirmedURL = nil
+            confirmingCreate.isConfirming = false
+            return
+        }
+        if UserDefaults.shared.lastConfirmedURL != url {
+            UserDefaults.shared.lastConfirmedURL = url
+            confirmingCreate.url = url
+            confirmingCreate.isConfirming = true
+        }
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
