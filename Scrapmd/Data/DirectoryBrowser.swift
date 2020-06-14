@@ -13,7 +13,6 @@ import Dispatch
 import UIKit
 import SwiftUI
 import CoreData
-import FirebaseCrashlytics
 
 private var queueId = 0
 
@@ -102,8 +101,7 @@ class DirectoryBrowser: ObservableObject {
         do {
             try context.save()
         } catch {
-            print(error)
-            Crashlytics.crashlytics().record(error: error)
+            log(error: error)
         }
         return pathes.sorted(by: {
             if

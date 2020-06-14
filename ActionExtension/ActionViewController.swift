@@ -10,7 +10,6 @@ import UIKit
 import MobileCoreServices
 import FileKit
 import SwiftUI
-import FirebaseCore
 
 class ActionViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -18,7 +17,6 @@ class ActionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirebaseApp.configure()
         loadItem()
     }
 
@@ -108,3 +106,5 @@ class ActionViewController: UIViewController {
     }
 
 }
+
+func log(error: Error) {}
