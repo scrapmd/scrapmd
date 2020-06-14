@@ -115,6 +115,46 @@ platform :ios do
     )
   end
 
+  desc 'Notify to Slack'
+  lane :release_slack do |options|
+    version = options[:version]
+    build_number = options[:build_number]
+    button_value = "deploy:scrapmd/scrapmd:#{version}:#{build_number}"
+    text = "Scrapmd *version #{version} build #{build_number}* was uploaded to AppStore Connect"
+    payload = {
+      type: 'home',
+      text: text,
+      blocks: [{
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: text
+        }
+      }, {
+        type: 'actions',
+        elements: [{
+          type: 'button',
+          text: {
+            type: 'plain_text',
+            text: 'Submit for Review',
+            emoji: true
+          },
+          style: 'primary',
+          value: button_value
+        }]
+      }]
+    }
+    puts payload.to_json
+    uri = URI(ENV.fetch('SLACK_URL'))
+    req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+    req.body = payload.to_json
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    res = http.request(req)
+    p res
+    p res.read_body
+  end
+
   lane :release_submit do |options|
     deliver(
       platform: 'ios',

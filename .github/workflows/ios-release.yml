@@ -22,6 +22,7 @@ env:
   DELIVER_USERNAME: ${{ secrets.APPLE_ID_EMAIL }}
   FASTLANE_USER: ${{ secrets.APPLE_ID_EMAIL }}
   FASTLANE_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+  SLACK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
   build:
@@ -35,7 +36,6 @@ jobs:
         key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }}
         restore-keys: |
           ${{ runner.os }}-gems-
-      name: Generate random keychain password
     - run: bundle config set path 'vendor/bundle'
     - run: bundle install
       if: steps.cache-bundler.outputs.cache-hit != 'true'
@@ -48,3 +48,5 @@ jobs:
       name: Release build
     - run: bundle exec fastlane ios release_upload
       name: Upload app to App Store
+    - run: bundle exec fastlane ios release_slack version:${{ github.event.release.tag_name }} build_number:$GITHUB_RUN_ID
+      name: Notify to Slack

@@ -1,0 +1,37 @@
+name: Submit to App Store
+
+on: deployment
+
+env:
+  FASTLANE_SKIP_UPDATE_CHECK: 1
+  DELIVER_USERNAME: ${{ secrets.APPLE_ID_EMAIL }}
+  FASTLANE_USER: ${{ secrets.APPLE_ID_EMAIL }}
+  FASTLANE_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+  SLACK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+jobs:
+  submit:
+    runs-on: macos-10.15
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      id: cache-bundler
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - run: bundle config set path 'vendor/bundle'
+    - run: bundle install
+      if: steps.cache-bundler.outputs.cache-hit != 'true'
+    - name: Set deployment status to [in_progress]
+      run: ./.github/workflows/set-deployment-status.sh in_progress
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: bundle exec fastlane ios release_submit build_number:${{ github.event.deployment.payload.build_number }}
+      name: Submit for Review
+    - if: always()
+      name: Set deployment status to ${{ job.status }}
+      run: ./.github/workflows/set-deployment-status.sh ${{ job.status }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

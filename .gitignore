@@ -72,5 +72,4 @@ Vendor/bundler
 /Resources/Graphics/AppIcons/
 /Resources/Graphics/CFBundleIconFiles.plist
 
-fastlane/metadata/review_information/*.txt
 *.log
