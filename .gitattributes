@@ -1,0 +1,5 @@
+fastlane/screenshots/** linguist-generated=true
+Vendor/**               linguist-generated=true
+Gemfile.lock            linguist-generated=true
+*.pbxproj               merge=union
+*.swift                 text diff=swift
