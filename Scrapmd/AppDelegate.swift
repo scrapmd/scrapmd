@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseCore
+import FirebaseCrashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,4 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
+}
+
+func log(error: Error) {
+    print(error)
+    Crashlytics.crashlytics().record(error: error)
 }

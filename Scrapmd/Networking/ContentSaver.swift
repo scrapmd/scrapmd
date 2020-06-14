@@ -9,7 +9,6 @@
 import Foundation
 import FileKit
 import CoreData
-import FirebaseCrashlytics
 
 struct ContentSaver {
     let result: APIClient.Result?
@@ -33,7 +32,7 @@ struct ContentSaver {
                     try img.move(to: self.destination.path)
                     completionHandler(self, nil)
                 } catch {
-                    Crashlytics.crashlytics().record(error: error)
+                    log(error: error)
                     completionHandler(self, error)
                 }
             }
@@ -68,8 +67,7 @@ struct ContentSaver {
             do {
                 try moc.save()
             } catch {
-                Crashlytics.crashlytics().record(error: error)
-                print(error)
+                log(error: error)
             }
         }
     }
@@ -95,7 +93,7 @@ struct ContentSaver {
             let data = try encoder.encode(result.createMetadata())
             try String(data: data, encoding: .utf8)! |> TextFile(path: dest + metadataFilename)
         } catch {
-            Crashlytics.crashlytics().record(error: error)
+            log(error: error)
             completionHandler(nil, error)
             return
         }

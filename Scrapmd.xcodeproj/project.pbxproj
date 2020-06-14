@@ -39,22 +39,6 @@
 		8544481C2488C6C40010F1F7 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8544481B2488C6C40010F1F7 /* ActionViewController.swift */; };
 		8544481F2488C6C40010F1F7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544481D2488C6C40010F1F7 /* MainInterface.storyboard */; };
 		854448232488C6C40010F1F7 /* ActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 854448172488C6C40010F1F7 /* ActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		855DB2BE2495867100736915 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DC9C0F24949D38002D5982 /* libsqlite3.tbd */; };
-		855DB2BF2495867100736915 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539519B2492445800033AF1 /* StoreKit.framework */; };
-		855DB2C02495867100736915 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951992492444E00033AF1 /* libc++.tbd */; };
-		855DB2C12495867100736915 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951972492443B00033AF1 /* libsqlite3.0.tbd */; };
-		855DB2C22495867100736915 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; };
-		855DB2C32495867100736915 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518A2492433900033AF1 /* FirebaseAnalytics.framework */; };
-		855DB2C42495867100736915 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951852492433900033AF1 /* FirebaseCore.xcframework */; };
-		855DB2C52495867100736915 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */; };
-		855DB2C62495867100736915 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951872492433900033AF1 /* FirebaseInstallations.xcframework */; };
-		855DB2C72495867100736915 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518B2492433900033AF1 /* GoogleAppMeasurement.framework */; };
-		855DB2C82495867100736915 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951862492433900033AF1 /* GoogleDataTransport.xcframework */; };
-		855DB2C92495867100736915 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
-		855DB2CA2495867100736915 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951832492433900033AF1 /* GoogleUtilities.xcframework */; };
-		855DB2CB2495867100736915 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951882492433900033AF1 /* nanopb.xcframework */; };
-		855DB2CC2495867100736915 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951842492433900033AF1 /* PromisesObjC.xcframework */; };
-		855DB2CD2495867100736915 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
 		8563B7FD2494D2BC003B2155 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8563B7FC2494D2BC003B2155 /* SnapshotHelper.swift */; };
 		856B801C248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B801B248C19160055F8C0 /* DirectoryBrowserView.ItemView.swift */; };
 		856B802D248C3B840055F8C0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 856B802B248C3B840055F8C0 /* Localizable.stringsdict */; };
@@ -291,22 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				857CCA5F248960BC00AE5BE8 /* FileKit in Frameworks */,
-				855DB2BE2495867100736915 /* libsqlite3.tbd in Frameworks */,
-				855DB2BF2495867100736915 /* StoreKit.framework in Frameworks */,
-				855DB2C02495867100736915 /* libc++.tbd in Frameworks */,
-				855DB2C12495867100736915 /* libsqlite3.0.tbd in Frameworks */,
-				855DB2C22495867100736915 /* FIRAnalyticsConnector.framework in Frameworks */,
-				855DB2C32495867100736915 /* FirebaseAnalytics.framework in Frameworks */,
-				855DB2C42495867100736915 /* FirebaseCore.xcframework in Frameworks */,
-				855DB2C52495867100736915 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
-				855DB2C62495867100736915 /* FirebaseInstallations.xcframework in Frameworks */,
-				855DB2C72495867100736915 /* GoogleAppMeasurement.framework in Frameworks */,
-				855DB2C82495867100736915 /* GoogleDataTransport.xcframework in Frameworks */,
-				855DB2C92495867100736915 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
-				855DB2CA2495867100736915 /* GoogleUtilities.xcframework in Frameworks */,
-				855DB2CB2495867100736915 /* nanopb.xcframework in Frameworks */,
-				855DB2CC2495867100736915 /* PromisesObjC.xcframework in Frameworks */,
-				855DB2CD2495867100736915 /* FirebaseCrashlytics.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

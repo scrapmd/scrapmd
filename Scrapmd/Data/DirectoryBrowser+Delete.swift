@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import FirebaseCrashlytics
 
 extension DirectoryBrowser {
     func delete(at offsets: IndexSet) {
@@ -18,8 +17,7 @@ extension DirectoryBrowser {
             do {
                 try path.deleteFile()
             } catch {
-                print(error)
-                Crashlytics.crashlytics().record(error: error)
+                log(error: error)
             }
             return path
         }
@@ -34,13 +32,12 @@ extension DirectoryBrowser {
             do {
                 try context.save()
             } catch {
-                print(error)
-                Crashlytics.crashlytics().record(error: error)
+                log(error: error)
             }
             do {
                 try context.save()
             } catch {
-                Crashlytics.crashlytics().record(error: error)
+                log(error: error)
             }
         }
         items.remove(atOffsets: offsets)

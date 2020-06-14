@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 import FileKit
-import FirebaseCrashlytics
 
 struct CoreDataManager {
     static var shared = CoreDataManager()
@@ -31,7 +30,7 @@ struct CoreDataManager {
         container.persistentStoreDescriptions = [storeDescription]
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error {
-                Crashlytics.crashlytics().record(error: error)
+                log(error: error)
                 fatalError("Unresolved error \(error), \(error)")
             }
         })

@@ -60,7 +60,7 @@ extension SaveActionView {
                 DispatchQueue.main.async {
                     self.downloadProgress = 1.0
                     guard let dest = dest else {
-                        print(err.debugDescription)
+                        log(error: err ?? NSError())
                         self.isDownloading = false
                         return
                     }
