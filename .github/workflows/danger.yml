@@ -5,10 +5,10 @@ jobs:
   build:
     name: Danger
     runs-on: ubuntu-latest
-    container: atsnngs/danger-swift:latest
+    container: dangersystems/danger-rb
     steps:
     - uses: actions/checkout@v1
     - name: Run Danger
-      run: npx --package danger danger-swift ci
+      run: bundle exec danger
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
