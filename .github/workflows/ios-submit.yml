@@ -32,5 +32,15 @@ jobs:
           -d "{\"state\":\"success\",\"target_url\":\"https://github.com/${GITHUB_REPOSITORY}/runs/${GITHUB_RUN_ID}?check_suite_focus=true\"}" \
           -H 'Content-Type: application/json' \
           -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          "https://api.github.com/repos/scrapmd/scrapmd/deployments/${{ github.events.deployment.id }}/statuses"
-      name: Update deployment status
+          "${{ github.events.deployment.statuses_url}}"
+      name: Update deployment status to success
+      if: ${{ success() }}
+    - run: |
+        curl \
+          -XPOST \
+          -d "{\"state\":\"failure\",\"target_url\":\"https://github.com/${GITHUB_REPOSITORY}/runs/${GITHUB_RUN_ID}?check_suite_focus=true\"}" \
+          -H 'Content-Type: application/json' \
+          -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          "${{ github.events.deployment.statuses_url}}"
+      name: Update deployment status to failure
+      if: ${{ failure() }}
