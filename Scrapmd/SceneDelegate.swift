@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import FirebaseAnalytics
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -53,5 +54,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let url = URLContexts.first?.url else { return }
         pendingNavigation.path = FileKitPath(url.path)
         pendingNavigation.isPending = true
+        guard
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            let queryItems = components.queryItems
+            else { return }
+        var additionalParams = UserDefaults.shared.additionalParameters
+        queryItems.forEach { item in
+            if item.name.hasPrefix("scrapmd") {
+                let value = item.value ?? "(empty)"
+                additionalParams[item.name] = value
+                Analytics.setUserProperty(value, forName: item.name)
+            }
+        }
+        UserDefaults.shared.additionalParameters = additionalParams
     }
 }
