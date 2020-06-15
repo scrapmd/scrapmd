@@ -40,19 +40,20 @@ struct APIClient {
     static let endpoint = URL(string: "https://api.scrapmd.app/")!
     // static let endpoint = URL(string: "http://localhost:8000/")!
 
-    static func fetch(url: URL, title: String? = nil, prefetchedHTML: String? = nil, additionalParams: [String: String]? = nil,
-                      completionHandler: @escaping CompletionHandler) {
+    static func fetch(
+        url: URL, title: String? = nil,
+        prefetchedHTML: String? = nil,
+        completionHandler: @escaping CompletionHandler) {
         let session = URLSession.shared
         var req = URLRequest(url: endpoint)
-        var params = [String:String]()
+        var params = [String: String]()
         if let html = prefetchedHTML {
             params["html"] = html
         }
         params["title"] = title
         params["url"] = url.absoluteString
-        if let additionalParams = additionalParams {
-            params.merge(additionalParams, uniquingKeysWith: { k, _ in k })
-        }
+        params.merge(UserDefaults.shared.additionalParameters,
+                     uniquingKeysWith: { key, _ in key })
         do {
             let data = try JSONEncoder().encode(params)
             req.httpBody = data

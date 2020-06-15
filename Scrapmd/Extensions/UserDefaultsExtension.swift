@@ -23,6 +23,7 @@ extension UserDefaults {
     enum Key: String {
         case lastLocation = "ScrapmdLastLocation"
         case lastConfirmedURL = "ScrapmdLastConfirmedURL"
+        case additionalParameters = "ScrapmdAdditionalParameters"
     }
 
     // MARK: -
@@ -68,6 +69,15 @@ extension UserDefaults {
         }
         set(url) {
             self.set(url?.absoluteString, forKey: .lastConfirmedURL)
+        }
+    }
+
+    var additionalParameters: [String: String] {
+        get {
+            return (self.dictionary(forKey: .additionalParameters) as? [String: String]) ?? [:]
+        }
+        set(params) {
+            self.set(params, forKey: .additionalParameters)
         }
     }
 
