@@ -28,10 +28,11 @@ class ScrapmdUITests: XCTestCase {
     }
 
     func test02ActionExtension() throws {
+        let domain = locale == "ja" ? "ja.ngs.io" : "ngs.io"
         let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
 //        setupSnapshot(safari)
         safari.launch()
-        goToURL(safari, url: "https://yourbasic.org/golang/format-parse-string-time-date-example/")
+        goToURL(safari, url: "https://\(domain)/2019/02/08/go-release-action/")
 
         safari.buttons["ShareButton"].tap()
         safari.buttons["Edit Actions…"].tap()
@@ -51,20 +52,7 @@ class ScrapmdUITests: XCTestCase {
 
         doScrap(safari)
 
-        // swiftlint:disable:next line_length
-        goToURL(safari, url: "https://www.sfgate.com/realestate/article/Will-Working-From-Home-Spell-Doom-for-the-Open-15329361.php")
-        sleep(10)
-        doScrap(safari)
-
-        goToURL(safari, url: "https://hackaday.io/project/171790-armawatch-armachat-long-range-radio-messengers")
-        sleep(5)
-        doScrap(safari)
-
-        goToURL(safari, url: "https://www.flyfishfood.com/2019/08/project-hopper-version-20.html")
-        sleep(5)
-        doScrap(safari)
-
-        goToURL(safari, url: "https://en.wikipedia.org/wiki/Fly_fishing")
+        goToURL(safari, url: "https://\(domain)/2020/05/15/ci2go-maccatalyst/")
         sleep(5)
         doScrap(safari, takeSnapshot: true)
 
