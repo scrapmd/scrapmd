@@ -9,11 +9,6 @@
 import Foundation
 
 struct APIClient {
-    struct Params: Encodable {
-        var html: String?
-        var title: String?
-        var url: String
-    }
     struct Result: Decodable {
         var title: String
         var markdown: String
