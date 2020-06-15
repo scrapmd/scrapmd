@@ -7,3 +7,6 @@ The following clipping methods are supported:
 * Browser Action Menu
 * In-app direct input
 * Clipboard content 
+
+To support your website to work with Scrapmd, follow instruction in this page:
+https://scrapmd.app/support/allow-scrap/

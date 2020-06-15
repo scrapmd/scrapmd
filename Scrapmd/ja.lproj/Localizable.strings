@@ -32,3 +32,5 @@
 "Home" = "ホーム";
 "Yes" = "はい";
 "pasteboard.confirmMessage %@" = "クリップボードにある、以下の URL からスクラップを作成しますか？\n\n%@";
+"This site is not supported" = "このサイトはサポートしていません";
+"Error" = "エラー";
