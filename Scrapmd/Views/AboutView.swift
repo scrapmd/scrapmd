@@ -42,7 +42,7 @@ struct AboutView: View {
                 .opacity(0.4)
             }
             List {
-                Item(label: "Srapmd Homepage",
+                Item(label: "Scrapmd Homepage",
                      url: URL(string: NSLocalizedString("https://scrapmd.app/", comment: "Homepage URL"))!)
                 Item(label: "Rate Scrapmd",
                      url: URL(string: "https://itunes.apple.com/app/id1517295689?action=write-review")!)
