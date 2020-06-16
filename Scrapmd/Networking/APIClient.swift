@@ -9,11 +9,6 @@
 import Foundation
 
 struct APIClient {
-    struct Params: Encodable {
-        var html: String?
-        var title: String?
-        var url: String
-    }
     struct Result: Decodable {
         var title: String
         var markdown: String
@@ -40,11 +35,20 @@ struct APIClient {
     static let endpoint = URL(string: "https://api.scrapmd.app/")!
     // static let endpoint = URL(string: "http://localhost:8000/")!
 
-    static func fetch(url: URL, title: String? = nil, prefetchedHTML: String? = nil,
-                      completionHandler: @escaping CompletionHandler) {
+    static func fetch(
+        url: URL, title: String? = nil,
+        prefetchedHTML: String? = nil,
+        completionHandler: @escaping CompletionHandler) {
         let session = URLSession.shared
         var req = URLRequest(url: endpoint)
-        let params = Params(html: prefetchedHTML, title: title, url: url.absoluteString)
+        var params = [String: String]()
+        if let html = prefetchedHTML {
+            params["html"] = html
+        }
+        params["title"] = title
+        params["url"] = url.absoluteString
+        params.merge(UserDefaults.shared.additionalParameters,
+                     uniquingKeysWith: { key, _ in key })
         do {
             let data = try JSONEncoder().encode(params)
             req.httpBody = data
