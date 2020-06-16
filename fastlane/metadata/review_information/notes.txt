@@ -1,1 +1,12 @@
-Tab + button on right of master view. Fill any accessible URL which has some text content and hit "Fetch ..." button, hit "Save" button on next screen then you may see the downloaded web content stored in your local.
+Case 1: Authorized website
+
+1. Tab + button on right of master view.
+2. Fill https://ngs.io/2019/02/08/go-release-action/
+3. Tap "Fetch ..." button
+4. Tap "Save" button
+5. You may see the downloaded web content stored in your local.
+
+Case 2: Unauthorized website
+
+1. Repeat Case 1 with URL hosted on other than ngs.io domain
+2. You will see error message with "This site is not supported"
