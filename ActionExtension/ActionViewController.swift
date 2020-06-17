@@ -22,37 +22,51 @@ class ActionViewController: UIViewController {
 
     func loadItem() {
         guard
-            let inputItems = extensionContext?.inputItems as? [NSExtensionItem],
-            let provider = inputItems
-                .flatMap({ $0.attachments ?? [] })
-                .first(where: { $0.hasItemConformingToTypeIdentifier(kUTTypePropertyList as String) })
+            let attachments = (extensionContext?.inputItems as? [NSExtensionItem])?.flatMap({ $0.attachments ?? [] })
             else {
-                self.extensionContext!.cancelRequest(withError: NSError())
+                self.extensionContext?.cancelRequest(withError: NSError())
                 return
         }
-        provider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { (results, _) in
-            guard
-                let results = results as? [String: Any],
-                let jsResults = results[NSExtensionJavaScriptPreprocessingResultsKey] as? [String: Any],
-                let html = jsResults["html"] as? String,
-                let title = jsResults["title"] as? String,
-                let urlString = jsResults["url"] as? String,
-                let url = URL(string: urlString)
-                else {
-                    self.extensionContext!.cancelRequest(withError: NSError())
-                    return
-            }
-            APIClient.fetch(url: url, title: title, prefetchedHTML: html) { (result, _, err) in
-                if let result = result {
-                    DispatchQueue.main.async {
-                        self.renderSaveView(result: result)
-                        self.activityIndicatorView.stopAnimating()
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.extensionContext!.cancelRequest(withError: err ?? NSError())
-                    }
+        let onFetchResult: APIClient.CompletionHandler = { (result, _, err) in
+            if let result = result {
+                DispatchQueue.main.async {
+                    self.renderSaveView(result: result)
+                    self.activityIndicatorView.stopAnimating()
                 }
+            } else {
+                DispatchQueue.main.async {
+                    self.extensionContext!.cancelRequest(withError: err ?? NSError())
+                }
+            }
+        }
+        if let provider = attachments.first(where: {
+            $0.hasItemConformingToTypeIdentifier(kUTTypePropertyList as String)
+        }) {
+            provider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { (results, _) in
+                guard
+                    let results = results as? [String: Any],
+                    let jsResults = results[NSExtensionJavaScriptPreprocessingResultsKey] as? [String: Any],
+                    let html = jsResults["html"] as? String,
+                    let title = jsResults["title"] as? String,
+                    let urlString = jsResults["url"] as? String,
+                    let url = URL(string: urlString)
+                    else {
+                        self.extensionContext?.cancelRequest(withError: NSError())
+                        return
+                }
+                APIClient.fetch(url: url, title: title, prefetchedHTML: html, completionHandler: onFetchResult)
+            }
+            return
+        }
+        if let provider = attachments.first(where: { $0.hasItemConformingToTypeIdentifier(kUTTypeURL as String) }) {
+            provider.loadItem(forTypeIdentifier: kUTTypeURL as String) { (url, _) in
+                guard
+                    let url = url as? URL
+                    else {
+                        self.extensionContext?.cancelRequest(withError: NSError())
+                        return
+                }
+                APIClient.fetch(url: url, completionHandler: onFetchResult)
             }
         }
     }
@@ -66,7 +80,7 @@ class ActionViewController: UIViewController {
             alertView.addAction(UIAlertAction(
                 title: NSLocalizedString("Close", comment: "Close"),
                 style: .cancel) { _ in
-                self.done()
+                    self.done()
             })
             self.present(alertView, animated: true)
             return
