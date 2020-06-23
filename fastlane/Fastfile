@@ -159,7 +159,7 @@ platform :ios do
     deliver(
       platform: 'ios',
       skip_binary_upload: true,
-      skip_metadata: true,
+      skip_metadata: false,
       skip_screenshots: true,
       submit_for_review: true,
       automatic_release: true,
