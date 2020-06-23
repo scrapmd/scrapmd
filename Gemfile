@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'fastlane'
+gem 'fastlane', '>= 2.150.0.rc1'
 gem 'xcov', git: 'https://github.com/ngs/xcov.git', branch: 'quote-file-path'
 gem 'pry'
 
