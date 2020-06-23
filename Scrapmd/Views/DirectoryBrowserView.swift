@@ -32,9 +32,11 @@ struct DirectoryBrowserView: View {
                         ForEach(indices, id: \.self) { index in
                             ItemView(item: self.$directoryBrowser.items[index])
                         }
+                        .onDelete {
+                            self.delete(at: IndexSet($0.map { indices[$0] }))
+                        }
                     }
                 }
-                .onDelete(perform: delete)
             }
             .listStyle(DefaultListStyle())
             NavigationLink(

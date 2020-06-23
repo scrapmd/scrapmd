@@ -1,1 +1,1 @@
-Fixed share extension to work correctly
+Fix deleting incorrect scrap
