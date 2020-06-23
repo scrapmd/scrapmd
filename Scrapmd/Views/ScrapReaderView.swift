@@ -50,7 +50,7 @@ struct ScrapReaderView: View {
                     Button(action: {
                         UIApplication.shared.open(URL(string: self.metadata.url)!)
                     }) {
-                        Image(systemName: "link")
+                        Image(systemName: "safari")
                     }.padding()
                 }.sheet(isPresented: $isSharePresented, content: {
                     ActivityViewController(activityItems: [self.path.fileURL(scheme: "file")])
