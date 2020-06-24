@@ -13,18 +13,6 @@
 		85049C26249295E000934746 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C212492834500934746 /* FileManagerExtension.swift */; };
 		85049C2824929BB600934746 /* DirectoryBrowser.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */; };
 		85049C2924929BB600934746 /* DirectoryBrowser.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049C2724929BB600934746 /* DirectoryBrowser.Item.swift */; };
-		853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; };
-		8539518C2492433900033AF1 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; };
-		8539518D2492433900033AF1 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; };
-		8539518E2492433900033AF1 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951832492433900033AF1 /* GoogleUtilities.xcframework */; };
-		8539518F2492433900033AF1 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951842492433900033AF1 /* PromisesObjC.xcframework */; };
-		853951902492433900033AF1 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951852492433900033AF1 /* FirebaseCore.xcframework */; };
-		853951912492433900033AF1 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951862492433900033AF1 /* GoogleDataTransport.xcframework */; };
-		853951922492433900033AF1 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951872492433900033AF1 /* FirebaseInstallations.xcframework */; };
-		853951932492433900033AF1 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951882492433900033AF1 /* nanopb.xcframework */; };
-		853951942492433900033AF1 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */; };
-		853951952492433900033AF1 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518A2492433900033AF1 /* FirebaseAnalytics.framework */; };
-		853951962492433900033AF1 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518B2492433900033AF1 /* GoogleAppMeasurement.framework */; };
 		853951982492443B00033AF1 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951972492443B00033AF1 /* libsqlite3.0.tbd */; };
 		8539519A2492444E00033AF1 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951992492444E00033AF1 /* libc++.tbd */; };
 		8539519C2492445800033AF1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539519B2492445800033AF1 /* StoreKit.framework */; };
@@ -47,7 +35,6 @@
 		856B802F248C3BD70055F8C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854447EE2488C6940010F1F7 /* LaunchScreen.storyboard */; };
 		856B8031248C3F950055F8C0 /* ScrapReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8030248C3F950055F8C0 /* ScrapReaderView.swift */; };
 		856B8033248C3FBE0055F8C0 /* DetailPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8032248C3FBE0055F8C0 /* DetailPlaceholderView.swift */; };
-		856B8036248C4D030055F8C0 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 856B8035248C4D030055F8C0 /* Ink */; };
 		856B8038248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8037248C4DC10055F8C0 /* ScrapReaderView.ViewModel.swift */; };
 		856B803A248C52E40055F8C0 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B8039248C52E40055F8C0 /* MarkdownView.swift */; };
 		856B803E248C7D630055F8C0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856B803D248C7D630055F8C0 /* UIColorExtension.swift */; };
@@ -74,6 +61,28 @@
 		857F5EB3248B24AF00DC640D /* DirectoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F5EB1248B24AF00DC640D /* DirectoryPickerView.swift */; };
 		85948D3F24891BA400763582 /* GetHTML.js in Resources */ = {isa = PBXBuildFile; fileRef = 85948D3E24891BA400763582 /* GetHTML.js */; };
 		85A5B43F24905E1900F56AEB /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85A5B43E24905E1900F56AEB /* Asset.xcassets */; };
+		85ADB77124A2FA66001DED70 /* FIRAnalyticsConnector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85ADB77324A2FA66001DED70 /* FirebaseAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518A2492433900033AF1 /* FirebaseAnalytics.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85ADB77524A2FA66001DED70 /* FirebaseCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 853951852492433900033AF1 /* FirebaseCore.xcframework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85ADB77724A2FA66001DED70 /* FirebaseCoreDiagnostics.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85ADB77924A2FA66001DED70 /* FirebaseInstallations.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 853951872492433900033AF1 /* FirebaseInstallations.xcframework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85ADB77B24A2FA66001DED70 /* GoogleAppMeasurement.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518B2492433900033AF1 /* GoogleAppMeasurement.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85ADB77D24A2FA66001DED70 /* GoogleDataTransport.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 853951862492433900033AF1 /* GoogleDataTransport.xcframework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85ADB77F24A2FA67001DED70 /* GoogleDataTransportCCTSupport.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85ADB78124A2FA67001DED70 /* GoogleUtilities.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 853951832492433900033AF1 /* GoogleUtilities.xcframework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		85ADB78D24A2FB21001DED70 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 85ADB78C24A2FB21001DED70 /* Ink */; };
+		85ADB78F24A2FB45001DED70 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951822492433800033AF1 /* FIRAnalyticsConnector.framework */; platformFilter = ios; };
+		85ADB79024A2FB45001DED70 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518A2492433900033AF1 /* FirebaseAnalytics.framework */; platformFilter = ios; };
+		85ADB79124A2FB45001DED70 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951852492433900033AF1 /* FirebaseCore.xcframework */; platformFilter = ios; };
+		85ADB79224A2FB45001DED70 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951892492433900033AF1 /* FirebaseCoreDiagnostics.xcframework */; platformFilter = ios; };
+		85ADB79324A2FB45001DED70 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951872492433900033AF1 /* FirebaseInstallations.xcframework */; platformFilter = ios; };
+		85ADB79424A2FB45001DED70 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539518B2492433900033AF1 /* GoogleAppMeasurement.framework */; platformFilter = ios; };
+		85ADB79524A2FB45001DED70 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951862492433900033AF1 /* GoogleDataTransport.xcframework */; platformFilter = ios; };
+		85ADB79624A2FB45001DED70 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951812492433800033AF1 /* GoogleDataTransportCCTSupport.xcframework */; platformFilter = ios; };
+		85ADB79724A2FB45001DED70 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951832492433900033AF1 /* GoogleUtilities.xcframework */; platformFilter = ios; };
+		85ADB79824A2FB45001DED70 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951882492433900033AF1 /* nanopb.xcframework */; };
+		85ADB79924A2FB45001DED70 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853951842492433900033AF1 /* PromisesObjC.xcframework */; };
+		85ADB79A24A2FB45001DED70 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539517F2492433000033AF1 /* FirebaseCrashlytics.xcframework */; platformFilter = ios; };
 		85D6A87B248A033E0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A87C248A033F0086F13F /* SaveActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555F3272489F72000D162B5 /* SaveActionView.swift */; };
 		85D6A881248A050F0086F13F /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6A880248A050F0086F13F /* ActionViewController.swift */; };
@@ -142,6 +151,25 @@
 				854448232488C6C40010F1F7 /* ActionExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85ADB78224A2FA67001DED70 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				85ADB77724A2FA66001DED70 /* FirebaseCoreDiagnostics.xcframework in Embed Frameworks */,
+				85ADB77924A2FA66001DED70 /* FirebaseInstallations.xcframework in Embed Frameworks */,
+				85ADB77B24A2FA66001DED70 /* GoogleAppMeasurement.framework in Embed Frameworks */,
+				85ADB77F24A2FA67001DED70 /* GoogleDataTransportCCTSupport.xcframework in Embed Frameworks */,
+				85ADB77324A2FA66001DED70 /* FirebaseAnalytics.framework in Embed Frameworks */,
+				85ADB78124A2FA67001DED70 /* GoogleUtilities.xcframework in Embed Frameworks */,
+				85ADB77D24A2FA66001DED70 /* GoogleDataTransport.xcframework in Embed Frameworks */,
+				85ADB77524A2FA66001DED70 /* FirebaseCore.xcframework in Embed Frameworks */,
+				85ADB77124A2FA66001DED70 /* FIRAnalyticsConnector.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -238,23 +266,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85ADB78F24A2FB45001DED70 /* FIRAnalyticsConnector.framework in Frameworks */,
+				85ADB79024A2FB45001DED70 /* FirebaseAnalytics.framework in Frameworks */,
+				85ADB79124A2FB45001DED70 /* FirebaseCore.xcframework in Frameworks */,
+				85ADB79224A2FB45001DED70 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
+				85ADB79324A2FB45001DED70 /* FirebaseInstallations.xcframework in Frameworks */,
+				85ADB79424A2FB45001DED70 /* GoogleAppMeasurement.framework in Frameworks */,
+				85ADB79524A2FB45001DED70 /* GoogleDataTransport.xcframework in Frameworks */,
+				85ADB79624A2FB45001DED70 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
+				85ADB79724A2FB45001DED70 /* GoogleUtilities.xcframework in Frameworks */,
+				85ADB79824A2FB45001DED70 /* nanopb.xcframework in Frameworks */,
+				85ADB79924A2FB45001DED70 /* PromisesObjC.xcframework in Frameworks */,
+				85ADB79A24A2FB45001DED70 /* FirebaseCrashlytics.xcframework in Frameworks */,
+				85ADB78D24A2FB21001DED70 /* Ink in Frameworks */,
 				8539519C2492445800033AF1 /* StoreKit.framework in Frameworks */,
 				8539519A2492444E00033AF1 /* libc++.tbd in Frameworks */,
 				853951982492443B00033AF1 /* libsqlite3.0.tbd in Frameworks */,
 				857CCA5C248960A300AE5BE8 /* FileKit in Frameworks */,
-				853951902492433900033AF1 /* FirebaseCore.xcframework in Frameworks */,
-				856B8036248C4D030055F8C0 /* Ink in Frameworks */,
-				853951802492433000033AF1 /* FirebaseCrashlytics.xcframework in Frameworks */,
-				853951962492433900033AF1 /* GoogleAppMeasurement.framework in Frameworks */,
-				853951942492433900033AF1 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
-				853951932492433900033AF1 /* nanopb.xcframework in Frameworks */,
-				8539518F2492433900033AF1 /* PromisesObjC.xcframework in Frameworks */,
-				8539518D2492433900033AF1 /* FIRAnalyticsConnector.framework in Frameworks */,
-				853951922492433900033AF1 /* FirebaseInstallations.xcframework in Frameworks */,
-				853951912492433900033AF1 /* GoogleDataTransport.xcframework in Frameworks */,
-				8539518C2492433900033AF1 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
-				8539518E2492433900033AF1 /* GoogleUtilities.xcframework in Frameworks */,
-				853951952492433900033AF1 /* FirebaseAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +508,7 @@
 				854447DE2488C6930010F1F7 /* Resources */,
 				854448272488C6C40010F1F7 /* Embed App Extensions */,
 				85F900BB24923595007F5A33 /* Run Crashlytics */,
+				85ADB78224A2FA67001DED70 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -489,7 +518,7 @@
 			name = Scrapmd;
 			packageProductDependencies = (
 				857CCA5B248960A300AE5BE8 /* FileKit */,
-				856B8035248C4D030055F8C0 /* Ink */,
+				85ADB78C24A2FB21001DED70 /* Ink */,
 			);
 			productName = Scrapmd;
 			productReference = 854447E02488C6930010F1F7 /* Scrapmd.app */;
@@ -962,7 +991,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -997,9 +1025,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Scrapmd/Scrapmd.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
-				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Scrapmd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1009,6 +1035,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development app.scrapmd.Scrapmd";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "manual Development app.scrapmd.Scrapmd macos";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1021,7 +1048,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Scrapmd/Scrapmd.entitlements;
-				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrapmd/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Scrapmd/Info.plist;
@@ -1032,6 +1058,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc app.scrapmd.Scrapmd";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development app.scrapmd.Scrapmd macos";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1120,6 +1147,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				INFOPLIST_FILE = ActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1130,6 +1158,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd.ActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development app.scrapmd.Scrapmd.ActionExtension";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "manual Development app.scrapmd.Scrapmd.ActionExten";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -1142,7 +1171,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				INFOPLIST_FILE = ActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1152,6 +1183,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.scrapmd.Scrapmd.ActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc app.scrapmd.Scrapmd.ActionExtension";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development app.scrapmd.Scrapmd.ActionExtension macos";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -1229,11 +1261,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		856B8035248C4D030055F8C0 /* Ink */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */;
-			productName = Ink;
-		};
 		857CCA5B248960A300AE5BE8 /* FileKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;
@@ -1243,6 +1270,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 857CCA5A248960A300AE5BE8 /* XCRemoteSwiftPackageReference "FileKit" */;
 			productName = FileKit;
+		};
+		85ADB78C24A2FB21001DED70 /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 856B8034248C4D030055F8C0 /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
 		};
 /* End XCSwiftPackageProductDependency section */
 

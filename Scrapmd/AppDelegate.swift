@@ -7,8 +7,10 @@
 //
 
 import UIKit
+#if !targetEnvironment(macCatalyst)
 import FirebaseCore
 import FirebaseCrashlytics
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        #if !targetEnvironment(macCatalyst)
         FirebaseApp.configure()
+        #endif
         return true
     }
 
@@ -33,5 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 func log(error: Error) {
     print(error)
+
+    #if !targetEnvironment(macCatalyst)
     Crashlytics.crashlytics().record(error: error)
+    #endif
 }

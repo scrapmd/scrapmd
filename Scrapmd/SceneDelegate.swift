@@ -8,7 +8,9 @@
 
 import UIKit
 import SwiftUI
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+#endif
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -63,7 +65,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if item.name.hasPrefix("scrapmd") {
                 let value = item.value ?? "(empty)"
                 additionalParams[item.name] = value
+                #if !targetEnvironment(macCatalyst)
                 Analytics.setUserProperty(value, forName: item.name)
+                #endif
             }
         }
         UserDefaults.shared.additionalParameters = additionalParams
