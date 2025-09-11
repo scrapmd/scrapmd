@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import FileKit
 import SwiftUI
+import os.log
 
 class ActionViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -134,4 +135,7 @@ class ActionViewController: UIViewController {
 
 }
 
-func log(error: Error) {}
+func log(error: Error) {
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.littleapps.scrapmd", category: "error")
+    logger.error("\(error.localizedDescription, privacy: .public)")
+}

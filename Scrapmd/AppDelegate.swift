@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseCore
-import FirebaseCrashlytics
+import os.log
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        FirebaseApp.configure()
         return true
     }
 
@@ -32,6 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 func log(error: Error) {
-    print(error)
-    Crashlytics.crashlytics().record(error: error)
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.littleapps.scrapmd", category: "error")
+    logger.error("\(error.localizedDescription, privacy: .public)")
 }

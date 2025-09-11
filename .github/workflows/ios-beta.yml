@@ -13,7 +13,6 @@ env:
   MATCH_READONLY: 'true'
   MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
   MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-  FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
   MATCH_KEYCHAIN_NAME: tmp.keychain
   CERT_KEYCHAIN_NAME: tmp.keychain
   KEYCHAIN_NAME: tmp.keychain
@@ -70,11 +69,12 @@ jobs:
     - name: Beta build
       run: bundle exec fastlane ios beta_build
       
-    - name: Install Firebase CLI
-      run: npm i -g firebase-tools
-      
-    - name: Upload app to Firebase
-      run: bundle exec fastlane ios beta_upload
-      
-    - name: Upload dSYM to Firebase
-      run: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp Scrapmd/GoogleService-Info.plist -p ios build/beta/Scrapmd.app.dSYM.zip
+    # Firebase deployment has been removed
+    # - name: Install Firebase CLI
+    #   run: npm i -g firebase-tools
+    #   
+    # - name: Upload app to Firebase
+    #   run: bundle exec fastlane ios beta_upload
+    #   
+    # - name: Upload dSYM to Firebase
+    #   run: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp Scrapmd/GoogleService-Info.plist -p ios build/beta/Scrapmd.app.dSYM.zip
