@@ -8,8 +8,10 @@
 
 import SwiftUI
 
+@MainActor
 struct AboutView: View {
-    struct Item: View {
+    @MainActor
+struct Item: View {
         let label: LocalizedStringKey
         let url: URL
 
@@ -66,7 +68,6 @@ struct AboutView: View {
     }
 }
 
-struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AboutView(isShown: .constant(true))

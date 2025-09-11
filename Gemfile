@@ -1,7 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'fastlane', '>= 2.150.0.rc1'
-gem 'xcov', git: 'https://github.com/ngs/xcov.git', branch: 'quote-file-path'
+# Ruby version
+ruby '>= 3.0.0'
+
+# CI/CD and testing
+gem 'fastlane'
+gem 'xcov'
+gem 'cocoapods'
+
+# Development tools
 gem 'pry'
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')

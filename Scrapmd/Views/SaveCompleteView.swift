@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@MainActor
 struct SaveCompleteView: View {
     let savedPath: FileKitPath?
     let action: (_ path: FileKitPath?) -> Void
@@ -44,7 +45,6 @@ struct SaveCompleteView: View {
     }
 }
 
-struct SaveCompleteView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SaveCompleteView(savedPath: nil) { _ in }

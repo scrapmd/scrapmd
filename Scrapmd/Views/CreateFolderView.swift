@@ -9,12 +9,14 @@
 import SwiftUI
 import FileKit
 
+@MainActor
 struct CreateFolderView: View {
     let path: FileKitPath
     @Binding var isShown: Bool
     @State var name = ""
     @State var errorMessage: String?
-    struct ErrorMessage: View {
+    @MainActor
+struct ErrorMessage: View {
         let message: String?
 
         @ViewBuilder
@@ -63,7 +65,6 @@ struct CreateFolderView: View {
     }
 }
 
-struct CreateFolderView_Previews: PreviewProvider {
     static var previews: some View {
         CreateFolderView(path: FileKitPath.userDocuments, isShown: .constant(true))
             .preferredColorScheme(.dark)

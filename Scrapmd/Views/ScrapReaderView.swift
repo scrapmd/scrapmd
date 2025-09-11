@@ -9,6 +9,7 @@
 import SwiftUI
 import Ink
 
+@MainActor
 struct ScrapReaderView: View {
     let path: FileKitPath
     @ObservedObject var viewModel: ViewModel
@@ -18,13 +19,15 @@ struct ScrapReaderView: View {
         self.viewModel = ViewModel(path)
     }
 
-    struct ErrorView: View {
+    @MainActor
+struct ErrorView: View {
         var body: some View {
             Text("Could not load scrap")
         }
     }
 
-    struct ContentView: View {
+    @MainActor
+struct ContentView: View {
         @State private var isSharePresented = false
         @State private var showSource = false
         let metadata: ScrapMetadata
@@ -81,7 +84,6 @@ struct ScrapReaderView: View {
     }
 }
 
-struct ScrapReaderView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ScrapReaderView(

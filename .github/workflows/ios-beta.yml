@@ -23,30 +23,58 @@ env:
 
 jobs:
   build:
-    runs-on: macos-10.15
+    runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/cache@v1
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Select Xcode version
+      run: sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer || sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+      
+    - name: Cache bundler gems
+      uses: actions/cache@v4
       id: cache-bundler
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
-      name: Generate random keychain password
-    - run: bundle config set path 'vendor/bundle'
-    - run: bundle install
+          
+    - name: Bundle config
+      run: bundle config set path 'vendor/bundle'
+      
+    - name: Bundle install
+      run: bundle install
       if: steps.cache-bundler.outputs.cache-hit != 'true'
-    - run: bundle exec fastlane ios create_ci_keychain
-    - run: bundle exec fastlane ios beta_match
-      name: Beta match
-    - run: bundle exec fastlane ios set_build_number
-      name: Set build number
-    - run: bundle exec fastlane ios beta_build
-      name: Beta build
-    - run: npm i -g firebase-tools
-      name: Install Firebase
-    - run: bundle exec fastlane ios beta_upload
-      name: Upload app to Firebase
-    - run: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp Scrapmd/GoogleService-Info.plist -p ios build/beta/Scrapmd.app.dSYM.zip
-      name: Upload dSYM to Firebase
+      
+    - name: Create CI keychain
+      run: bundle exec fastlane ios create_ci_keychain
+      
+    - name: Beta match
+      run: bundle exec fastlane ios beta_match
+      
+    - name: Set build number
+      run: bundle exec fastlane ios set_build_number
+      
+    - name: Beta build
+      run: bundle exec fastlane ios beta_build
+      
+    - name: Install Firebase CLI
+      run: npm i -g firebase-tools
+      
+    - name: Upload app to Firebase
+      run: bundle exec fastlane ios beta_upload
+      
+    - name: Upload dSYM to Firebase
+      run: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp Scrapmd/GoogleService-Info.plist -p ios build/beta/Scrapmd.app.dSYM.zip

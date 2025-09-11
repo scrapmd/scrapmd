@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@MainActor
 struct DirectoryBrowserView: View {
     enum Sheet {
         case about, new
@@ -106,10 +107,8 @@ struct DirectoryBrowserView: View {
     }
 }
 
-struct DirectoryBrowserView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            DirectoryBrowserView(FileKitPath("/Users/ngs/Documents/Scrapmd Demo"))
-        }
+#Preview {
+    NavigationView {
+        DirectoryBrowserView(FileKitPath("/Users/ngs/Documents/Scrapmd Demo"))
     }
 }

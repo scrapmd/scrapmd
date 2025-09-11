@@ -9,7 +9,9 @@
 import Foundation
 import Combine
 
-class ConfirmingCreate: ObservableObject {
-    @Published var url: URL?
-    @Published var isConfirming = false
+@MainActor
+@Observable
+class ConfirmingCreate {
+    var url: URL?
+    var isConfirming = false
 }

@@ -9,6 +9,7 @@
 import SwiftUI
 import UIKit
 
+@MainActor
 struct SaveActionView: View {
     typealias Action = () -> Void
     typealias FilePathAction = (_ path: FileKitPath) -> Void
@@ -103,7 +104,6 @@ struct SaveActionView: View {
     }
 }
 
-struct SavePreviewView_Previews: PreviewProvider {
     static var previews: some View {
         let result = APIClient.Result(
             title: ".//?-\\a.寿限無　寿限無　五劫のすりきれ 海砂利水魚の水行末　雲来末　風来末 食う寝るところに住むところ",

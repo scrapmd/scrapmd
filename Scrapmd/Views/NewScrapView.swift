@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@MainActor
 struct NewScrapView: View {
     @EnvironmentObject var pendingNavigation: PendingNavigation
     @EnvironmentObject var confirmingCreate: ConfirmingCreate
@@ -91,7 +92,6 @@ struct NewScrapView: View {
     }
 }
 
-struct NewScrapView_Previews: PreviewProvider {
     static var previews: some View {
         NewScrapView(path: .documentRoot, isShown: .constant(true))
     }

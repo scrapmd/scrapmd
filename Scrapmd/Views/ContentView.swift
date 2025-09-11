@@ -8,19 +8,19 @@
 
 import SwiftUI
 
+@MainActor
 struct ContentView: View {
     @EnvironmentObject var pendingNavigation: PendingNavigation
 
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             DirectoryBrowserView(FileKitPath.documentRoot)
+        } detail: {
             DetailPlaceholderView()
-        }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

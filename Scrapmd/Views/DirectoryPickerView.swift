@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@MainActor
 struct DirectoryPickerView: View {
     typealias ChooseHandler = (_ path: FileKitPath?, _ sender: DirectoryPickerView) -> Void
     let path: FileKitPath
@@ -69,7 +70,6 @@ struct DirectoryPickerView: View {
     }
 }
 
-struct DirectoryPickerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             DirectoryPickerView(

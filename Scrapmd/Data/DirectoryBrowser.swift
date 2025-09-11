@@ -16,8 +16,10 @@ import CoreData
 
 private var queueId = 0
 
-class DirectoryBrowser: ObservableObject {
-    @Published var items: [Item]
+@MainActor
+@Observable
+class DirectoryBrowser {
+    var items: [Item]
     let onlyDirectory: Bool
     let path: FileKitPath
     let sort: Sort

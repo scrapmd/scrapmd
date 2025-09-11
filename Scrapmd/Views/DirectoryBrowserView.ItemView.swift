@@ -9,7 +9,8 @@
 import SwiftUI
 
 extension DirectoryBrowserView {
-    struct ScrapItemView: View {
+    @MainActor
+struct ScrapItemView: View {
         @Binding var item: DirectoryBrowser.Item
 
         var body: some View {
@@ -34,7 +35,8 @@ extension DirectoryBrowserView {
         }
     }
 
-    struct FolderItemView: View {
+    @MainActor
+struct FolderItemView: View {
         @Binding var item: DirectoryBrowser.Item
 
         var body: some View {
@@ -68,7 +70,8 @@ extension DirectoryBrowserView {
         }
     }
 
-    struct ItemView: View {
+    @MainActor
+struct ItemView: View {
         @Binding var item: DirectoryBrowser.Item
 
         var body: some View {
@@ -80,7 +83,6 @@ extension DirectoryBrowserView {
     }
 }
 
-struct DirectoryBrowserViewItemView_Previews: PreviewProvider {
     static var previews: some View {
         List {
             DirectoryBrowserView.FolderItemView(item:

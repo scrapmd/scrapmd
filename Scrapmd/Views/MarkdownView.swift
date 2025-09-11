@@ -50,7 +50,6 @@ struct MarkdownView: UIViewRepresentable {
     }
 }
 
-struct MarkdownView_Previews: PreviewProvider {
     static var previews: some View {
         MarkdownView(
             markdown: "# hello\n\nit works.",

@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@MainActor
 struct ProgressBar: View {
     @Binding var value: Float
 
@@ -28,7 +29,6 @@ struct ProgressBar: View {
     }
 }
 
-struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             ProgressBar(value: .constant(0.2)).frame(height: 2)

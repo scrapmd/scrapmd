@@ -8,13 +8,13 @@
 
 import SwiftUI
 
+@MainActor
 struct DetailPlaceholderView: View {
     var body: some View {
         Spacer()
     }
 }
 
-struct DetailPlaceholderView_Previews: PreviewProvider {
     static var previews: some View {
         DetailPlaceholderView()
     }

@@ -12,12 +12,14 @@ import FileKit
 import UIKit
 
 extension DirectoryBrowser {
-    class Item: ObservableObject, Identifiable, Hashable {
-        @Published var metadata: ScrapMetadata?
-        @Published var thumbnail: UIImage?
-        @Published var scrapsCount: Int
-        @Published var foldersCount: Int
-        @Published var fileName: String
+    @MainActor
+@Observable
+class Item, Identifiable, Hashable {
+        var metadata: ScrapMetadata?
+        var thumbnail: UIImage?
+        var scrapsCount: Int
+        var foldersCount: Int
+        var fileName: String
 
         static func == (lhs: DirectoryBrowser.Item, rhs: DirectoryBrowser.Item) -> Bool {
             lhs.id == rhs.id

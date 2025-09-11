@@ -10,10 +10,12 @@ import Foundation
 import Combine
 
 extension ScrapReaderView {
-    class ViewModel: ObservableObject {
-        @Published var isLoading = true
-        @Published var markdown: String?
-        @Published var metadata: ScrapMetadata?
+    @MainActor
+@Observable
+class ViewModel {
+        var isLoading = true
+        var markdown: String?
+        var metadata: ScrapMetadata?
 
         let path: FileKitPath
 

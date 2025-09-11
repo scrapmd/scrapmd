@@ -12,7 +12,9 @@ import FileKit
 
 extension SaveActionView {
     typealias CompletionHandler = (_ dest: Path) -> Void
-    class ViewModel: ObservableObject {
+    @MainActor
+    @Observable
+    class ViewModel {
         let contentSaver: ContentSaver
 
         convenience init(contentSaver: ContentSaver) {
@@ -25,11 +27,11 @@ extension SaveActionView {
             self.title = contentSaver.result?.title ?? ""
         }
 
-        @Published var isDownloading = false
-        @Published var saveLocation: Path
-        @Published var downloadProgress: Float = 0
+        var isDownloading = false
+        var saveLocation: Path
+        var downloadProgress: Float = 0
 
-        @Published var title: String = "" {
+        var title: String = "" {
             didSet {
                 var invalidCharacters = CharacterSet(charactersIn: ":/")
                 invalidCharacters.formUnion(.newlines)

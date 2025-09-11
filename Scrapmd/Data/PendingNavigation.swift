@@ -9,7 +9,9 @@
 import Foundation
 import Combine
 
-class PendingNavigation: ObservableObject {
-    @Published var path: FileKitPath?
-    @Published var isPending = false
+@MainActor
+@Observable
+class PendingNavigation {
+    var path: FileKitPath?
+    var isPending = false
 }
