@@ -94,34 +94,54 @@ fastlane tests
 - `NewScrapView`: New content creation
 - `SaveActionView`: Share extension UI
 
+## Modernization Requirements
+
+### Target Configuration
+- **Swift Version**: 6.0
+- **Minimum iOS Deployment Target**: 18.0
+- **Minimum macOS Deployment Target**: 15.0 (macOS Sequoia)
+- **Xcode**: 16 or later
+
+### Benefits of iOS 18 Minimum Target
+- Use all latest SwiftUI features without availability checks
+- Full Swift 6 concurrency and data race safety features
+- Access to latest system APIs
+- Cleaner code without version compatibility checks
+- Native support for modern UI patterns
+
 ## Modernization Tasks
 This project has not been maintained for 5 years and requires the following updates:
 
 1. **Swift & iOS Version Updates**
-   - Update to latest Swift version
-   - Update minimum iOS deployment target
-   - Update deprecated APIs
+   - Update to Swift 6.0 with strict concurrency checking
+   - Set minimum iOS deployment target to 18.0
+   - Set minimum macOS deployment target to 15.0
+   - Update all deprecated APIs to modern equivalents
 
 2. **Dependencies**
-   - Update all third-party dependencies
-   - Review and replace deprecated libraries
-   - Update Firebase SDK
+   - Update Fastlane to latest stable version
+   - Replace xcov git fork with official version
+   - Update Firebase SDK to latest version
+   - Ensure all dependencies support Swift 6
 
-3. **UI/UX Improvements**
-   - Modernize UI design
-   - Improve accessibility
-   - Add new iOS features (widgets, shortcuts, etc.)
+3. **SwiftUI Modernization**
+   - Replace NavigationView with NavigationStack
+   - Update deprecated navigation styles
+   - Implement modern SwiftUI patterns
+   - Remove unnecessary iOS version checks
 
 4. **Code Quality**
+   - Add @MainActor annotations for UI code
+   - Implement async/await for asynchronous operations
+   - Ensure Swift 6 data race safety compliance
    - Add comprehensive unit tests
-   - Improve error handling
-   - Add proper logging
-   - Update to modern Swift patterns (async/await, etc.)
+   - Improve error handling with modern patterns
 
 5. **CI/CD**
-   - Update GitHub Actions workflows
-   - Modernize Fastlane configuration
-   - Add automated testing
+   - Update GitHub Actions to use macOS 14+ runners
+   - Configure workflows for Xcode 16
+   - Update all action versions to latest
+   - Add automated testing pipeline
 
 ## Contributing
 When contributing to this project:
