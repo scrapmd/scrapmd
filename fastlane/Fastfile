@@ -113,6 +113,12 @@ platform :ios do
       testers_file_path: './fastlane/testers.csv',
       ipa: './build/release/Scrapmd.ipa'
     )
+
+    sentry_cli(
+      org_slug: 'littleapps',
+      project_slug: 'scrapmd',
+      include_sources: true
+    )
   end
 
   desc 'Notify to Slack'

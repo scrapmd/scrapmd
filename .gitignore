@@ -73,3 +73,5 @@ Vendor/bundler
 /Resources/Graphics/CFBundleIconFiles.plist
 
 *.log
+
+.sentryclirc
