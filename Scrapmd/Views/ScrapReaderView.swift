@@ -6,13 +6,13 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import SwiftUI
 import Ink
+import SwiftUI
 
 @MainActor
 struct ScrapReaderView: View {
     let path: FileKitPath
-    @ObservedObject var viewModel: ViewModel
+    @Bindable var viewModel: ViewModel
 
     init(_ path: FileKitPath) {
         self.path = path
@@ -55,9 +55,9 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "safari")
                     }.padding()
-                }.sheet(isPresented: $isSharePresented, content: {
+                }.sheet(isPresented: $isSharePresented) {
                     ActivityViewController(activityItems: [self.path.fileURL(scheme: "file")])
-                })
+                }
             }
         }
     }
@@ -67,8 +67,7 @@ struct ContentView: View {
             return AnyView(ActivityIndicator(isAnimating: .constant(true), style: .large))
         } else if
             let metadata = self.viewModel.metadata,
-            let markdown = self.viewModel.markdown
-        {
+            let markdown = self.viewModel.markdown {
             return AnyView(ContentView(
                 metadata: metadata,
                 markdown: markdown,
@@ -84,11 +83,10 @@ struct ContentView: View {
     }
 }
 
-    static var previews: some View {
-        NavigationView {
-            ScrapReaderView(
-                FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")
-            ).navigationBarTitle("", displayMode: .inline)
-        }
+#Preview {
+    NavigationView {
+        ScrapReaderView(
+            FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")
+        ).navigationBarTitle("", displayMode: .inline)
     }
 }

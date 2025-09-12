@@ -6,9 +6,9 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
 import FileKit
+import Foundation
 
 extension SaveActionView {
     typealias CompletionHandler = (_ dest: Path) -> Void
@@ -54,15 +54,15 @@ extension SaveActionView {
             UserDefaults.shared.lastLocation = saveLocation
             isDownloading = true
             downloadProgress = 0
-            contentSaver.download(to: saveLocation, name: title, progress: { (_, current, total) in
+            contentSaver.download(to: saveLocation, name: title, progress: { _, current, total in
                 DispatchQueue.main.async {
                     self.downloadProgress = Float(current) / Float(total)
                 }
-            }, completionHandler: { (dest, err) in
+            }, completionHandler: { dest, err in
                 DispatchQueue.main.async {
                     self.downloadProgress = 1.0
                     guard let dest = dest else {
-                        log(error: err ?? NSError())
+                        log(error: err ?? CocoaError(.coderInvalidValue))
                         self.isDownloading = false
                         return
                     }

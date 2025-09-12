@@ -10,7 +10,7 @@ import SwiftUI
 
 @MainActor
 struct ContentView: View {
-    @EnvironmentObject var pendingNavigation: PendingNavigation
+    @Environment(PendingNavigation.self) var pendingNavigation
 
     var body: some View {
         NavigationSplitView {

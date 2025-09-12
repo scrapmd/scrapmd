@@ -6,15 +6,14 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
 import FileKit
+import Foundation
 import UIKit
 
 extension DirectoryBrowser {
-    @MainActor
-@Observable
-class Item, Identifiable, Hashable {
+    @Observable
+    class Item: Identifiable, Hashable {
         var metadata: ScrapMetadata?
         var thumbnail: UIImage?
         var scrapsCount: Int
@@ -36,7 +35,7 @@ class Item, Identifiable, Hashable {
             self.fileName = path.fileName
         }
 
-        var id: String { // swiftlint:disable:this identifier_name
+        var id: String {
             path.id
         }
 

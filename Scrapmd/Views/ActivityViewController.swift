@@ -6,11 +6,10 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 struct ActivityViewController: UIViewControllerRepresentable {
-
     var activityItems: [Any]
     var applicationActivities: [UIActivity]?
 
@@ -23,5 +22,4 @@ struct ActivityViewController: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: UIActivityViewController,
                                 context: UIViewControllerRepresentableContext<ActivityViewController>) {}
-
 }

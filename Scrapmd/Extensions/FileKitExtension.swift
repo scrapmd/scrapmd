@@ -6,8 +6,8 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import FileKit
+import Foundation
 
 typealias FileKitPath = Path
 
@@ -37,7 +37,7 @@ extension Path {
     func loadCreatedAt() -> Date? {
         metadata?.createdAt ?? children(recursive: false)
             .filter { $0.createdAt != nil }
-            .sorted(by: { $0.createdAt! > $1.createdAt! })
+            .sorted { $0.createdAt! > $1.createdAt! }
             .first?.createdAt
     }
 
@@ -54,11 +54,11 @@ extension Path {
     }
 
     var foldersCount: Int {
-        children().filter({ !$0.isHidden && !$0.isScrap && $0.isDirectory }).count
+        children().filter { !$0.isHidden && !$0.isScrap && $0.isDirectory }.count
     }
 
     var scrapsCount: Int {
-        children().filter({ !$0.isHidden && $0.isScrap }).count
+        children().filter { !$0.isHidden && $0.isScrap }.count
     }
 
     var metadataFile: JSONFile<ScrapMetadata> {
@@ -111,8 +111,8 @@ extension Path {
     }
 }
 
-extension Path: Identifiable {
-    public var id: String { // swiftlint:disable:this identifier_name
-        "\(self.rawValue) \(self.scrapsCount) \(self.foldersCount)".data(using: .utf8)!.base64EncodedString()
+extension Path: @retroactive Identifiable {
+    public var id: String {
+        Data("\(self.rawValue) \(self.scrapsCount) \(self.foldersCount)".utf8).base64EncodedString()
     }
 }

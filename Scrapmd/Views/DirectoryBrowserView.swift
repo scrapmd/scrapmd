@@ -14,9 +14,9 @@ struct DirectoryBrowserView: View {
         case about, new
     }
     let path: FileKitPath
-    @EnvironmentObject var pendingNavigation: PendingNavigation
-    @EnvironmentObject var confirmingCreate: ConfirmingCreate
-    @ObservedObject var directoryBrowser: DirectoryBrowser
+    @Environment(PendingNavigation.self) var pendingNavigation
+    @Environment(ConfirmingCreate.self) var confirmingCreate
+    @Bindable var directoryBrowser: DirectoryBrowser
     @State var isModalShown = false
     @State var currentSheet: Sheet = .about
 
@@ -28,7 +28,7 @@ struct DirectoryBrowserView: View {
     var body: some View {
         let vstack = VStack {
             List {
-                ForEach(directoryBrowser.sectionedIndices, id: \.0) { (section, indices) in
+                ForEach(directoryBrowser.sectionedIndices, id: \.0) { section, indices in
                     Section(header: Text(section == "" ? "Folder" : section)) {
                         ForEach(indices, id: \.self) { index in
                             ItemView(item: self.$directoryBrowser.items[index])
@@ -42,18 +42,18 @@ struct DirectoryBrowserView: View {
             .listStyle(DefaultListStyle())
             NavigationLink(
                 destination: ScrapReaderView(pendingNavigation.path ?? FileKitPath("")),
-                isActive: $pendingNavigation.isPending) { EmptyView() }
+                isActive: .constant(pendingNavigation.isPending)) { EmptyView() }
                 .onAppear {}
         }
         .navigationBarTitle(path.isRoot ? NSLocalizedString("Home", comment: "Home") : path.fileName)
-        .alert(isPresented: $confirmingCreate.isConfirming) {
+        .alert(isPresented: .constant(confirmingCreate.isConfirming)) {
             Alert(
                 title: Text("Create New Scrap"),
                 message: Text("pasteboard.confirmMessage \(self.confirmingCreate.url?.absoluteString ?? "")"),
                 primaryButton: .default(Text("Yes")) {
                     self.showSheet(.new)
                 },
-                secondaryButton: .cancel() {
+                secondaryButton: .cancel {
                     self.confirmingCreate.url = nil
                 })
         }
@@ -93,8 +93,8 @@ struct DirectoryBrowserView: View {
     func buildSheetContent() -> some View {
         if currentSheet == .new {
             NewScrapView(path: path, isShown: $isModalShown)
-                .environmentObject(pendingNavigation)
-                .environmentObject(confirmingCreate)
+                .environment(pendingNavigation)
+                .environment(confirmingCreate)
         } else if currentSheet == .about {
             AboutView(isShown: $isModalShown)
         } else {

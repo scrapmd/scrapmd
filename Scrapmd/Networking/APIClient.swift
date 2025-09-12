@@ -10,6 +10,8 @@ import Foundation
 
 @MainActor
 struct APIClient {
+    typealias CompletionHandler = @Sendable (Result?, HTTPURLResponse?, Error?) -> Void
+
     struct Result: Decodable, Sendable {
         let title: String
         let markdown: String
@@ -26,7 +28,7 @@ struct APIClient {
             return ScrapMetadata(title: title, url: url, createdAt: Date(), appVersion: Bundle.main.appVersion)
         }
     }
-    
+
     enum APIError: Error {
         case noData
         case invalidResponse
@@ -36,41 +38,40 @@ struct APIClient {
     // static let endpoint = URL(string: "http://localhost:8000/")!
 
     static func fetch(
-        url: URL, 
+        url: URL,
         title: String? = nil,
         prefetchedHTML: String? = nil
     ) async throws -> (Result, HTTPURLResponse) {
         let session = URLSession.shared
         var request = URLRequest(url: endpoint)
-        
+
         var params = [String: String]()
         if let html = prefetchedHTML {
             params["html"] = html
         }
         params["title"] = title
         params["url"] = url.absoluteString
-        params.merge(UserDefaults.shared.additionalParameters,
-                     uniquingKeysWith: { key, _ in key })
-        
+        params.merge(UserDefaults.shared.additionalParameters) { key, _ in key }
+
         let data = try JSONEncoder().encode(params)
         request.httpBody = data
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let (responseData, response) = try await session.data(for: request)
-        
+
         guard let httpResponse = response as? HTTPURLResponse else {
             throw APIError.invalidResponse
         }
-        
+
         guard !responseData.isEmpty else {
             throw APIError.noData
         }
-        
+
         let result = try JSONDecoder().decode(Result.self, from: responseData)
         return (result, httpResponse)
     }
-    
+
     // Legacy completion handler method for backward compatibility during migration
     static func fetch(
         url: URL, title: String? = nil,

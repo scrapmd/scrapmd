@@ -15,7 +15,6 @@ struct DetailPlaceholderView: View {
     }
 }
 
-    static var previews: some View {
-        DetailPlaceholderView()
-    }
+#Preview {
+    DetailPlaceholderView()
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 extension ScrapReaderView {
     @MainActor

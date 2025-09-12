@@ -5,6 +5,8 @@
 disabled_rules:
   - multiple_closures_with_trailing_closure
   - todo  # Allow TODO comments during modernization
+  - nesting  # Allow nested types for APIClient.Result.CodingKeys
+  - file_header  # Temporarily disable during modernization
 
 # Optional rules to enable for Swift 6
 opt_in_rules:
@@ -22,7 +24,6 @@ opt_in_rules:
   - vertical_whitespace_closing_braces
   - closure_spacing
   - empty_count
-  - file_header
 
 # Concurrency and Swift 6 specific rules
   - actor_scope
@@ -69,16 +70,6 @@ identifier_name:
 force_unwrapping:
   severity: warning
 
-# Custom file header for Swift 6 modernization
-file_header:
-  required_pattern: |
-                    \/\/
-                    \/\/  .*?\.swift
-                    \/\/  Scrapmd
-                    \/\/
-                    \/\/  Created by .* on .*\.
-                    \/\/  Copyright © \d{4} LittleApps Inc\. All rights reserved\.
-                    \/\/
 
 # Analyzer rules for Swift 6
 analyzer_rules:

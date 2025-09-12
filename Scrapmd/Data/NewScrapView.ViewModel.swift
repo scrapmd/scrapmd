@@ -6,8 +6,8 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 extension NewScrapView {
     @MainActor
@@ -41,10 +41,10 @@ extension NewScrapView {
             guard let url = url, !isFetching else { return }
             isFetching = true
             errorMessage = ""
-            
+
             do {
                 let (result, _) = try await APIClient.fetch(url: url)
-                
+
                 if result.markdown.isEmpty {
                     self.errorMessage = "This site is not supported"
                 } else {
@@ -54,7 +54,7 @@ extension NewScrapView {
             } catch {
                 self.errorMessage = "Error fetching from URL: \(error.localizedDescription)"
             }
-            
+
             self.isFetching = false
         }
     }

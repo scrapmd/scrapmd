@@ -8,7 +8,7 @@
 
 import Foundation
 
-private var _shared: UserDefaults?
+nonisolated(unsafe) private var _shared: UserDefaults?
 
 extension UserDefaults {
     static var shared: UserDefaults {
@@ -80,5 +80,4 @@ extension UserDefaults {
             self.set(params, forKey: .additionalParameters)
         }
     }
-
 }

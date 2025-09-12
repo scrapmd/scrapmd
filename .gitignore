@@ -75,3 +75,4 @@ Vendor/bundler
 *.log
 
 .sentryclirc
+*.backup

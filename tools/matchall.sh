@@ -3,8 +3,8 @@
 set -eu
 PROFILES="development adhoc appstore"
 for I in $PROFILES; do
-  fastlane match $I
+  bundle exec fastlane match $I
 done
 
-fastlane mac develop_match
-fastlane mac release_match
+bundle exec fastlane mac develop_match
+bundle exec fastlane mac release_match

@@ -45,9 +45,8 @@ struct SaveCompleteView: View {
     }
 }
 
-    static var previews: some View {
-        NavigationView {
-            SaveCompleteView(savedPath: nil) { _ in }
-        }
+#Preview {
+    NavigationView {
+        SaveCompleteView(savedPath: nil) { _ in }
     }
 }

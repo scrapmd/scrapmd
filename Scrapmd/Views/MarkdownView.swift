@@ -6,8 +6,8 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import SwiftUI
 import Ink
+import SwiftUI
 
 struct MarkdownView: UIViewRepresentable {
     let markdown: String
@@ -38,7 +38,7 @@ struct MarkdownView: UIViewRepresentable {
         let data = html.data(using: .utf8)!
         DispatchQueue.main.async {
             do {
-                let attributedText =  try NSAttributedString(
+                let attributedText = try NSAttributedString(
                     data: data,
                     options: [.documentType: NSAttributedString.DocumentType.html],
                     documentAttributes: nil)
@@ -50,11 +50,10 @@ struct MarkdownView: UIViewRepresentable {
     }
 }
 
-    static var previews: some View {
-        MarkdownView(
-            markdown: "# hello\n\nit works.",
-            path: FileKitPath.userHome,
-            showSource: .constant(false)
-        )
-    }
+#Preview {
+    MarkdownView(
+        markdown: "# hello\n\nit works.",
+        path: FileKitPath.userHome,
+        showSource: .constant(false)
+    )
 }

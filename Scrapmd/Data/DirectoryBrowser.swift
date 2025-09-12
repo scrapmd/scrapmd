@@ -6,15 +6,15 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
-import FileKit
-import Dispatch
-import UIKit
-import SwiftUI
 import CoreData
+import Dispatch
+import FileKit
+import Foundation
+import SwiftUI
+import UIKit
 
-private var queueId = 0
+nonisolated(unsafe) private var queueId = 0
 
 @MainActor
 @Observable
@@ -40,7 +40,7 @@ class DirectoryBrowser {
         NotificationCenter.default.addObserver(self, selector: #selector(update), name: .updateDirectory, object: nil)
     }
 
-    private var monitor: DispatchSourceFileSystemObject?
+    nonisolated(unsafe) private var monitor: DispatchSourceFileSystemObject?
 
     deinit {
         monitor?.cancel()
@@ -88,10 +88,10 @@ class DirectoryBrowser {
 
     func fetchItems() -> [Item] {
         let pathes = self.path.children(recursive: false)
-        .filter({ path in
+        .filter { path in
             !path.isHidden && path.isDirectory &&
                 ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
-        })
+        }
         let context = CoreDataManager.shared.newBackgroundContext()
         context.performAndWait {
             pathes.forEach { path in
@@ -105,7 +105,7 @@ class DirectoryBrowser {
         } catch {
             log(error: error)
         }
-        return pathes.sorted(by: {
+        return pathes.sorted {
             if
                 self.sort == .created,
                 let date1 = $0.createdAt,
@@ -113,7 +113,7 @@ class DirectoryBrowser {
                 return date1 > date2
             }
             return $0.fileName < $1.fileName
-        }).map { Item($0) }
+        }.map { Item($0) }
     }
 
     var sectionedIndices: [(String, [Range<Int>.Element])] {
@@ -122,7 +122,7 @@ class DirectoryBrowser {
                 return sectionDateFormatter.string(from: date)
             }
             return ""
-        }.map { ($0, $1) }.sorted(by: {
+        }.map { ($0, $1) }.sorted {
             if
                 let date1 = self.items[$0.1[0]].path.createdAt,
                 let date2 = self.items[$1.1[0]].path.createdAt {
@@ -132,6 +132,6 @@ class DirectoryBrowser {
                 return true
             }
             return false
-        })
+        }
     }
 }

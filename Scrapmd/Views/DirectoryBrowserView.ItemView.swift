@@ -83,13 +83,12 @@ struct ItemView: View {
     }
 }
 
-    static var previews: some View {
-        List {
-            DirectoryBrowserView.FolderItemView(item:
-                .constant(DirectoryBrowser.Item(FileKitPath("/Users/ngs/Documents/Scrapmd Demo/test"))))
-            DirectoryBrowserView.ScrapItemView(item:
-                .constant(DirectoryBrowser.Item(FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo.scrapmd"))))
-        }
-        .environment(\.locale, .init(identifier: "ja"))
+#Preview {
+    List {
+        DirectoryBrowserView.FolderItemView(item:
+            .constant(DirectoryBrowser.Item(FileKitPath("/Users/ngs/Documents/Scrapmd Demo/test"))))
+        DirectoryBrowserView.ScrapItemView(item:
+            .constant(DirectoryBrowser.Item(FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo.scrapmd"))))
     }
+    .environment(\.locale, .init(identifier: "ja"))
 }

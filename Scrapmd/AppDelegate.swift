@@ -6,20 +6,20 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import UIKit
 import Sentry
+import UIKit
 
 import os.log
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         SentrySDK.start { options in
-            options.dsn = "https://7beb8b3c0257ad984b3f758cb7b67787@o4510002892505088.ingest.us.sentry.io/4510002906595328"
+            options.dsn =
+                "https://7beb8b3c0257ad984b3f758cb7b67787@o4510002892505088.ingest.us.sentry.io/4510002906595328"
             options.debug = true // Enabled debug when first installing is always helpful
 
             // Adds IP for users.
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Uncomment the following lines to add more data to your events
             // options.attachScreenshot = true // This adds a screenshot to the error events
             // options.attachViewHierarchy = true // This adds the view hierarchy to the error events
-            
+
             // Enable experimental logging features
             options.experimental.enableLogs = true
         }
