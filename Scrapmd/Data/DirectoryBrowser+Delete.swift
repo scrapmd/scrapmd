@@ -6,8 +6,8 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 extension DirectoryBrowser {
     func delete(at offsets: IndexSet) {

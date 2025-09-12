@@ -6,14 +6,16 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 extension ScrapReaderView {
-    class ViewModel: ObservableObject {
-        @Published var isLoading = true
-        @Published var markdown: String?
-        @Published var metadata: ScrapMetadata?
+    @MainActor
+@Observable
+class ViewModel {
+        var isLoading = true
+        var markdown: String?
+        var metadata: ScrapMetadata?
 
         let path: FileKitPath
 

@@ -6,9 +6,9 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
-import FileKit
 import CoreData
+import FileKit
+import Foundation
 
 struct ContentSaver {
     let result: APIClient.Result?
@@ -18,7 +18,7 @@ struct ContentSaver {
         let destination: ImageFile
 
         func queue(completionHandler: @escaping (ProgressInfo, Error?) -> Void) -> DownloadQueue {
-            let task = URLSession.shared.downloadTask(with: url) { (localURL, _, _) in
+            let task = URLSession.shared.downloadTask(with: url) { localURL, _, _ in
                 guard let localURL = localURL else {
                     completionHandler(self, nil)
                     return
@@ -72,7 +72,6 @@ struct ContentSaver {
         }
     }
 
-    // swiftlint:disable:next identifier_name function_body_length
     func download(to: Path, name: String, progress: @escaping ProgressHandler,
                   completionHandler: @escaping CompletionHandler) {
         guard let result = result else { return }
@@ -107,7 +106,7 @@ struct ContentSaver {
             let queue = ProgressInfo(
                 url: URL(string: url)!,
                 destination: ImageFile(path: dest + sum)
-            ).queue { (info, err) in
+            ).queue { _, err in
                 if let err = err {
                     completionHandler(nil, err)
                     return

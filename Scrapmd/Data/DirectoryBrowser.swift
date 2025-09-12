@@ -6,18 +6,20 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
-import FileKit
-import Dispatch
-import UIKit
-import SwiftUI
 import CoreData
+import Dispatch
+import FileKit
+import Foundation
+import SwiftUI
+import UIKit
 
-private var queueId = 0
+nonisolated(unsafe) private var queueId = 0
 
-class DirectoryBrowser: ObservableObject {
-    @Published var items: [Item]
+@MainActor
+@Observable
+class DirectoryBrowser {
+    var items: [Item]
     let onlyDirectory: Bool
     let path: FileKitPath
     let sort: Sort
@@ -38,7 +40,7 @@ class DirectoryBrowser: ObservableObject {
         NotificationCenter.default.addObserver(self, selector: #selector(update), name: .updateDirectory, object: nil)
     }
 
-    private var monitor: DispatchSourceFileSystemObject?
+    nonisolated(unsafe) private var monitor: DispatchSourceFileSystemObject?
 
     deinit {
         monitor?.cancel()
@@ -86,10 +88,10 @@ class DirectoryBrowser: ObservableObject {
 
     func fetchItems() -> [Item] {
         let pathes = self.path.children(recursive: false)
-        .filter({ path in
+        .filter { path in
             !path.isHidden && path.isDirectory &&
                 ((self.onlyDirectory && !path.isScrap) || !self.onlyDirectory)
-        })
+        }
         let context = CoreDataManager.shared.newBackgroundContext()
         context.performAndWait {
             pathes.forEach { path in
@@ -103,7 +105,7 @@ class DirectoryBrowser: ObservableObject {
         } catch {
             log(error: error)
         }
-        return pathes.sorted(by: {
+        return pathes.sorted {
             if
                 self.sort == .created,
                 let date1 = $0.createdAt,
@@ -111,7 +113,7 @@ class DirectoryBrowser: ObservableObject {
                 return date1 > date2
             }
             return $0.fileName < $1.fileName
-        }).map { Item($0) }
+        }.map { Item($0) }
     }
 
     var sectionedIndices: [(String, [Range<Int>.Element])] {
@@ -120,7 +122,7 @@ class DirectoryBrowser: ObservableObject {
                 return sectionDateFormatter.string(from: date)
             }
             return ""
-        }.map { ($0, $1) }.sorted(by: {
+        }.map { ($0, $1) }.sorted {
             if
                 let date1 = self.items[$0.1[0]].path.createdAt,
                 let date2 = self.items[$1.1[0]].path.createdAt {
@@ -130,6 +132,6 @@ class DirectoryBrowser: ObservableObject {
                 return true
             }
             return false
-        })
+        }
     }
 }

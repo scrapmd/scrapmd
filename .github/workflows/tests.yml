@@ -14,17 +14,35 @@ env:
 
 jobs:
   tests:
-    runs-on: macos-10.15
+    runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/cache@v1
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+        
+    - name: Select Xcode version
+      run: sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer || sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+      
+    - name: Cache bundler gems
+      uses: actions/cache@v4
       id: cache-bundler
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
-    - run: bundle config set path 'vendor/bundle'
-    - run: bundle install
+          
+    - name: Bundle config
+      run: bundle config set path 'vendor/bundle'
+      
+    - name: Bundle install
+      run: bundle install
       if: steps.cache-bundler.outputs.cache-hit != 'true'
-    - run: bundle exec fastlane tests
+      
+    - name: Run tests
+      run: bundle exec fastlane tests

@@ -9,6 +9,7 @@
 import SwiftUI
 import UIKit
 
+@MainActor
 struct SaveActionView: View {
     typealias Action = () -> Void
     typealias FilePathAction = (_ path: FileKitPath) -> Void
@@ -16,7 +17,7 @@ struct SaveActionView: View {
     let doneAction: FilePathAction
     let openAction: FilePathAction
     let showCompletion: Bool
-    @ObservedObject var saverViewModel: SaveActionView.ViewModel
+    @Bindable var saverViewModel: SaveActionView.ViewModel
     @State var isDirectoryPickerActive = false
     @State var isCompleteShown = false
     @State var savedPath: FileKitPath?
@@ -48,7 +49,7 @@ struct SaveActionView: View {
                 }
                 Section(header: Text("Save Location")) {
                     NavigationLink(destination: DirectoryPickerView(
-                    FileKitPath.documentRoot) { (path, _) in
+                    FileKitPath.documentRoot) { path, _ in
                         if let path = path {
                             self.saverViewModel.saveLocation = path
                         }
@@ -80,16 +81,15 @@ struct SaveActionView: View {
         .navigationBarTitle("Save Scrap")
         .navigationBarItems(
             leading: Button(
-                action: self.cancelAction,
-                label: { Text("Cancel") }
-            ).disabled(saverViewModel.isDownloading),
-            trailing: Button(action: save, label: {
+                action: self.cancelAction
+            ) { Text("Cancel") }.disabled(saverViewModel.isDownloading),
+            trailing: Button(action: save) {
                 if saverViewModel.isDownloading {
                     ActivityIndicator(isAnimating: .constant(true), style: .medium)
                 } else {
                     Text("Save").fontWeight(.bold)
                 }
-            }).disabled(saverViewModel.isDownloading))
+            }.disabled(saverViewModel.isDownloading))
     }
 
     func save() {
@@ -103,19 +103,18 @@ struct SaveActionView: View {
     }
 }
 
-struct SavePreviewView_Previews: PreviewProvider {
-    static var previews: some View {
-        let result = APIClient.Result(
-            title: ".//?-\\a.寿限無　寿限無　五劫のすりきれ 海砂利水魚の水行末　雲来末　風来末 食う寝るところに住むところ",
-            markdown: "",
-            url: "http://basin.example.org/?attack=bomb&amusement=berry#boat",
-            images: [:]
-        )
-        return SaveActionView(
-            contentSaver: ContentSaver(result: result),
-            cancelAction: {},
-            doneAction: { _ in },
-            openAction: { _ in })
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    let result = APIClient.Result(
+        title: ".//?-\\a.寿限無　寿限無　五劫のすりきれ 海砂利水魚の水行末　雲来末　風来末 食う寝るところに住むところ",
+        markdown: "",
+        url: "http://basin.example.org/?attack=bomb&amusement=berry#boat",
+        images: [:],
+        leadImageURL: nil
+    )
+    SaveActionView(
+        contentSaver: ContentSaver(result: result),
+        cancelAction: {},
+        doneAction: { _ in },
+        openAction: { _ in })
+        .preferredColorScheme(.dark)
 }

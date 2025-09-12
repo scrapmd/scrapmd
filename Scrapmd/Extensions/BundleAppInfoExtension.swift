@@ -33,6 +33,7 @@ extension Bundle {
         return value
     }
 
+    @MainActor
     var deviceModel: String {
         #if targetEnvironment(macCatalyst)
         return "Mac"
@@ -41,6 +42,7 @@ extension Bundle {
         #endif
     }
 
+    @MainActor
     var deviceSummary: String {
         return """
 ----
@@ -50,10 +52,12 @@ Version: \(appVersion) (\(buildNumber))
 .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
 
+    @MainActor
     var submitIssueURL: URL {
         return URL(string: "https://github.com/scrapmd/scrapmd/issues/new?body=\(deviceSummary)")!
     }
 
+    @MainActor
     var contactURL: URL {
         let device = deviceModel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let version = "\(appVersion) (\(buildNumber)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!

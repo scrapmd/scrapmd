@@ -6,10 +6,12 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
-class ConfirmingCreate: ObservableObject {
-    @Published var url: URL?
-    @Published var isConfirming = false
+@MainActor
+@Observable
+class ConfirmingCreate {
+    var url: URL?
+    var isConfirming = false
 }

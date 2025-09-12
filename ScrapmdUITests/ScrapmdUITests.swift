@@ -9,7 +9,6 @@
 import XCTest
 
 class ScrapmdUITests: XCTestCase {
-
     override func setUpWithError() throws {
         continueAfterFailure = false
     }

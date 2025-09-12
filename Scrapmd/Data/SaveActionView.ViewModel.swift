@@ -6,13 +6,15 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
 import FileKit
+import Foundation
 
 extension SaveActionView {
     typealias CompletionHandler = (_ dest: Path) -> Void
-    class ViewModel: ObservableObject {
+    @MainActor
+    @Observable
+    class ViewModel {
         let contentSaver: ContentSaver
 
         convenience init(contentSaver: ContentSaver) {
@@ -25,11 +27,11 @@ extension SaveActionView {
             self.title = contentSaver.result?.title ?? ""
         }
 
-        @Published var isDownloading = false
-        @Published var saveLocation: Path
-        @Published var downloadProgress: Float = 0
+        var isDownloading = false
+        var saveLocation: Path
+        var downloadProgress: Float = 0
 
-        @Published var title: String = "" {
+        var title: String = "" {
             didSet {
                 var invalidCharacters = CharacterSet(charactersIn: ":/")
                 invalidCharacters.formUnion(.newlines)
@@ -52,15 +54,15 @@ extension SaveActionView {
             UserDefaults.shared.lastLocation = saveLocation
             isDownloading = true
             downloadProgress = 0
-            contentSaver.download(to: saveLocation, name: title, progress: { (_, current, total) in
+            contentSaver.download(to: saveLocation, name: title, progress: { _, current, total in
                 DispatchQueue.main.async {
                     self.downloadProgress = Float(current) / Float(total)
                 }
-            }, completionHandler: { (dest, err) in
+            }, completionHandler: { dest, err in
                 DispatchQueue.main.async {
                     self.downloadProgress = 1.0
                     guard let dest = dest else {
-                        log(error: err ?? NSError())
+                        log(error: err ?? CocoaError(.coderInvalidValue))
                         self.isDownloading = false
                         return
                     }

@@ -6,15 +6,17 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import SwiftUI
 import FileKit
+import SwiftUI
 
+@MainActor
 struct CreateFolderView: View {
     let path: FileKitPath
     @Binding var isShown: Bool
     @State var name = ""
     @State var errorMessage: String?
-    struct ErrorMessage: View {
+    @MainActor
+struct ErrorMessage: View {
         let message: String?
 
         @ViewBuilder
@@ -41,8 +43,8 @@ struct CreateFolderView: View {
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Create New Folder")
             .navigationBarItems(
-                leading: Button(action: cancel, label: { Text("Cancel") }),
-                trailing: Button(action: create, label: { Text("Create").bold() })
+                leading: Button(action: cancel) { Text("Cancel") },
+                trailing: Button(action: create) { Text("Create").bold() }
                     .disabled(self.name.isEmpty || self.newPath.exists)
             )
         }.navigationViewStyle(StackNavigationViewStyle())
@@ -59,13 +61,10 @@ struct CreateFolderView: View {
         } catch {
             self.errorMessage = "Failed to create folder"
         }
-
     }
 }
 
-struct CreateFolderView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateFolderView(path: FileKitPath.userDocuments, isShown: .constant(true))
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    CreateFolderView(path: FileKitPath.userDocuments, isShown: .constant(true))
+        .preferredColorScheme(.dark)
 }

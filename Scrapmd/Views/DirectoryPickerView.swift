@@ -8,10 +8,11 @@
 
 import SwiftUI
 
+@MainActor
 struct DirectoryPickerView: View {
     typealias ChooseHandler = (_ path: FileKitPath?, _ sender: DirectoryPickerView) -> Void
     let path: FileKitPath
-    @ObservedObject var directoryBrowser: DirectoryBrowser
+    @Bindable var directoryBrowser: DirectoryBrowser
     @State var isNewFolderModalShown = false
     let chooseHandler: ChooseHandler
     let chosenPath: FileKitPath?
@@ -28,10 +29,10 @@ struct DirectoryPickerView: View {
             List {
                 ForEach(directoryBrowser.items, id: \.self) { (item: DirectoryBrowser.Item) in
                     NavigationLink(
-                        destination: DirectoryPickerView(item.path) { (path, sender) in
+                        destination: DirectoryPickerView(item.path) { path, sender in
                             self.choose(path, sender)
-                        },
-                        label: {
+                        }
+                    ) {
                             HStack {
                                 Text(item.path.fileName)
                                 if self.chosenPath == item.path {
@@ -39,8 +40,7 @@ struct DirectoryPickerView: View {
                                     Image(systemName: "checkmark")
                                 }
                             }
-                    }
-                    ).isDetailLink(false)
+                    }.isDetailLink(false)
                 }
             }
             .listStyle(DefaultListStyle())
@@ -69,11 +69,9 @@ struct DirectoryPickerView: View {
     }
 }
 
-struct DirectoryPickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            DirectoryPickerView(
-            FileKitPath.userDocuments) { (_, _) in }
-        }
+#Preview {
+    NavigationView {
+        DirectoryPickerView(
+        FileKitPath.userDocuments) { _, _ in }
     }
 }

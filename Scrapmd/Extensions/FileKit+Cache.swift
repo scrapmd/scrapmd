@@ -6,9 +6,9 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
-import FileKit
 import CoreData
+import FileKit
+import Foundation
 import UIKit
 
 extension Path {

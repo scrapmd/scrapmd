@@ -8,10 +8,11 @@
 
 import SwiftUI
 
+@MainActor
 struct NewScrapView: View {
-    @EnvironmentObject var pendingNavigation: PendingNavigation
-    @EnvironmentObject var confirmingCreate: ConfirmingCreate
-    @ObservedObject(initialValue: ViewModel()) var viewModel: ViewModel
+    @Environment(PendingNavigation.self) var pendingNavigation
+    @Environment(ConfirmingCreate.self) var confirmingCreate
+    @State var viewModel = ViewModel()
     let path: FileKitPath
     @Binding var isShown: Bool
 
@@ -37,7 +38,7 @@ struct NewScrapView: View {
                         if let url = self.confirmingCreate.url,
                             url.absoluteString != self.viewModel.urlString {
                             self.viewModel.urlString = url.absoluteString
-                            self.viewModel.fetch()
+                            Task { await self.viewModel.fetch() }
                         }
                 }
                 HStack {
@@ -47,7 +48,7 @@ struct NewScrapView: View {
                     Spacer()
                 }
                 Spacer().frame(height: 10)
-                Button(action: { self.viewModel.fetch() }) {
+                Button(action: { Task { await self.viewModel.fetch() } }) {
                     (self.viewModel.isFetching ?
                         AnyView(ActivityIndicator(
                             isAnimating: .constant(true), style: .medium)) :
@@ -81,7 +82,7 @@ struct NewScrapView: View {
             .background(Color(UIColor.systemGroupedBackground))
             .navigationBarTitle("Create New Scrap")
             .navigationBarItems(
-                leading: Button(action: cancel, label: { Text("Cancel") })
+                leading: Button(action: cancel) { Text("Cancel") }
         )
     }
 
@@ -91,8 +92,6 @@ struct NewScrapView: View {
     }
 }
 
-struct NewScrapView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewScrapView(path: .documentRoot, isShown: .constant(true))
-    }
+#Preview {
+    NewScrapView(path: .documentRoot, isShown: .constant(true))
 }

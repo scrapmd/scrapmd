@@ -6,10 +6,12 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
-class PendingNavigation: ObservableObject {
-    @Published var path: FileKitPath?
-    @Published var isPending = false
+@MainActor
+@Observable
+class PendingNavigation {
+    var path: FileKitPath?
+    var isPending = false
 }

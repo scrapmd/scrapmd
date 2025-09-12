@@ -6,25 +6,28 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import SwiftUI
 import Ink
+import SwiftUI
 
+@MainActor
 struct ScrapReaderView: View {
     let path: FileKitPath
-    @ObservedObject var viewModel: ViewModel
+    @Bindable var viewModel: ViewModel
 
     init(_ path: FileKitPath) {
         self.path = path
         self.viewModel = ViewModel(path)
     }
 
-    struct ErrorView: View {
+    @MainActor
+struct ErrorView: View {
         var body: some View {
             Text("Could not load scrap")
         }
     }
 
-    struct ContentView: View {
+    @MainActor
+struct ContentView: View {
         @State private var isSharePresented = false
         @State private var showSource = false
         let metadata: ScrapMetadata
@@ -52,9 +55,9 @@ struct ScrapReaderView: View {
                     }) {
                         Image(systemName: "safari")
                     }.padding()
-                }.sheet(isPresented: $isSharePresented, content: {
+                }.sheet(isPresented: $isSharePresented) {
                     ActivityViewController(activityItems: [self.path.fileURL(scheme: "file")])
-                })
+                }
             }
         }
     }
@@ -64,8 +67,7 @@ struct ScrapReaderView: View {
             return AnyView(ActivityIndicator(isAnimating: .constant(true), style: .large))
         } else if
             let metadata = self.viewModel.metadata,
-            let markdown = self.viewModel.markdown
-        {
+            let markdown = self.viewModel.markdown {
             return AnyView(ContentView(
                 metadata: metadata,
                 markdown: markdown,
@@ -81,12 +83,10 @@ struct ScrapReaderView: View {
     }
 }
 
-struct ScrapReaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ScrapReaderView(
-                FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")
-            ).navigationBarTitle("", displayMode: .inline)
-        }
+#Preview {
+    NavigationView {
+        ScrapReaderView(
+            FileKitPath("/Users/ngs/Documents/Scrapmd Demo/demo2")
+        ).navigationBarTitle("", displayMode: .inline)
     }
 }

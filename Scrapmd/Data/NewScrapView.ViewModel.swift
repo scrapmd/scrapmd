@@ -6,17 +6,19 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 extension NewScrapView {
-    class ViewModel: ObservableObject {
-        @Published var result: APIClient.Result?
-        @Published var isFetching = false
-        @Published var isFetched = false
-        @Published var isValid = false
-        @Published var errorMessage = ""
-        @Published var urlString = "" {
+    @MainActor
+    @Observable
+    class ViewModel {
+        var result: APIClient.Result?
+        var isFetching = false
+        var isFetched = false
+        var isValid = false
+        var errorMessage = ""
+        var urlString = "" {
             didSet {
                 if let url = url {
                     self.isValid = url.isValidWebURL
@@ -35,25 +37,25 @@ extension NewScrapView {
             URL(string: urlString)
         }
 
-        func fetch() {
+        func fetch() async {
             guard let url = url, !isFetching else { return }
             isFetching = true
-            APIClient.fetch(url: url) { (result, _, _)  in
-                DispatchQueue.main.async {
-                    self.isFetching = false
-                    guard let result = result else {
-                        self.errorMessage = "Error fetching from URL"
-                        return
-                    }
-                    if result.markdown.isEmpty {
-                        self.errorMessage = "This site is not supported"
-                        return
-                    }
+            errorMessage = ""
+
+            do {
+                let (result, _) = try await APIClient.fetch(url: url)
+
+                if result.markdown.isEmpty {
+                    self.errorMessage = "This site is not supported"
+                } else {
                     self.result = result
                     self.isFetched = true
                 }
+            } catch {
+                self.errorMessage = "Error fetching from URL: \(error.localizedDescription)"
             }
-        }
 
+            self.isFetching = false
+        }
     }
 }

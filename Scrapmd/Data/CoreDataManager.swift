@@ -6,13 +6,13 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import CoreData
 import FileKit
+import Foundation
 
 struct CoreDataManager {
-    static var shared = CoreDataManager()
-    static let defaultMergePolicy = NSMergePolicy(merge: .overwriteMergePolicyType)
+    nonisolated(unsafe) static var shared = CoreDataManager()
+    nonisolated(unsafe) static let defaultMergePolicy = NSMergePolicy(merge: .overwriteMergePolicyType)
 
     // MARK: - Core Data stack
 
@@ -28,12 +28,12 @@ struct CoreDataManager {
         let url = (Path(groupIdentifier: suiteName)! + "\(dbName).sql").url
         let storeDescription = NSPersistentStoreDescription(url: url)
         container.persistentStoreDescriptions = [storeDescription]
-        container.loadPersistentStores(completionHandler: { (_, error) in
+        container.loadPersistentStores { _, error in
             if let error = error {
                 log(error: error)
                 fatalError("Unresolved error \(error), \(error)")
             }
-        })
+        }
         return container
     }()
 

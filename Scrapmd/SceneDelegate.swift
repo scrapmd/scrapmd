@@ -6,22 +6,19 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
-import FirebaseAnalytics
+import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
     var pendingNavigation = PendingNavigation()
     var confirmingCreate = ConfirmingCreate()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-
         let contentView = ContentView()
-            .environmentObject(pendingNavigation)
-            .environmentObject(confirmingCreate)
+            .environment(pendingNavigation)
+            .environment(confirmingCreate)
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)
@@ -63,7 +60,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if item.name.hasPrefix("scrapmd") {
                 let value = item.value ?? "(empty)"
                 additionalParams[item.name] = value
-                Analytics.setUserProperty(value, forName: item.name)
             }
         }
         UserDefaults.shared.additionalParameters = additionalParams

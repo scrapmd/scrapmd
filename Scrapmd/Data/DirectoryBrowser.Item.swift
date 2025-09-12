@@ -6,18 +6,19 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import Combine
 import FileKit
+import Foundation
 import UIKit
 
 extension DirectoryBrowser {
-    class Item: ObservableObject, Identifiable, Hashable {
-        @Published var metadata: ScrapMetadata?
-        @Published var thumbnail: UIImage?
-        @Published var scrapsCount: Int
-        @Published var foldersCount: Int
-        @Published var fileName: String
+    @Observable
+    class Item: Identifiable, Hashable {
+        var metadata: ScrapMetadata?
+        var thumbnail: UIImage?
+        var scrapsCount: Int
+        var foldersCount: Int
+        var fileName: String
 
         static func == (lhs: DirectoryBrowser.Item, rhs: DirectoryBrowser.Item) -> Bool {
             lhs.id == rhs.id
@@ -34,7 +35,7 @@ extension DirectoryBrowser {
             self.fileName = path.fileName
         }
 
-        var id: String { // swiftlint:disable:this identifier_name
+        var id: String {
             path.id
         }
 

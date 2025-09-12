@@ -6,11 +6,13 @@
 //  Copyright © 2020 LittleApps Inc. All rights reserved.
 //
 
-import UIKit
-import MobileCoreServices
 import FileKit
+import MobileCoreServices
+import os.log
 import SwiftUI
+import UIKit
 
+@MainActor
 class ActionViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     var hostingViewController: UIHostingController<NavigationView<SaveActionView>>?
@@ -24,10 +26,10 @@ class ActionViewController: UIViewController {
         guard
             let attachments = (extensionContext?.inputItems as? [NSExtensionItem])?.flatMap({ $0.attachments ?? [] })
             else {
-                self.extensionContext?.cancelRequest(withError: NSError())
+                self.extensionContext?.cancelRequest(withError: CocoaError(.userCancelled))
                 return
         }
-        let onFetchResult: APIClient.CompletionHandler = { (result, _, err) in
+        let onFetchResult: APIClient.CompletionHandler = { result, _, err in
             if let result = result {
                 DispatchQueue.main.async {
                     self.renderSaveView(result: result)
@@ -35,14 +37,14 @@ class ActionViewController: UIViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.extensionContext!.cancelRequest(withError: err ?? NSError())
+                    self.extensionContext!.cancelRequest(withError: err ?? CocoaError(.coderInvalidValue))
                 }
             }
         }
         if let provider = attachments.first(where: {
             $0.hasItemConformingToTypeIdentifier(kUTTypePropertyList as String)
         }) {
-            provider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { (results, _) in
+            provider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { results, _ in
                 guard
                     let results = results as? [String: Any],
                     let jsResults = results[NSExtensionJavaScriptPreprocessingResultsKey] as? [String: Any],
@@ -51,22 +53,32 @@ class ActionViewController: UIViewController {
                     let urlString = jsResults["url"] as? String,
                     let url = URL(string: urlString)
                     else {
-                        self.extensionContext?.cancelRequest(withError: NSError())
+                        Task { @MainActor in
+                            self.extensionContext?.cancelRequest(withError: CocoaError(.coderInvalidValue))
+                        }
                         return
                 }
-                APIClient.fetch(url: url, title: title, prefetchedHTML: html, completionHandler: onFetchResult)
+                Task {
+                    await APIClient.fetch(
+                        url: url, title: title, prefetchedHTML: html, completionHandler: onFetchResult
+                    )
+                }
             }
             return
         }
         if let provider = attachments.first(where: { $0.hasItemConformingToTypeIdentifier(kUTTypeURL as String) }) {
-            provider.loadItem(forTypeIdentifier: kUTTypeURL as String) { (url, _) in
+            provider.loadItem(forTypeIdentifier: kUTTypeURL as String) { url, _ in
                 guard
                     let url = url as? URL
                     else {
-                        self.extensionContext?.cancelRequest(withError: NSError())
+                        Task { @MainActor in
+                            self.extensionContext?.cancelRequest(withError: CocoaError(.coderInvalidValue))
+                        }
                         return
                 }
-                APIClient.fetch(url: url, completionHandler: onFetchResult)
+                Task {
+                    await APIClient.fetch(url: url, completionHandler: onFetchResult)
+                }
             }
         }
     }
@@ -131,7 +143,9 @@ class ActionViewController: UIViewController {
         }
         return false
     }
-
 }
 
-func log(error: Error) {}
+func log(error: Error) {
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.littleapps.scrapmd", category: "error")
+    logger.error("\(error.localizedDescription, privacy: .public)")
+}

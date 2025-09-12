@@ -8,15 +8,17 @@
 
 import Foundation
 
+@MainActor
 struct APIClient {
-    struct Result: Decodable {
-        var title: String
-        var markdown: String
-        var url: String
-        var images: [String: String]
-        var leadImageURL: String?
+    typealias CompletionHandler = @Sendable (Result?, HTTPURLResponse?, Error?) -> Void
 
-        // swiftlint:disable:next nesting
+    struct Result: Decodable, Sendable {
+        let title: String
+        let markdown: String
+        let url: String
+        let images: [String: String]
+        let leadImageURL: String?
+
         enum CodingKeys: String, CodingKey {
             case title, markdown, url, images
             case leadImageURL = "lead_image_url"
@@ -26,54 +28,68 @@ struct APIClient {
             return ScrapMetadata(title: title, url: url, createdAt: Date(), appVersion: Bundle.main.appVersion)
         }
     }
+
     enum APIError: Error {
         case noData
+        case invalidResponse
     }
-
-    typealias CompletionHandler = (Result?, HTTPURLResponse?, Error?) -> Void
 
     static let endpoint = URL(string: "https://api.scrapmd.app/")!
     // static let endpoint = URL(string: "http://localhost:8000/")!
 
     static func fetch(
-        url: URL, title: String? = nil,
-        prefetchedHTML: String? = nil,
-        completionHandler: @escaping CompletionHandler) {
+        url: URL,
+        title: String? = nil,
+        prefetchedHTML: String? = nil
+    ) async throws -> (Result, HTTPURLResponse) {
         let session = URLSession.shared
-        var req = URLRequest(url: endpoint)
+        var request = URLRequest(url: endpoint)
+
         var params = [String: String]()
         if let html = prefetchedHTML {
             params["html"] = html
         }
         params["title"] = title
         params["url"] = url.absoluteString
-        params.merge(UserDefaults.shared.additionalParameters,
-                     uniquingKeysWith: { key, _ in key })
-        do {
-            let data = try JSONEncoder().encode(params)
-            req.httpBody = data
-        } catch {
-            fatalError(error.localizedDescription)
+        params.merge(UserDefaults.shared.additionalParameters) { key, _ in key }
+
+        let data = try JSONEncoder().encode(params)
+        request.httpBody = data
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let (responseData, response) = try await session.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
         }
-        req.httpMethod = "POST"
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        session.dataTask(with: req) { (data, res, err) in
-            guard let res = res as? HTTPURLResponse else { fatalError() }
-            if let err = err {
-                log(error: err)
-                completionHandler(nil, res, err)
-                return
-            }
-            guard let data = data else {
-                completionHandler(nil, res, APIError.noData)
-                return
-            }
+
+        guard !responseData.isEmpty else {
+            throw APIError.noData
+        }
+
+        let result = try JSONDecoder().decode(Result.self, from: responseData)
+        return (result, httpResponse)
+    }
+
+    // Legacy completion handler method for backward compatibility during migration
+    static func fetch(
+        url: URL, title: String? = nil,
+        prefetchedHTML: String? = nil,
+        completionHandler: @escaping @Sendable (Result?, HTTPURLResponse?, Error?) -> Void
+    ) {
+        Task {
             do {
-                let result = try JSONDecoder().decode(Result.self, from: data)
-                completionHandler(result, res, nil)
+                let (result, response) = try await fetch(url: url, title: title, prefetchedHTML: prefetchedHTML)
+                await MainActor.run {
+                    completionHandler(result, response, nil)
+                }
             } catch {
-                completionHandler(nil, res, error)
+                log(error: error)
+                await MainActor.run {
+                    completionHandler(nil, nil, error)
+                }
             }
-        }.resume()
+        }
     }
 }
